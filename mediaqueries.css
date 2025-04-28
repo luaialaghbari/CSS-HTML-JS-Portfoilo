@@ -1,0 +1,87 @@
+/* mediaqueries.css – responsive tweaks */
+/* be sure this is linked *after* style.css */
+
+/* ≤1200px: swap nav + shrink pics */
+@media screen and (max-width: 1200px) {
+   #desktop-nav { display: none; }
+   #hamburger-nav { display: flex; }
+ 
+   .section_pic img {
+     width: 150px;
+     height: 150px;
+   }
+   #profile { gap: 2rem; }
+ 
+   .icon {
+     width: 24px;
+     height: 24px;
+   }
+ }
+ 
+ /* ≤768px: stack into one column */
+ @media screen and (max-width: 768px) {
+   section {
+     padding-left: 1rem;
+     padding-right: 1rem;
+   }
+ 
+   /* PROFILE → vertical */
+   #profile {
+     flex-direction: column;
+     height: auto;
+     padding: 2rem 0;
+     gap: 1.5rem;
+   }
+   .section_pic img {
+     width: 120px;
+     height: 120px;
+   }
+ 
+   .btn-container {
+     flex-direction: column;
+     gap: 0.5rem;
+   }
+   .icon {
+     width: 20px;
+     height: 20px;
+   }
+   .nav-links {
+     font-size: 1.2rem;
+     gap: 1rem;
+   }
+ 
+   /* ABOUT: photo, then cards, then summary */
+   .section-container {
+     flex-direction: column;
+     gap: 2rem;
+     align-items: center;
+   }
+   .card-wrapper {
+     flex-direction: column;
+     width: 100%;
+     gap: 1.5rem;
+   }
+   .about-summary {
+     width: 100%;
+     padding: 0 1rem;
+     text-align: center;
+     margin: 0 auto;
+   }
+ 
+   .arrow { display: none; }
+ }
+ 
+ /* ≤480px: tiny tweaks */
+ @media screen and (max-width: 480px) {
+   .logo {
+     font-size: 1.5rem;
+   }
+   .nav-links {
+     font-size: 1rem;
+     gap: 0.8rem;
+   }
+   a:hover {
+     text-underline-offset: 0.5rem;
+   }
+ }
+ 

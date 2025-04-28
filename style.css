@@ -1,0 +1,272 @@
+/* style.css */
+/* — ensure this in your <head>:
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* ============ smooth scrolling ============ */
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+p {
+  color: rgb(85, 85, 85);
+}
+
+/* Transition */
+a, .btn {
+  transition: all 0.3s ease;
+}
+
+/* Desktop nav */
+nav, .nav-links {
+  display: flex;
+}
+nav {
+  justify-content: space-around;
+  align-items: center;
+  height: 17vh;
+}
+.nav-links {
+  gap: 2rem;
+  list-style: none;
+  font-size: 1.5rem;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+a:hover {
+  color: gray;
+  text-decoration: underline;
+  text-underline-offset: 1rem;
+  text-decoration-color: rgb(181, 181, 181);
+}
+.logo {
+  font-size: 2rem;
+}
+.logo:hover {
+  cursor: default;
+}
+
+/* Hamburger Navigation */
+#desktop-nav { display: flex; }
+#hamburger-nav { display: none; }
+.hamburger-menu {
+  position: relative;
+  display: inline-block;
+}
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 24px;
+  width: 30px;
+  cursor: pointer;
+}
+.hamburger-icon span {
+  width: 30px;
+  height: 2px;
+  background-color: black;
+  transition: all 0.3s ease-in-out;
+}
+.menu-links {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  width: fit-content;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.menu-links.open {
+  max-height: 300px;
+}
+.menu-links li { list-style: none; }
+.menu-links a {
+  display: block;
+  padding: 10px;
+  font-size: 1.5rem;
+  color: black;
+}
+
+/* SECTIONS: fluid container */
+section {
+  padding-top: 4vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  min-height: fit-content;
+}
+
+/* Profile Section */
+#profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  height: 80vh;
+}
+.section_pic img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+.section_text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.section_text_p1 {
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+}
+.section_text p {
+  font-weight: 600;
+}
+.title {
+  font-size: 3rem;
+}
+
+/* Buttons */
+.btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.btn {
+  font-weight: 600;
+  padding: 1rem;
+  width: 8rem;
+  border-radius: 2rem;
+}
+.btn-color-1, .btn-color-2 {
+  border: 0.1rem solid rgb(53, 53, 53);
+}
+.btn-color-1, .btn-color-2:hover {
+  background: rgb(53, 53, 53);
+  color: white;
+}
+.btn-color-2 {
+  background: none;
+}
+.btn-color-1:hover {
+  background: black;
+}
+.btn-color-2:hover {
+  border-color: rgb(55, 55, 55);
+}
+
+/* Social Icons */
+#socials-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.icon {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+/* About-Me picture */
+.about-pic {
+  width: 100%;
+  max-width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 2rem;
+}
+
+/* — Center the section headings — */
+#about .section_text_p1,
+#about .title {
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Layout: photo + right-column */
+.section-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;   /* vertical center */
+  gap: 2rem;
+}
+
+/* Right-column: cards + summary */
+.about-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Two cards side-by-side */
+.card-wrapper {
+  display: flex;
+  gap: 2rem;
+}
+
+/* Card styling */
+.details-container {
+  padding: 1.5rem;
+  background: white;
+  border-radius: 2rem;
+  border: 0.1rem solid rgb(163, 163, 163);
+  text-align: center;
+  flex: 0 0 300px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+.exp-header,
+.edu-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.exp-icon,
+.edu-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Summary text */
+.about-summary {
+  max-width: 800px;
+  color: rgb(85, 85, 85);
+  line-height: 1.6;
+  text-align: center;
+  margin: 0;
+}
+
+/* Down‐arrow */
+/* ============ reposition the down‐arrow ============ */
+.arrow {
+  position: static;       /* no more absolute positioning */
+  display: block;         /* treat as a block so margin-auto works */
+  margin: 2rem auto 0;    /* 2rem above, auto left/right, 0 below */
+  cursor: pointer;        /* clickable */
+}
+
