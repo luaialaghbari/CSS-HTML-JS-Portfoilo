@@ -1,0 +1,1 @@
+// Legacy script placeholder. All behavior has been ported into React hooks in pages/index.js.
