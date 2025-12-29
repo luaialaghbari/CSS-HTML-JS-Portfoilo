@@ -180,11 +180,18 @@ export default function Home() {
 
         <div className="timeline">
           {resume.education.map((ed, idx) => (
-            <div className="edu-card" key={idx}>
+            <motion.div
+              key={idx}
+              className="edu-card"
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+            >
               <h3>{ed.degree}</h3>
               <div className="meta">{[ed.school, ed.location].filter(Boolean).join(' — ')}{ed.period ? ` • ${ed.period}` : ''}</div>
               <p className="edu-desc">{Array.isArray(ed.details) && ed.details.length > 0 ? ed.details.join(' ') : ''}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
@@ -196,8 +203,86 @@ export default function Home() {
           <h1 className="title gradient-text">Skills</h1>
           <p className="subtitle">Technologies I use to design, build, and ship quality software.</p>
         </div>
-        <div className="chips skills-cloud">
-          {resume.skills.map((s, i) => (<span className="chip" key={i}>{s}</span>))}
+        <div className="skills-grid">
+          {resume.skills.map((s, i) => {
+            // Skills with official logos
+            const skillsWithLogos = ['flutter', 'dart', 'react', 'next.js', 'nextjs', 'javascript', 'js', 'html', 'css', 'java', 'php', 'supabase', 'firebase', 'figma', 'git', 'github', 'c++', 'cpp', 'microsoft'];
+            
+            const skill = s.toLowerCase().replace(/\s+/g, '').replace(/[\.\-\/]/g, '');
+            const hasOfficialLogo = skillsWithLogos.some(logo => skill.includes(logo.replace(/[\.\-\/]/g, '')));
+            
+            // Get icon - either official logo or generic icon
+            const getSkillIcon = (skillName) => {
+              if (hasOfficialLogo) {
+                const skill = skillName.toLowerCase().replace(/\s+/g, '').replace(/[\.\-\/]/g, '');
+                const iconMap = {
+                  'flutter': 'flutter',
+                  'dart': 'dart',
+                  'react': 'react',
+                  'next.js': 'nextdotjs',
+                  'nextjs': 'nextdotjs',
+                  'javascript': 'javascript',
+                  'js': 'javascript',
+                  'html': 'html5',
+                  'css': 'css3',
+                  'java': 'java',
+                  'php': 'php',
+                  'supabase': 'supabase',
+                  'firebase': 'firebase',
+                  'figma': 'figma',
+                  'git': 'git',
+                  'github': 'github',
+                  'c++': 'cplusplus',
+                  'cpp': 'cplusplus',
+                  'microsoftapps': 'microsoft',
+                  'microsoft': 'microsoft'
+                };
+                const iconName = iconMap[skill] || 'code';
+                return <img src={`https://cdn.simpleicons.org/${iconName}`} alt={skillName} loading="lazy" />;
+              } else {
+                // Use generic icon for skills without official logos
+                return (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                    <path d="M2 17L12 22L22 17M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                  </svg>
+                );
+              }
+            };
+
+            // Create varying widths pattern - smaller spans for compact cards (all 2 columns)
+            const getCardSpan = (index) => {
+              return 2; // All cards span 2 columns for consistent compact width
+            };
+
+            return (
+              <motion.div
+                key={i}
+                className="skill-card"
+                style={{ gridColumn: `span ${getCardSpan(i)}` }}
+                initial={{ opacity: 0, rotateY: -15, x: -30, scale: 0.9 }}
+                whileInView={{ opacity: 1, rotateY: 0, x: 0, scale: 1 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: i * 0.04,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }}
+                whileHover={{ 
+                  rotateY: 8,
+                  rotateX: 3,
+                  scale: 1.08,
+                  y: -8,
+                  transition: { duration: 0.3, ease: "easeOut" }
+                }}
+              >
+                <div className="skill-icon">
+                  {getSkillIcon(s)}
+                </div>
+                <span className="skill-card-text">{s}</span>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 

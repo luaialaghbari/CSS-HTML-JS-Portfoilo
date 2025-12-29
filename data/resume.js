@@ -35,11 +35,15 @@ const resume = {
         'Intensive program focused on advanced grammar, writing, speaking, and listening skills.',
       ],
     },
-    { degree: 'TOEFL Certificate', school: '', location: '', period: '2021' },
+    { degree: 'TOEFL Certificate', school: '', location: '', period: '2021', details: [
+      'Test of English as a Foreign Language certification demonstrating proficiency in English reading, writing, listening, and speaking skills.',
+    ] },
+    { degree: 'ICDL Certificate', school: '', location: '', period: '2021', details: [
+      'International Computer Driving Licence certification covering essential computer skills including word processing, spreadsheets, and digital literacy.',
+    ] },
     { degree: 'TESOL Certificate', school: '', location: '', period: '2023', details: [
       'Training in modern teaching methods, classroom management, and curriculum development.',
     ] },
-    { degree: 'ICDL Certificate', school: '', location: '', period: '2021' },
   ],
 
   experience: [
