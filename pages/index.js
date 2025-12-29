@@ -206,13 +206,23 @@ export default function Home() {
         <div className="skills-grid">
           {resume.skills.map((s, i) => {
             // Skills with official logos
-            const skillsWithLogos = ['flutter', 'dart', 'react', 'next.js', 'nextjs', 'javascript', 'js', 'html', 'css', 'java', 'php', 'supabase', 'firebase', 'figma', 'git', 'github', 'c++', 'cpp', 'microsoft'];
-            
+            const skillsWithLogos = ['flutter', 'dart', 'react', 'next.js', 'nextjs', 'javascript', 'js', 'html', 'css', 'java', 'php', 'supabase', 'firebase', 'figma', 'git', 'github', 'c++', 'cpp', 'microsoft', 'restapis', 'restapi', 'rest'];
+
             const skill = s.toLowerCase().replace(/\s+/g, '').replace(/[\.\-\/]/g, '');
             const hasOfficialLogo = skillsWithLogos.some(logo => skill.includes(logo.replace(/[\.\-\/]/g, '')));
-            
-            // Get icon - either official logo or generic icon
-            const getSkillIcon = (skillName) => {
+
+            // Use vibrant purple to pink to orange gradient for all cards
+            const getSkillGradient = (index) => {
+              return 'linear-gradient(135deg, rgba(168,85,247,0.15), rgba(236,72,153,0.12), rgba(251,146,60,0.1))';
+            };
+
+            // Use more prominent gradient for hover
+            const getSkillHoverGradient = (index) => {
+              return 'linear-gradient(135deg, rgba(168,85,247,0.25), rgba(236,72,153,0.2), rgba(251,146,60,0.15))';
+            };
+
+            // Get icon - either official logo or unique generic icon
+            const getSkillIcon = (skillName, index) => {
               if (hasOfficialLogo) {
                 const skill = skillName.toLowerCase().replace(/\s+/g, '').replace(/[\.\-\/]/g, '');
                 const iconMap = {
@@ -224,8 +234,8 @@ export default function Home() {
                   'javascript': 'javascript',
                   'js': 'javascript',
                   'html': 'html5',
-                  'css': 'css3',
-                  'java': 'java',
+                  'css': 'css',
+                  'java': 'openjdk',
                   'php': 'php',
                   'supabase': 'supabase',
                   'firebase': 'firebase',
@@ -235,49 +245,96 @@ export default function Home() {
                   'c++': 'cplusplus',
                   'cpp': 'cplusplus',
                   'microsoftapps': 'microsoft',
-                  'microsoft': 'microsoft'
+                  'microsoft': 'microsoft',
+                  'restapis': 'postman',
+                  'restapi': 'postman',
+                  'rest': 'postman'
                 };
                 const iconName = iconMap[skill] || 'code';
                 return <img src={`https://cdn.simpleicons.org/${iconName}`} alt={skillName} loading="lazy" />;
               } else {
-                // Use generic icon for skills without official logos
-                return (
+                // Unique generic icons for skills without official logos
+                const genericIcons = [
+                  // Code/Development
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
                     <path d="M2 17L12 22L22 17M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                  </svg>,
+                  // Puzzle/Problem Solving
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.7 6.3C15.1 6.3 15.4 6 15.4 5.6V4.4C15.4 4 15.1 3.7 14.7 3.7C14.3 3.7 14 4.4V5.6C14 6 14.3 6.3 14.7 6.3Z" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M20 9C20 11.2 18.2 13 16 13H14V15C14 15.6 13.6 16 13 16H11C10.4 16 10 15.6 10 15V13H8C5.8 13 4 11.2 4 9V7C4 4.8 5.8 3 8 3H16C18.2 3 20 4.8 20 7V9Z" stroke="currentColor" strokeWidth="2"/>
+                  </svg>,
+                  // Team/Collaboration
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17 20C17 18.3 15.7 17 14 17H10C8.3 17 7 18.3 7 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                    <circle cx="9" cy="10" r="3" stroke="currentColor" strokeWidth="2"/>
+                    <circle cx="15" cy="10" r="3" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M12 13C10.3 13 9 14.3 9 16V17H15V16C15 14.3 13.7 13 12 13Z" stroke="currentColor" strokeWidth="2"/>
+                  </svg>,
+                  // Time Management
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M12 6V12L16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>,
+                  // Adaptability
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 12C3 7.03 7.03 3 12 3C16.97 3 21 7.03 21 12C21 16.97 16.97 21 12 21C7.03 21 3 16.97 3 12Z" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M8 12L10.5 14.5L16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>,
+                  // Microsoft/General
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M9 9H15V15H9V9Z" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M12 7V9M12 15V17M7 12H9M15 12H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  </svg>,
+                  // REST APIs
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M8 12H16M12 8V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                    <circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="2"/>
+                  </svg>,
+                  // UI/UX
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="3" width="20" height="18" rx="2" stroke="currentColor" strokeWidth="2"/>
+                    <circle cx="9" cy="9" r="2" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M7 17H11M13 17H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                   </svg>
-                );
+                ];
+                return genericIcons[index % genericIcons.length];
               }
             };
 
-            // Create varying widths pattern - smaller spans for compact cards (all 2 columns)
+            // All cards span 1 column for 8 cards per row layout
             const getCardSpan = (index) => {
-              return 2; // All cards span 2 columns for consistent compact width
+              return 1; // All cards span 1 column for consistent layout
             };
 
             return (
               <motion.div
                 key={i}
                 className="skill-card"
-                style={{ gridColumn: `span ${getCardSpan(i)}` }}
+                style={{
+                  gridColumn: `span ${getCardSpan(i)}`,
+                  background: getSkillGradient(i)
+                }}
                 initial={{ opacity: 0, rotateY: -15, x: -30, scale: 0.9 }}
                 whileInView={{ opacity: 1, rotateY: 0, x: 0, scale: 1 }}
                 viewport={{ once: false, amount: 0.2 }}
-                transition={{ 
-                  duration: 0.5, 
+                transition={{
+                  duration: 0.5,
                   delay: i * 0.04,
                   ease: [0.25, 0.46, 0.45, 0.94]
                 }}
-                whileHover={{ 
-                  rotateY: 8,
-                  rotateX: 3,
-                  scale: 1.08,
-                  y: -8,
-                  transition: { duration: 0.3, ease: "easeOut" }
+                whileHover={{
+                  background: getSkillHoverGradient(i),
+                  scale: 1.05,
+                  y: -6,
+                  transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }
                 }}
               >
                 <div className="skill-icon">
-                  {getSkillIcon(s)}
+                  {getSkillIcon(s, i)}
                 </div>
                 <span className="skill-card-text">{s}</span>
               </motion.div>
@@ -291,47 +348,48 @@ export default function Home() {
         <div className="section-header reveal">
           <div className="overline">Get To Know More</div>
           <h1 className="title gradient-text">About Me</h1>
-          <p className="subtitle">{resume.summary}</p>
         </div>
 
-        <div className="about-grid">
-          <div className="bio-card reveal">
-            <p>
-              Software Engineer focused on Flutter/Dart and full‑stack development. I translate complex
-              requirements into elegant solutions with a strong emphasis on design systems and
-              maintainability.
+        <div className="about-modern">
+          <div className="about-hero reveal">
+            <p className="about-hero-text">
+              Software Engineer and English Teacher focused on Flutter/Dart and full‑stack development.
+              I translate complex requirements into elegant solutions with a strong emphasis on design systems and maintainability.
             </p>
-            <ul className="features">
-              <li>3‑month internship at Yemen Soft (SDLC, UI/UX)</li>
-              <li>Graduation project: real‑time delivery app with live tracking</li>
-              <li>Clean architecture, responsive UI, and accessible patterns</li>
-            </ul>
-
-            <div className="chips">
-              <span className="chip">Flutter</span>
-              <span className="chip">Dart</span>
-              <span className="chip">JavaScript</span>
-              <span className="chip">UI/UX</span>
-              <span className="chip">REST APIs</span>
+            <div className="focus-highlight">
+              <div className="highlight-dot"></div>
+              <span>100% Focused in Frontend Dev Mobile & App</span>
             </div>
           </div>
 
-          <div className="stats-grid reveal">
-            <div className="stat-card">
-              <div className="num">10+</div>
-              <div className="label">Screens Built</div>
+          <div className="experience-grid reveal">
+            <div className="exp-card">
+              <div className="exp-card-header">
+                <div className="exp-icon">💼</div>
+                <h3>Professional Experience</h3>
+              </div>
+              <p>3‑month internship at Yemen Soft (SDLC, UI/UX)</p>
             </div>
-            <div className="stat-card">
-              <div className="num">3</div>
-              <div className="label">Major Projects</div>
+            <div className="exp-card">
+              <div className="exp-card-header">
+                <div className="exp-icon">💧</div>
+                <h3>Candy App</h3>
+              </div>
+              <p>Water Delivery - Worked remotely for Aljazeera Springs, Jeddah</p>
             </div>
-            <div className="stat-card">
-              <div className="num">1yr</div>
-              <div className="label">Hands-on Experience</div>
+            <div className="exp-card">
+              <div className="exp-card-header">
+                <div className="exp-icon">📚</div>
+                <h3>English Teacher</h3>
+              </div>
+              <p>Teaching English with TESOL certification</p>
             </div>
-            <div className="stat-card">
-              <div className="num">100%</div>
-              <div className="label">Focus on UX</div>
+            <div className="exp-card">
+              <div className="exp-card-header">
+                <div className="exp-icon">🚀</div>
+                <h3>Graduation Project</h3>
+              </div>
+              <p>Real‑time delivery app with live GPS tracking</p>
             </div>
           </div>
         </div>
