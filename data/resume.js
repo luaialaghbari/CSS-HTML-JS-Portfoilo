@@ -111,10 +111,8 @@ const resume = {
 
   skills: [
     // Technical
-    'Flutter', 'Dart', 'React', 'Next.js', 'JavaScript', 'HTML', 'CSS', 'Java', 'C++', 'PHP',
-    'Supabase', 'Firebase', 'REST APIs', 'UI/UX', 'Figma',
-    // Soft/General
-    'Problem Solving', 'Team Collaboration', 'Time Management', 'Adaptability', 'Microsoft Apps',
+    'Flutter', 'Dart', 'React', 'Next.js', 'JavaScript', 'HTML', 'CSS', 'Java', 'PHP',
+    'Supabase', 'Firebase', 'REST APIs', 'Figma'
   ],
 
   projects: [

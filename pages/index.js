@@ -151,7 +151,7 @@ export default function Home() {
       <section id="profile" className="hero-grid">
         <motion.div className="hero-copy" initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{duration:.6}}>
           <div className="badge reveal">Available for work</div>
-          <h1 className="title reveal" style={{color:'var(--color-text)'}}>{resume.name}</h1>
+          <h1 className="title gradient-text reveal">{resume.name}</h1>
           <p className="section_text_p1" style={{opacity:.9}}>{resume.role}</p>
           <p className="lead reveal">{resume.summary}</p>
           <div className="btn-container reveal">
@@ -211,14 +211,14 @@ export default function Home() {
             const skill = s.toLowerCase().replace(/\s+/g, '').replace(/[\.\-\/]/g, '');
             const hasOfficialLogo = skillsWithLogos.some(logo => skill.includes(logo.replace(/[\.\-\/]/g, '')));
 
-            // Use vibrant purple to pink to orange gradient for all cards
+            // Use a subtle blue → purple gradient for skill cards (muted, not too bright)
             const getSkillGradient = (index) => {
-              return 'linear-gradient(135deg, rgba(168,85,247,0.15), rgba(236,72,153,0.12), rgba(251,146,60,0.1))';
+              return 'linear-gradient(135deg, rgba(59,130,246,0.10), rgba(124,58,237,0.10))';
             };
 
-            // Use more prominent gradient for hover
+            // Slightly stronger gradient on hover
             const getSkillHoverGradient = (index) => {
-              return 'linear-gradient(135deg, rgba(168,85,247,0.25), rgba(236,72,153,0.2), rgba(251,146,60,0.15))';
+              return 'linear-gradient(135deg, rgba(59,130,246,0.14), rgba(124,58,237,0.14))';
             };
 
             // Get icon - either official logo or unique generic icon
@@ -251,7 +251,24 @@ export default function Home() {
                   'rest': 'postman'
                 };
                 const iconName = iconMap[skill] || 'code';
-                return <img src={`https://cdn.simpleicons.org/${iconName}`} alt={skillName} loading="lazy" />;
+                // Provide brand color where appropriate so icons render in their brand hue
+                const iconColors = {
+                  'java': '5382A1',
+                  'css': '1572B6',
+                  'html5': 'E34F26',
+                  'javascript': 'F7DF1E',
+                  'react': '61DAFB',
+                  'flutter': '02569B',
+                  'dart': '0175C2',
+                  'php': '777BB4',
+                  'firebase': 'FFCA28',
+                  'supabase': '3ECF8E',
+                  'figma': 'F24E1E',
+                  'github': '181717',
+                };
+                const color = iconColors[iconName];
+                const src = color ? `https://cdn.simpleicons.org/${iconName}/${color}` : `https://cdn.simpleicons.org/${iconName}`;
+                return <img src={src} alt={skillName} loading="lazy" />;
               } else {
                 // Unique generic icons for skills without official logos
                 const genericIcons = [
@@ -262,7 +279,7 @@ export default function Home() {
                   </svg>,
                   // Puzzle/Problem Solving
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M14.7 6.3C15.1 6.3 15.4 6 15.4 5.6V4.4C15.4 4 15.1 3.7 14.7 3.7C14.3 3.7 14 4.4V5.6C14 6 14.3 6.3 14.7 6.3Z" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M14.7 6.3C15.1 6.3 15.4 6 15.4 5.6V4.4C15.4 4 15.1 3.7 14.7 3.7C14.3 3.7 14 4.4 14 5.6V6.3C14 6.7 14.3 7 14.7 7C15.1 7 15.4 6.7 15.4 6.3Z" stroke="currentColor" strokeWidth="2"/>
                     <path d="M20 9C20 11.2 18.2 13 16 13H14V15C14 15.6 13.6 16 13 16H11C10.4 16 10 15.6 10 15V13H8C5.8 13 4 11.2 4 9V7C4 4.8 5.8 3 8 3H16C18.2 3 20 4.8 20 7V9Z" stroke="currentColor" strokeWidth="2"/>
                   </svg>,
                   // Team/Collaboration
@@ -315,8 +332,7 @@ export default function Home() {
                 key={i}
                 className="skill-card"
                 style={{
-                  gridColumn: `span ${getCardSpan(i)}`,
-                  background: getSkillGradient(i)
+                  gridColumn: `span ${getCardSpan(i)}`
                 }}
                 initial={{ opacity: 0, rotateY: -15, x: -30, scale: 0.9 }}
                 whileInView={{ opacity: 1, rotateY: 0, x: 0, scale: 1 }}
@@ -327,7 +343,6 @@ export default function Home() {
                   ease: [0.25, 0.46, 0.45, 0.94]
                 }}
                 whileHover={{
-                  background: getSkillHoverGradient(i),
                   scale: 1.05,
                   y: -6,
                   transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }
