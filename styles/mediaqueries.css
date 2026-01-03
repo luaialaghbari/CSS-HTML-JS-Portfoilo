@@ -24,8 +24,8 @@
 	 }
 
 			.projects-grid { grid-template-columns: repeat(2, 1fr); }
-			.about-grid { grid-template-columns: 1fr 1fr; }
 			.hero-grid { grid-template-columns: 1fr 1fr; }
+            .skills-grid-categories { grid-template-columns: repeat(2, 1fr); }
  }
  
  /* ≤768px: stack into one column */
@@ -40,8 +40,26 @@
 	 #profile {
 			min-height: auto;
 			padding: 2rem 0;
-			gap: 1rem;
+			gap: 3rem;
+            flex-direction: column-reverse;
+            text-align: center;
 	 }
+     #profile .hero-copy {
+         align-items: center;
+         text-align: center;
+         max-width: 100%;
+     }
+     #profile .btn-container, #profile #socials-container {
+         justify-content: center;
+     }
+     .hero-visual {
+         width: 100%;
+     }
+     .hero-visual .avatar-ring {
+         max-width: 300px;
+         margin: 0 auto;
+     }
+
 		.hero-grid { grid-template-columns: 1fr; }
 	 .section_pic img {
 			width: 128px;
@@ -61,25 +79,21 @@
 		 gap: 1rem;
 	 }
  
-	 /* ABOUT: photo, then cards, then summary */
-		.section-container { flex-direction: column; gap: 1.5rem; align-items: center; }
-	 .card-wrapper {
-		 flex-direction: column;
-		 width: 100%;
-			gap: 1rem;
-	 }
-	 .about-summary {
-		 width: 100%;
-		 padding: 0 1rem;
-		 text-align: center;
-		 margin: 0 auto;
-	 }
- 
 	 .arrow { display: none; }
 
 		.projects-grid { grid-template-columns: 1fr; }
 		.contact-rows { grid-template-columns: 1fr; }
-		.about-grid { grid-template-columns: 1fr; }
+        .skills-grid-categories { grid-template-columns: 1fr; }
+        
+        /* About section mobile */
+        .about-wrapper-bold {
+            padding: 3rem 1.5rem;
+            border-radius: 40px;
+        }
+        .about-header-bold .title-massive {
+            flex-direction: column;
+            gap: 0;
+        }
  }
  
  /* ≤480px: tiny tweaks */
@@ -94,5 +108,13 @@
 	 a:hover {
 		 text-underline-offset: 0.5rem;
 	 }
+     .title-massive {
+         font-size: 2.8rem !important;
+     }
+     .hero-copy .title-massive {
+         flex-direction: column;
+         gap: 0;
+         align-items: center;
+     }
  }
  

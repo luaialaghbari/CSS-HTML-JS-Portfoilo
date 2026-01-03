@@ -110,9 +110,22 @@ const resume = {
   ],
 
   skills: [
-    // Technical
-    'Flutter', 'Dart', 'React', 'Next.js', 'JavaScript', 'HTML', 'CSS', 'Java', 'PHP',
-    'Supabase', 'Firebase', 'REST APIs', 'Figma'
+    {
+      category: "Mobile Development",
+      items: ['Flutter', 'Dart']
+    },
+    {
+      category: "Frontend Web",
+      items: ['React', 'Next.js', 'JavaScript', 'HTML', 'CSS']
+    },
+    {
+      category: "Tools & Design",
+      items: ['Figma', 'Git', 'GitHub']
+    },
+    {
+      category: "Backend & Services",
+      items: ['Supabase', 'Firebase', 'PHP', 'Java', 'REST APIs']
+    }
   ],
 
   projects: [
