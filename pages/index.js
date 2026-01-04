@@ -159,7 +159,7 @@ export default function Home() {
 
   // Active section tracking
   useEffect(() => {
-    const sections = ['profile','education','skills','about','experience','contact'];
+    const sections = ['profile','about','experience','skills','education','contact'];
     const elements = sections.map((id) => document.getElementById(id)).filter(Boolean);
     const io = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -264,10 +264,10 @@ export default function Home() {
         </div>
         <ul className="nav-links">
           <li><a className={active==='profile'?'active':''} href="#profile">{trans.home}</a></li>
-          <li><a className={active==='education'?'active':''} href="#education">{trans.education}</a></li>
-          <li><a className={active==='skills'?'active':''} href="#skills">{trans.skills_nav}</a></li>
           <li><a className={active==='about'?'active':''} href="#about">{trans.about}</a></li>
           <li><a className={active==='experience'?'active':''} href="#experience">{trans.experience}</a></li>
+          <li><a className={active==='skills'?'active':''} href="#skills">{trans.skills_nav}</a></li>
+          <li><a className={active==='education'?'active':''} href="#education">{trans.education}</a></li>
           <li><a className={active==='contact'?'active':''} href="#contact">{trans.contact}</a></li>
         </ul>
         <div className="nav-controls">
@@ -306,10 +306,10 @@ export default function Home() {
             <div className={`menu-links ${menuOpen ? 'open' : ''}`}>
               <ul>
                 <li><a href="#profile" onClick={toggleMenu}>{trans.home}</a></li>
-                <li><a href="#education" onClick={toggleMenu}>{trans.education}</a></li>
-                <li><a href="#skills" onClick={toggleMenu}>{trans.skills_nav}</a></li>
                 <li><a href="#about" onClick={toggleMenu}>{trans.about}</a></li>
                 <li><a href="#experience" onClick={toggleMenu}>{trans.experience}</a></li>
+                <li><a href="#skills" onClick={toggleMenu}>{trans.skills_nav}</a></li>
+                <li><a href="#education" onClick={toggleMenu}>{trans.education}</a></li>
                 <li><a href="#contact" onClick={toggleMenu}>{trans.contact}</a></li>
               </ul>
             </div>
@@ -398,121 +398,6 @@ export default function Home() {
             </div>
           </MagneticAvatar>
         </motion.div>
-      </section>
-
-      {/* Education Section */}
-      <section id="education">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="section_text_p1 text-stroke">{trans.background}</p>
-          <h1 className="title-massive">
-            <span className="gradient-text">{trans.eduTitle}</span>
-          </h1>
-        </motion.div>
-
-        <div className="timeline">
-          {resume.education.map((ed, idx) => (
-            <motion.div
-              key={idx}
-              className="edu-card"
-              initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30, scale: 0.9 }}
-              whileInView={{ opacity: 1, x: 0, scale: 1 }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-            >
-              <h3>{ed.degree}</h3>
-              <div className="meta">{[ed.school, ed.location].filter(Boolean).join(' — ')}{ed.period ? ` • ${ed.period}` : ''}</div>
-              <p className="edu-desc">{Array.isArray(ed.details) && ed.details.length > 0 ? ed.details.join(' ') : ''}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Skills Section - Modern Bento Grid */}
-      <section id="skills">
-        <motion.div 
-          className="section-header"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="overline text-stroke">{trans.toolkit}</div>
-          <h1 className="title-massive">
-            <span className="gradient-text">{trans.skills}</span>
-          </h1>
-          <p className="subtitle">{trans.skillsSubtitle}</p>
-        </motion.div>
-
-        <div className="skills-layout">
-          <div className="skills-grid-categories">
-            {resume.skills.map((category, idx) => {
-              const catKey = `cat${category.category.split(' ')[0]}`;
-              return (
-                <motion.div 
-                  key={category.category}
-                  className="skill-category-card"
-                  initial={{ opacity: 0, y: 50, rotateX: 15 }}
-                  whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                  viewport={{ once: false, amount: 0.1 }}
-                  transition={{ 
-                    type: "spring",
-                    stiffness: 70,
-                    damping: 15,
-                    delay: idx * 0.1
-                  }}
-                  whileHover={{ 
-                    y: -10,
-                    scale: 1.02,
-                    transition: { duration: 0.3 }
-                  }}
-                >
-                  <h3 className="category-title">{trans[catKey] || category.category}</h3>
-                <div className="category-content">
-                  {category.items.map((skill, sIdx) => (
-                    <motion.div 
-                      key={skill} 
-                      className="skill-chip"
-                      initial={{ opacity: 0, scale: 0.5 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: false }}
-                      transition={{ 
-                        type: "spring",
-                        stiffness: 150,
-                        damping: 12,
-                        delay: (idx * 0.1) + (sIdx * 0.05) 
-                      }}
-                      whileHover={{ 
-                        scale: 1.15,
-                        rotate: [0, -2, 2, 0],
-                        transition: { duration: 0.3 }
-                      }}
-                    >
-                      <div className="chip-icon">
-                        {renderSkillIcon(skill)}
-                      </div>
-                      <span className="chip-label">{skill}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            )})}
-          </div>
-        </div>
-        <div className="arrow-container">
-          <motion.img
-            src="/assets/arrow.png"
-            className="icon arrow"
-            alt="Scroll down"
-            onClick={() => { const el = document.getElementById('about'); el && el.scrollIntoView({ behavior: 'smooth'}); }}
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-          />
-        </div>
       </section>
 
       {/* About Section */}
@@ -644,10 +529,12 @@ export default function Home() {
           
           {resume.experience.map((exp, idx) => {
             const isCandy = exp.title.toLowerCase().includes('candy');
+            const isYemeniStore = exp.title.toLowerCase().includes('yemeni store');
+            
             return (
               <motion.div 
                 key={idx}
-                className={`experience-node ${idx % 2 === 0 ? 'left' : 'right'} ${isCandy ? 'candy-node' : ''}`}
+                className={`experience-node ${idx % 2 === 0 ? 'left' : 'right'} ${isCandy ? 'candy-node' : ''} ${isYemeniStore ? 'yemeni-node' : ''}`}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.2 }}
@@ -676,6 +563,30 @@ export default function Home() {
                       <div className="iphone-button-right"></div>
                       <div className="iphone-screen">
                         <img src="/assets/candy app.jpg" alt="Candy App" />
+                      </div>
+                    </motion.div>
+                  </div>
+                )}
+
+                {isYemeniStore && (
+                  <div className="yemeni-phone-right-container">
+                    <motion.div 
+                      className="iphone-17-frame"
+                      initial={{ opacity: 0, x: 50 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: false }}
+                      transition={{ duration: 0.8 }}
+                    >
+                      <div className="iphone-inner-border"></div>
+                      <div className="iphone-dynamic-island"></div>
+                      <div className="iphone-buttons-left">
+                        <div className="action-button"></div>
+                        <div className="volume-up"></div>
+                        <div className="volume-down"></div>
+                      </div>
+                      <div className="iphone-button-right"></div>
+                      <div className="iphone-screen">
+                        <img src="/assets/yemen e-commerc app.png" alt="Yemeni Store App" />
                       </div>
                     </motion.div>
                   </div>
@@ -726,6 +637,141 @@ export default function Home() {
             </motion.div>
           );
         })}
+        </div>
+        <div className="arrow-container">
+          <motion.img
+            src="/assets/arrow.png"
+            className="icon arrow"
+            alt="Scroll down"
+            onClick={() => { const el = document.getElementById('skills'); el && el.scrollIntoView({ behavior: 'smooth'}); }}
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+          />
+        </div>
+      </section>
+
+      {/* Skills Section - Modern Bento Grid */}
+      <section id="skills">
+        <motion.div 
+          className="section-header"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="overline text-stroke">{trans.toolkit}</div>
+          <h1 className="title-massive">
+            <span className="gradient-text">{trans.skills}</span>
+          </h1>
+          <p className="subtitle">{trans.skillsSubtitle}</p>
+        </motion.div>
+
+        <div className="skills-layout">
+          <div className="skills-grid-categories">
+            {resume.skills.map((category, idx) => {
+              const catKey = `cat${category.category.split(' ')[0]}`;
+              return (
+                <motion.div 
+                  key={category.category}
+                  className="skill-category-card"
+                  initial={{ opacity: 0, y: 50, rotateX: 15 }}
+                  whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                  viewport={{ once: false, amount: 0.1 }}
+                  transition={{ 
+                    type: "spring",
+                    stiffness: 70,
+                    damping: 15,
+                    delay: idx * 0.1
+                  }}
+                  whileHover={{ 
+                    y: -10,
+                    scale: 1.02,
+                    transition: { duration: 0.3 }
+                  }}
+                >
+                  <h3 className="category-title">{trans[catKey] || category.category}</h3>
+                <div className="category-content">
+                  {category.items.map((skill, sIdx) => (
+                    <motion.div 
+                      key={skill} 
+                      className="skill-chip"
+                      initial={{ opacity: 0, scale: 0.5 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: false }}
+                      transition={{ 
+                        type: "spring",
+                        stiffness: 150,
+                        damping: 12,
+                        delay: (idx * 0.1) + (sIdx * 0.05) 
+                      }}
+                      whileHover={{ 
+                        scale: 1.15,
+                        rotate: [0, -2, 2, 0],
+                        transition: { duration: 0.3 }
+                      }}
+                    >
+                      <div className="chip-icon">
+                        {renderSkillIcon(skill)}
+                      </div>
+                      <span className="chip-label">{skill}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            )})}
+          </div>
+        </div>
+        <div className="arrow-container">
+          <motion.img
+            src="/assets/arrow.png"
+            className="icon arrow"
+            alt="Scroll down"
+            onClick={() => { const el = document.getElementById('education'); el && el.scrollIntoView({ behavior: 'smooth'}); }}
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+          />
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section id="education">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.6 }}
+        >
+          <p className="section_text_p1 text-stroke">{trans.background}</p>
+          <h1 className="title-massive">
+            <span className="gradient-text">{trans.eduTitle}</span>
+          </h1>
+        </motion.div>
+
+        <div className="timeline">
+          {resume.education.map((ed, idx) => (
+            <motion.div
+              key={idx}
+              className="edu-card"
+              initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30, scale: 0.9 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+            >
+              <h3>{ed.degree}</h3>
+              <div className="meta">{[ed.school, ed.location].filter(Boolean).join(' — ')}{ed.period ? ` • ${ed.period}` : ''}</div>
+              <p className="edu-desc">{Array.isArray(ed.details) && ed.details.length > 0 ? ed.details.join(' ') : ''}</p>
+            </motion.div>
+          ))}
+        </div>
+        <div className="arrow-container">
+          <motion.img
+            src="/assets/arrow.png"
+            className="icon arrow"
+            alt="Scroll down"
+            onClick={() => { const el = document.getElementById('contact'); el && el.scrollIntoView({ behavior: 'smooth'}); }}
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+          />
         </div>
       </section>
 

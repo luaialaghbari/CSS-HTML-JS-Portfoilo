@@ -549,26 +549,38 @@
     pointer-events: auto;
   }
 
-  .candy-node .node-content-wrapper {
+  .yemeni-phone-right-container {
+    position: absolute;
+    right: 0;
+    width: 42%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 20;
+  }
+
+  .yemeni-phone-right-container .iphone-17-frame {
+    pointer-events: auto;
+  }
+
+  /* Specific layout for Yemen Store project node */
+  .yemeni-node {
+    min-height: 550px;
+  }
+
+  .yemeni-node .node-content-wrapper {
     display: flex;
     flex-direction: column;
     width: 42% !important;
-    margin-left: 58% !important;
+    margin-right: 58% !important;
+    margin-left: 0 !important;
     text-align: left;
   }
 
-  .candy-node .node-dot {
-    display: flex; 
-  }
-
-  .candy-node .node-tech, .candy-node .node-actions {
+  .yemeni-node .node-tech, .yemeni-node .node-actions {
     justify-content: flex-start;
-  }
-
-  .node-info-stack {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
   @media screen and (max-width: 1200px) {
@@ -576,31 +588,111 @@
       width: 200px;
       height: 415px;
     }
-    .candy-phone-left {
-      left: calc(50% - 250px);
-    }
   }
 
   @media screen and (max-width: 992px) {
-    .candy-node {
+    .candy-node, .yemeni-node {
       min-height: auto;
-      flex-direction: column-reverse;
+      flex-direction: column !important; /* Phone on top, content below */
       align-items: center;
+      padding: 2rem 1rem;
+      margin-bottom: 8rem;
     }
-    .candy-node .node-content-wrapper {
-      width: 100% !important;
-      margin: 0 !important;
-      text-align: center;
+    .candy-node .node-dot, .yemeni-node .node-dot {
+      display: flex;
+      left: 20px;
     }
-    .candy-phone-left {
+    .candy-node .node-content-wrapper, .yemeni-node .node-content-wrapper {
+      width: calc(100% - 60px) !important;
+      max-width: 550px !important;
+      margin-left: 60px !important;
+      margin-right: 0 !important;
+      text-align: left;
+    }
+    [dir="rtl"] .candy-node .node-dot, [dir="rtl"] .yemeni-node .node-dot {
+      left: auto;
+      right: 20px;
+    }
+    [dir="rtl"] .candy-node .node-content-wrapper, [dir="rtl"] .yemeni-node .node-content-wrapper {
+      margin-left: 0 !important;
+      margin-right: 60px !important;
+      text-align: right;
+    }
+    .candy-phone-left-container, .yemeni-phone-right-container {
       position: relative;
       left: 0;
+      right: 0;
+      width: calc(100% - 60px);
+      margin-left: 60px;
+      height: auto;
       top: 0;
       transform: none;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      justify-content: center;
+    }
+    [dir="rtl"] .candy-phone-left-container, [dir="rtl"] .yemeni-phone-right-container {
+      margin-left: 0;
+      margin-right: 60px;
     }
     .iphone-17-frame {
-      margin-bottom: 2rem;
+      width: 220px; /* Adjusted for mobile */
+      height: 460px;
+      margin: 0 auto;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5); /* Lighter shadow for mobile */
+      outline: none;
+    }
+    .iphone-inner-border {
+      border-radius: 34px;
+    }
+    .node-info-stack {
+      align-items: flex-start;
+    }
+    .node-tech, .node-actions {
+      justify-content: flex-start !important;
+    }
+    [dir="rtl"] .node-info-stack {
+      align-items: flex-end;
+    }
+    [dir="rtl"] .node-tech, [dir="rtl"] .node-actions {
+      justify-content: flex-end !important;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .iphone-17-frame {
+      width: 180px; /* Even smaller for tiny screens */
+      height: 380px;
+      padding: 5px;
+      border-radius: 32px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      outline: none;
+    }
+    .iphone-inner-border {
+      border-radius: 28px;
+      inset: 3px;
+    }
+    .iphone-screen {
+      border-radius: 26px;
+    }
+    .iphone-dynamic-island {
+      width: 55px;
+      height: 16px;
+      top: 10px;
+    }
+    .iphone-buttons-left {
+      top: 70px;
+      gap: 10px;
+    }
+    .iphone-button-right {
+      top: 120px;
+      height: 50px;
+    }
+    .node-card {
+      padding: 1.5rem;
+    }
+    .node-title {
+      font-size: 1.2rem;
     }
   }
 
@@ -1055,7 +1147,7 @@
    .experience-node {
      position: relative;
      width: 100%;
-     margin-bottom: 4rem;
+     margin-bottom: 8rem;
      display: flex;
      justify-content: center;
      align-items: center;
@@ -1249,14 +1341,20 @@
 
    /* Responsive Experience */
    @media (max-width: 968px) {
+     .experience-node {
+       margin-bottom: 8rem;
+     }
      .experience-vertical-line {
        left: 20px;
+       display: block;
      }
      .node-dot {
        left: 20px;
+       display: flex;
      }
      .node-content-wrapper {
-       width: calc(100% - 60px);
+       width: calc(100% - 60px) !important;
+       max-width: 550px !important;
        margin-left: 60px !important;
        margin-right: 0 !important;
        text-align: left !important;
@@ -1268,35 +1366,32 @@
      .experience-node .node-highlights li {
        padding-left: 1.5rem !important;
        padding-right: 0 !important;
+       text-align: left;
      }
      .experience-node .node-highlights li::before {
        content: "→" !important;
+       display: block !important;
        left: 0 !important;
-       right: auto !important;
-     }
-     .experience-node .node-highlights li::after {
-       display: none !important;
      }
      
-     [dir="rtl"] .experience-vertical-line { left: auto; right: 20px; }
-     [dir="rtl"] .node-dot { left: auto; right: 20px; }
+     [dir="rtl"] .experience-vertical-line { left: auto; right: 20px; display: block; }
+     [dir="rtl"] .node-dot { left: auto; right: 20px; display: flex; }
      [dir="rtl"] .node-content-wrapper { 
        margin-left: 0 !important; 
-       margin-right: 60px !important; 
+       margin-right: 60px !important;
+       width: calc(100% - 60px) !important;
+       max-width: 550px;
        text-align: right !important; 
      }
      [dir="rtl"] .experience-node .node-highlights li {
        padding-right: 1.5rem !important;
        padding-left: 0 !important;
+       text-align: right;
      }
      [dir="rtl"] .experience-node .node-highlights li::after {
        content: "←" !important;
-       right: 0 !important;
-       left: auto !important;
        display: block !important;
-     }
-     [dir="rtl"] .experience-node .node-highlights li::before {
-       display: none !important;
+       right: 0 !important;
      }
      [dir="rtl"] .experience-node.left .node-tech, 
      [dir="rtl"] .experience-node.right .node-tech { 
