@@ -18,7 +18,7 @@ const resume = {
   education: [
     {
       degree: 'Bachelor of Software Engineering',
-      school: 'University of Science and Technology',
+      school: 'Universtiy of scince and Techonalogy',
       location: "Sana'a, Yemen",
       period: '2021–2025',
       details: [
@@ -60,20 +60,24 @@ const resume = {
     },
     {
       title: 'Graduation Project — Food Delivery App',
-      company: 'University Capstone',
+      company: 'Universtiy of scince and Techonalogy',
       location: '',
       period: '2024',
+      preview: '/assets/Graduation project.pdf',
+      source: '#',
       highlights: [
         'Designed and developed a delivery application featuring real‑time order tracking using Google Maps.',
         'Covered requirements, UI/UX, implementation, and testing with a focus on simplicity and user experience.',
       ],
-      technologies: ['Flutter', 'Dart', 'Google Maps'],
+      technologies: ['Flutter', 'Dart', 'Firebase Auth', 'Trello', 'Git', 'GitHub', 'OpenStreetMap'],
     },
     {
-      title: 'Yemeni Store E‑commerce App (Flutter) — In Progress',
+      title: 'Yemeni Store E‑commerce App (Fullstack — UI/UX) — In Progress',
       company: '',
       location: '',
       period: 'May 2025 – Present',
+      preview: '#',
+      source: '#',
       highlights: [
         'Developed branded splash and onboarding flow in Flutter with fast startup and smooth transition.',
         'Designed & built a Home UI for product categories and featured items using responsive layouts and custom widgets.',
@@ -82,10 +86,12 @@ const resume = {
       technologies: ['Flutter', 'Dart', 'Supabase Auth', 'Git', 'GitHub'],
     },
     {
-      title: 'Candy — Water Delivery App (Flutter, React, Node.js)',
-      company: 'Frontend Developer',
-      location: '',
+      title: 'Candy — Water Delivery App (UI/UX Designer & Frontend)',
+      company: 'Aljazeera Springs factory',
+      location: 'Jeddah',
       period: 'In progress – Present',
+      preview: '#',
+      source: '#',
       highlights: [
         'Multi‑platform customer app to place orders, schedule deliveries, and track in real time.',
         'Driver app with live GPS sharing and Mapbox‑based turn‑by‑turn navigation.',
@@ -93,19 +99,6 @@ const resume = {
         'Owning architecture, UI/UX, data modeling, and integrations (auth, push notifications, maps).',
       ],
       technologies: ['Flutter', 'Dart', 'React.js', 'Node.js', 'Supabase', 'Mapbox', 'Git/GitHub'],
-    },
-    {
-      title: 'QR Events — Invitation & Check‑in App (KSA)',
-      company: 'Frontend Developer',
-      location: '',
-      period: '2025 – Present',
-      highlights: [
-        'Flutter app for public/private events in KSA issuing QR tickets with bilingual (Arabic/English, RTL/LTR).',
-        'On‑site check‑in with in‑app QR scanner, offline/online validation, and live attendance reporting.',
-        'Organizer dashboard (React/Next.js + Node.js) for setup, guest management, and analytics.',
-        'Integrations with WhatsApp Cloud API and SMS for RSVPs/reminders, with deep links for venue navigation.',
-      ],
-      technologies: ['Flutter', 'Dart', 'React/Next.js', 'Node.js', 'Supabase/Postgres', 'WhatsApp Cloud API', 'QR scanning'],
     },
   ],
 

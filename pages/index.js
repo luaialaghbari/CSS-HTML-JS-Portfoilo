@@ -172,32 +172,6 @@ export default function Home() {
     return () => io.disconnect();
   }, []);
 
-  // Build Projects list including items mentioned in Experience (no duplicates)
-  const combinedProjects = (() => {
-    const base = Array.isArray(resume.projects) ? [...resume.projects] : [];
-    const names = new Set(base.map((p) => p.name?.toLowerCase()));
-    const exp = Array.isArray(resume.experience) ? resume.experience : [];
-    const looksLikeProject = (ex) => /app|project|portfolio/i.test(`${ex.title} ${ex.company}`);
-    const fallbackImages = ['/assets/project-1.png','/assets/project-2.png','/assets/project-3.png'];
-    let imgIdx = 0;
-    exp.forEach((ex) => {
-      if (!looksLikeProject(ex)) return;
-      const name = (ex.company && /app|project/i.test(ex.company)) ? ex.company : ex.title;
-      const key = (name || '').toLowerCase();
-      if (key && !names.has(key)) {
-        base.push({
-          name,
-          image: fallbackImages[imgIdx++ % fallbackImages.length],
-          tags: ex.technologies || [],
-          preview: '#',
-          source: '#',
-        });
-        names.add(key);
-      }
-    });
-    return base;
-  })();
-
   // --- Magnetic Avatar Component ---
   const MagneticAvatar = ({ children }) => {
     const ref = useRef(null);
@@ -650,47 +624,110 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Experience Section (shows Projects) */}
-      <section id="experience">
+      {/* Experience Section */}
+      <section id="experience" className="modern-experience">
         <motion.div 
+          className="section-header"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.6 }}
         >
-          <p className="section_text_p1 text-stroke">{trans.recentWork}</p>
+          <div className="overline text-stroke">{trans.recentWork}</div>
           <h1 className="title-massive">
             <span className="gradient-text">{trans.expTitle}</span>
           </h1>
         </motion.div>
 
-        <div className="projects-grid">
-          {combinedProjects.map((p, idx) => (
-            <motion.div 
-              key={idx} 
-              className="project-card" 
-              initial={{ opacity: 0, y: 30, scale: 0.9 }} 
-              whileInView={{ opacity: 1, y: 0, scale: 1 }} 
-              viewport={{ once: false, amount: 0.1 }} 
-              transition={{ type: "spring", stiffness: 100, damping: 20, delay: idx * 0.05 }}
-            >
-              <img src={p.image} alt={p.name} />
-              <div className="content">
-                <h3>{p.name}</h3>
-                {Array.isArray(p.tags) && (
-                  <div className="project-tags">{p.tags.map((t,i)=>(<span className="tag" key={i}>{t}</span>))}</div>
-                )}
-                <div className="actions">
-                  <a className="btn btn-color-2" href={p.preview || '#'} target="_blank" rel="noopener">{trans.preview}</a>
-                  <a className="btn btn-color-1" href={p.source || '#'} target="_blank" rel="noopener">{trans.source}</a>
+        <div className="experience-container">
+          <div className="experience-vertical-line"></div>
+          
+          {resume.experience.map((exp, idx) => {
+            const isCandy = exp.title.toLowerCase().includes('candy');
+            return (
+              <motion.div 
+                key={idx}
+                className={`experience-node ${idx % 2 === 0 ? 'left' : 'right'} ${isCandy ? 'candy-node' : ''}`}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.8, delay: idx * 0.1 }}
+              >
+                <div className="node-dot">
+                  <div className="dot-inner"></div>
                 </div>
-              </div>
+
+                {isCandy && (
+                  <div className="candy-phone-left-container">
+                    <motion.div 
+                      className="iphone-17-frame"
+                      initial={{ opacity: 0, x: -50 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: false }}
+                      transition={{ duration: 0.8 }}
+                    >
+                      <div className="iphone-inner-border"></div>
+                      <div className="iphone-dynamic-island"></div>
+                      <div className="iphone-buttons-left">
+                        <div className="action-button"></div>
+                        <div className="volume-up"></div>
+                        <div className="volume-down"></div>
+                      </div>
+                      <div className="iphone-button-right"></div>
+                      <div className="iphone-screen">
+                        <img src="/assets/candy app.jpg" alt="Candy App" />
+                      </div>
+                    </motion.div>
+                  </div>
+                )}
+                
+                <div className="node-content-wrapper">
+                  <div className="node-info-stack">
+                    <div className="node-date">{exp.period}</div>
+                    <div className="node-card">
+                      <div className="node-card-glass"></div>
+                      <div className="node-card-content">
+                        <h3 className="node-title">{exp.title}</h3>
+                        <div className="node-company-row">
+                          <span className="node-company">{exp.company}</span>
+                          {exp.location && <span className="node-location"> • {exp.location}</span>}
+                        </div>
+                        
+                        <ul className="node-highlights">
+                          {exp.highlights.map((h, i) => (
+                            <li key={i}>{h}</li>
+                          ))}
+                        </ul>
+
+                        <div className="node-tech">
+                          {exp.technologies.map((tech, i) => (
+                            <span key={i} className="tech-badge">{tech}</span>
+                          ))}
+                        </div>
+
+                        {(exp.preview || exp.source) && (
+                          <div className="node-actions">
+                            {exp.preview && (
+                              <a href={exp.preview} target="_blank" rel="noopener" className="btn btn-color-2 btn-sm">
+                                {trans.preview}
+                              </a>
+                            )}
+                            {exp.source && (
+                              <a href={exp.source} target="_blank" rel="noopener" className="btn btn-color-1 btn-sm">
+                                {trans.source}
+                              </a>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </motion.div>
-          ))}
+          );
+        })}
         </div>
       </section>
-
-      {/* Projects section removed — projects are shown under Experience above. */}
 
       {/* Contact Section */}
       <section id="contact">
@@ -699,27 +736,91 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.6 }}
+          className="section-header"
         >
-          <p className="section_text_p1 text-stroke">{trans.getInTouch}</p>
+          <div className="overline text-stroke">{trans.getInTouch}</div>
           <h1 className="title-massive">
             <span className="gradient-text">{trans.contactMe}</span>
           </h1>
         </motion.div>
 
-        <div className="contact-container">
-          <div className="contact-rows">
-            <div className="contact-info">
-              <p>Email: <a href={`mailto:${resume.email}`}>{resume.email}</a></p>
-              {resume.phone && (<p>{lang === 'ar' ? 'الهاتف' : 'Phone'}: <a href={`tel:${resume.phone}`}>{resume.phone}</a></p>)}
-              <p>LinkedIn: <a href={resume.socials.linkedin} target="_blank" rel="noopener">linkedin.com</a></p>
-              <p>GitHub: <a href={resume.socials.github} target="_blank" rel="noopener">github.com</a></p>
-            </div>
-            <form className="contact-form" onSubmit={(e) => { e.preventDefault(); const subject=e.currentTarget.subject.value; const message=e.currentTarget.message.value; window.location.href=`mailto:${resume.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`; }}>
-              <input name="subject" type="text" placeholder={trans.subject} required />
-              <textarea name="message" placeholder={trans.message} required></textarea>
-              <button className="btn btn-color-1" type="submit">{trans.send}</button>
+        <div className="contact-glow-1"></div>
+        <div className="contact-glow-2"></div>
+
+        <div className="contact-glass-wrapper">
+          <motion.div 
+            className="contact-bento"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.8 }}
+          >
+            {/* Email Card */}
+            <a href={`mailto:${resume.email}`} className="contact-card email">
+              <div className="contact-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+              </div>
+              <div>
+                <div className="contact-card-label">Email</div>
+                <div className="contact-card-value">{resume.email}</div>
+              </div>
+            </a>
+
+            {/* LinkedIn Card */}
+            <a href={resume.socials.linkedin} target="_blank" rel="noopener" className="contact-card linkedin">
+              <div className="contact-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+              </div>
+              <div>
+                <div className="contact-card-label">LinkedIn</div>
+                <div className="contact-card-value">Connect</div>
+              </div>
+            </a>
+
+            {/* GitHub Card */}
+            <a href={resume.socials.github} target="_blank" rel="noopener" className="contact-card github">
+              <div className="contact-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              </div>
+              <div>
+                <div className="contact-card-label">GitHub</div>
+                <div className="contact-card-value">Follow</div>
+              </div>
+            </a>
+
+            {/* Phone/WhatsApp Card */}
+            {resume.phone && (
+              <a href={`https://wa.me/${resume.phone.replace(/\s+/g, '')}`} target="_blank" rel="noopener" className="contact-card phone">
+                <div className="contact-card-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div>
+                  <div className="contact-card-label">{lang === 'ar' ? 'واتساب / هاتف' : 'WhatsApp / Phone'}</div>
+                  <div className="contact-card-value">{resume.phone}</div>
+                </div>
+              </a>
+            )}
+          </motion.div>
+
+          <motion.div 
+            className="contact-form-wrapper"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.8 }}
+          >
+            <form className="contact-form-modern" onSubmit={(e) => { e.preventDefault(); const subject=e.currentTarget.subject.value; const message=e.currentTarget.message.value; window.location.href=`mailto:${resume.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`; }}>
+              <div className="form-group">
+                <input name="subject" type="text" className="form-input" placeholder={trans.subject} required />
+              </div>
+              <div className="form-group">
+                <textarea name="message" className="form-textarea" placeholder={trans.message} required></textarea>
+              </div>
+              <button className="btn-submit-modern" type="submit">
+                <span>{trans.send}</span>
+              </button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </section>
 
