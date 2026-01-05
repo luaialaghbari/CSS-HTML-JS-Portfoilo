@@ -86,7 +86,7 @@ const resume = {
       technologies: ['Flutter', 'Dart', 'Supabase Auth', 'Git', 'GitHub'],
     },
     {
-      title: 'Candy — Water Delivery App (UI/UX Designer & Frontend)',
+      title: 'Water Delivery App (UI/UX Designer & Frontend)',
       company: 'Aljazeera Springs factory',
       location: 'Jeddah',
       period: 'In progress – Present',

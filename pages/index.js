@@ -548,13 +548,14 @@ export default function Home() {
         <div className="experience-container">
           
           {resume.experience.map((exp, idx) => {
-            const isCandy = exp.title.toLowerCase().includes('candy');
+            const isCandy = exp.title.toLowerCase().includes('water delivery');
             const isYemeniStore = exp.title.toLowerCase().includes('yemeni store');
+            const isGraduation = exp.title.toLowerCase().includes('graduation project');
             
             return (
               <motion.div 
                 key={idx}
-                className={`experience-node ${idx % 2 === 0 ? 'left' : 'right'} ${isCandy ? 'candy-node' : ''} ${isYemeniStore ? 'yemeni-node' : ''}`}
+                className={`experience-node ${idx % 2 === 0 ? 'left' : 'right'} ${isCandy ? 'candy-node' : ''} ${isYemeniStore ? 'yemeni-node' : ''} ${isGraduation ? 'graduation-node' : ''}`}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: false, amount: 0.2 }}
@@ -567,7 +568,7 @@ export default function Home() {
                     <div className="data-fragment" style={{ top: '60%', left: '15%', animationDelay: '1s' }}></div>
                     <div className="candy-phone-left-container">
                       <motion.div 
-                        className="iphone-17-frame"
+                        className="iphone-17-frame video-frame"
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false }}
@@ -582,7 +583,13 @@ export default function Home() {
                         </div>
                         <div className="iphone-button-right"></div>
                         <div className="iphone-screen">
-                          <img src="/assets/candy app.jpg" alt="Candy App" />
+                          <video 
+                            src="/assets/Screen_Recording_20260106_005631_Crystal Drop.mp4" 
+                            autoPlay 
+                            loop 
+                            muted 
+                            playsInline 
+                          />
                         </div>
                       </motion.div>
                     </div>
@@ -621,6 +628,38 @@ export default function Home() {
                             muted 
                             playsInline 
                           />
+                        </div>
+                      </motion.div>
+                    </div>
+                    <div className="project-connector-line">
+                      <div className="project-beam-arrow"></div>
+                    </div>
+                  </>
+                )}
+
+                {isGraduation && (
+                  <>
+                    <div className="project-hud-label">{lang === 'ar' ? 'نموذج_أولي' : 'CORE_PROTOTYPE'}</div>
+                    <div className="data-fragment" style={{ top: '15%', left: '12%' }}></div>
+                    <div className="data-fragment" style={{ top: '55%', left: '18%', animationDelay: '0.5s' }}></div>
+                    <div className="graduation-phone-left-container">
+                      <motion.div 
+                        className="iphone-17-frame"
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false }}
+                        transition={{ duration: 0.8 }}
+                      >
+                        <div className="iphone-inner-border"></div>
+                        <div className="iphone-dynamic-island"></div>
+                        <div className="iphone-buttons-left">
+                          <div className="action-button"></div>
+                          <div className="volume-up"></div>
+                          <div className="volume-down"></div>
+                        </div>
+                        <div className="iphone-button-right"></div>
+                        <div className="iphone-screen">
+                          <img src="/assets/Screenshot_20250225_002302.jpg" alt="Graduation Project" />
                         </div>
                       </motion.div>
                     </div>
