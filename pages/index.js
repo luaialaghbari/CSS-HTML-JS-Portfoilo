@@ -143,6 +143,21 @@ export default function Home() {
     }
   }, []);
 
+  // Mouse move effect for cards
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      for (const card of document.querySelectorAll('.node-card')) {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      }
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   const toggleMenu = () => setMenuOpen((v) => !v);
 
   // Theme load/persist
@@ -511,6 +526,12 @@ export default function Home() {
 
       {/* Experience Section */}
       <section id="experience" className="modern-experience">
+        <div className="experience-ambient" aria-hidden="true">
+          <span className="experience-orb orb-1"></span>
+          <span className="experience-orb orb-2"></span>
+          <span className="experience-orb orb-3"></span>
+          <span className="experience-grid"></span>
+        </div>
         <motion.div 
           className="section-header"
           initial={{ opacity: 0, y: 20 }}
@@ -525,7 +546,6 @@ export default function Home() {
         </motion.div>
 
         <div className="experience-container">
-          <div className="experience-vertical-line"></div>
           
           {resume.experience.map((exp, idx) => {
             const isCandy = exp.title.toLowerCase().includes('candy');
@@ -535,102 +555,125 @@ export default function Home() {
               <motion.div 
                 key={idx}
                 className={`experience-node ${idx % 2 === 0 ? 'left' : 'right'} ${isCandy ? 'candy-node' : ''} ${isYemeniStore ? 'yemeni-node' : ''}`}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.8, delay: idx * 0.1 }}
               >
-                <div className="node-dot">
-                  <div className="dot-inner"></div>
-                </div>
-
                 {isCandy && (
-                  <div className="candy-phone-left-container">
-                    <motion.div 
-                      className="iphone-17-frame"
-                      initial={{ opacity: 0, x: -50 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: false }}
-                      transition={{ duration: 0.8 }}
-                    >
-                      <div className="iphone-inner-border"></div>
-                      <div className="iphone-dynamic-island"></div>
-                      <div className="iphone-buttons-left">
-                        <div className="action-button"></div>
-                        <div className="volume-up"></div>
-                        <div className="volume-down"></div>
-                      </div>
-                      <div className="iphone-button-right"></div>
-                      <div className="iphone-screen">
-                        <img src="/assets/candy app.jpg" alt="Candy App" />
-                      </div>
-                    </motion.div>
-                  </div>
+                  <>
+                    <div className="project-hud-label">{lang === 'ar' ? 'معاينة_النظام' : 'SYSTEM_PREVIEW'}</div>
+                    <div className="data-fragment" style={{ top: '20%', left: '10%' }}></div>
+                    <div className="data-fragment" style={{ top: '60%', left: '15%', animationDelay: '1s' }}></div>
+                    <div className="candy-phone-left-container">
+                      <motion.div 
+                        className="iphone-17-frame"
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false }}
+                        transition={{ duration: 0.8 }}
+                      >
+                        <div className="iphone-inner-border"></div>
+                        <div className="iphone-dynamic-island"></div>
+                        <div className="iphone-buttons-left">
+                          <div className="action-button"></div>
+                          <div className="volume-up"></div>
+                          <div className="volume-down"></div>
+                        </div>
+                        <div className="iphone-button-right"></div>
+                        <div className="iphone-screen">
+                          <img src="/assets/candy app.jpg" alt="Candy App" />
+                        </div>
+                      </motion.div>
+                    </div>
+                    <div className="project-connector-line">
+                      <div className="project-beam-arrow"></div>
+                    </div>
+                  </>
                 )}
 
                 {isYemeniStore && (
-                  <div className="yemeni-phone-right-container">
-                    <motion.div 
-                      className="iphone-17-frame"
-                      initial={{ opacity: 0, x: 50 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: false }}
-                      transition={{ duration: 0.8 }}
-                    >
-                      <div className="iphone-inner-border"></div>
-                      <div className="iphone-dynamic-island"></div>
-                      <div className="iphone-buttons-left">
-                        <div className="action-button"></div>
-                        <div className="volume-up"></div>
-                        <div className="volume-down"></div>
-                      </div>
-                      <div className="iphone-button-right"></div>
-                      <div className="iphone-screen">
-                        <img src="/assets/yemen e-commerc app.png" alt="Yemeni Store App" />
-                      </div>
-                    </motion.div>
-                  </div>
+                  <>
+                    <div className="project-hud-label">{lang === 'ar' ? 'بث_البيانات' : 'DATA_STREAM'}</div>
+                    <div className="data-fragment" style={{ top: '30%', right: '10%' }}></div>
+                    <div className="data-fragment" style={{ top: '70%', right: '15%', animationDelay: '1.5s' }}></div>
+                    <div className="yemeni-phone-right-container">
+                      <motion.div 
+                        className="iphone-17-frame video-frame"
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false }}
+                        transition={{ duration: 0.8 }}
+                      >
+                        <div className="iphone-inner-border"></div>
+                        <div className="iphone-dynamic-island"></div>
+                        <div className="iphone-buttons-left">
+                          <div className="action-button"></div>
+                          <div className="volume-up"></div>
+                          <div className="volume-down"></div>
+                        </div>
+                        <div className="iphone-button-right"></div>
+                        <div className="iphone-screen">
+                          <video 
+                            src="/assets/Screen_Recording_20250725_203231.mp4" 
+                            autoPlay 
+                            loop 
+                            muted 
+                            playsInline 
+                          />
+                        </div>
+                      </motion.div>
+                    </div>
+                    <div className="project-connector-line">
+                      <div className="project-beam-arrow"></div>
+                    </div>
+                  </>
                 )}
                 
                 <div className="node-content-wrapper">
                   <div className="node-info-stack">
+                    <div className="node-step-label">
+                      <span className="step-index">{String(idx + 1).padStart(2, '0')}</span>
+                      <span className="step-text">{lang === 'ar' ? 'محطة' : 'Milestone'}</span>
+                    </div>
                     <div className="node-date">{exp.period}</div>
-                    <div className="node-card">
-                      <div className="node-card-glass"></div>
-                      <div className="node-card-content">
-                        <h3 className="node-title">{exp.title}</h3>
-                        <div className="node-company-row">
-                          <span className="node-company">{exp.company}</span>
-                          {exp.location && <span className="node-location"> • {exp.location}</span>}
-                        </div>
-                        
-                        <ul className="node-highlights">
-                          {exp.highlights.map((h, i) => (
-                            <li key={i}>{h}</li>
-                          ))}
-                        </ul>
-
-                        <div className="node-tech">
-                          {exp.technologies.map((tech, i) => (
-                            <span key={i} className="tech-badge">{tech}</span>
-                          ))}
-                        </div>
-
-                        {(exp.preview || exp.source) && (
-                          <div className="node-actions">
-                            {exp.preview && (
-                              <a href={exp.preview} target="_blank" rel="noopener" className="btn btn-color-2 btn-sm">
-                                {trans.preview}
-                              </a>
-                            )}
-                            {exp.source && (
-                              <a href={exp.source} target="_blank" rel="noopener" className="btn btn-color-1 btn-sm">
-                                {trans.source}
-                              </a>
-                            )}
-                          </div>
-                        )}
+                  </div>
+                  
+                  <div className="node-card">
+                    <div className="node-card-glass"></div>
+                    <div className="node-card-content">
+                      <h3 className="node-title">{exp.title}</h3>
+                      <div className="node-company-row">
+                        <span className="node-company">{exp.company}</span>
+                        {exp.location && <span className="node-location"> • {exp.location}</span>}
                       </div>
+                      
+                      <ul className="node-highlights">
+                        {exp.highlights.map((h, i) => (
+                          <li key={i}>{h}</li>
+                        ))}
+                      </ul>
+
+                      <div className="node-tech">
+                        {exp.technologies.map((tech, i) => (
+                          <span key={i} className="tech-badge">{tech}</span>
+                        ))}
+                      </div>
+
+                      {(exp.preview || exp.source) && (
+                        <div className="node-actions">
+                          {exp.preview && (
+                            <a href={exp.preview} target="_blank" rel="noopener" className="btn btn-color-2 btn-sm">
+                              {trans.preview}
+                            </a>
+                          )}
+                          {exp.source && (
+                            <a href={exp.source} target="_blank" rel="noopener" className="btn btn-color-1 btn-sm">
+                              {trans.source}
+                            </a>
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -776,98 +819,96 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6 }}
-          className="section-header"
-        >
-          <div className="overline text-stroke">{trans.getInTouch}</div>
-          <h1 className="title-massive">
-            <span className="gradient-text">{trans.contactMe}</span>
-          </h1>
-        </motion.div>
+      <section id="contact" className="contact-premium">
+        <div className="contact-container-modern">
+          <div className="contact-content-grid">
+            <motion.div 
+              className="contact-text-side"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <span className="contact-overline">{trans.getInTouch}</span>
+              <h2 className="contact-big-title">
+                {(lang === 'ar' ? ['لنصنع', 'شيئاً'] : ["LET'S", "CREATE"]).map((word, i) => (
+                  <motion.span 
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 + 0.2 }}
+                    style={{ display: 'inline-block', marginInlineEnd: '0.3em' }}
+                  >
+                    {word}
+                  </motion.span>
+                ))}
+                <br />
+                <motion.span 
+                  className="gradient-text"
+                  initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
+                  whileInView={{ opacity: 1, clipPath: 'inset(0 0% 0 0)' }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                  style={{ display: 'inline-block' }}
+                >
+                  {lang === 'ar' ? 'عظيماً معاً' : "SOMETHING GREAT"}
+                </motion.span>
+              </h2>
+              
+              <div className="contact-info-list">
+                {[
+                  { label: "Email", value: resume.email, href: `mailto:${resume.email}` },
+                  { label: "LinkedIn", value: "Connect with me", href: resume.socials.linkedin },
+                  { label: "GitHub", value: "View my work", href: resume.socials.github },
+                  resume.phone && { label: lang === 'ar' ? "واتساب" : "WhatsApp", value: resume.phone, href: `https://wa.me/${resume.phone.replace(/\s+/g, '')}` }
+                ].filter(Boolean).map((link, i) => (
+                  <motion.a 
+                    key={i}
+                    href={link.href}
+                    target={link.label !== "Email" ? "_blank" : undefined}
+                    rel={link.label !== "Email" ? "noopener" : undefined}
+                    className="contact-link-item"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 + 0.6 }}
+                  >
+                    <span className="link-label">{link.label}</span>
+                    <span className="link-value">{link.value}</span>
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
 
-        <div className="contact-glow-1"></div>
-        <div className="contact-glow-2"></div>
-
-        <div className="contact-glass-wrapper">
-          <motion.div 
-            className="contact-bento"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.8 }}
-          >
-            {/* Email Card */}
-            <a href={`mailto:${resume.email}`} className="contact-card email">
-              <div className="contact-card-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-              </div>
-              <div>
-                <div className="contact-card-label">Email</div>
-                <div className="contact-card-value">{resume.email}</div>
-              </div>
-            </a>
-
-            {/* LinkedIn Card */}
-            <a href={resume.socials.linkedin} target="_blank" rel="noopener" className="contact-card linkedin">
-              <div className="contact-card-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-              </div>
-              <div>
-                <div className="contact-card-label">LinkedIn</div>
-                <div className="contact-card-value">Connect</div>
-              </div>
-            </a>
-
-            {/* GitHub Card */}
-            <a href={resume.socials.github} target="_blank" rel="noopener" className="contact-card github">
-              <div className="contact-card-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-              </div>
-              <div>
-                <div className="contact-card-label">GitHub</div>
-                <div className="contact-card-value">Follow</div>
-              </div>
-            </a>
-
-            {/* Phone/WhatsApp Card */}
-            {resume.phone && (
-              <a href={`https://wa.me/${resume.phone.replace(/\s+/g, '')}`} target="_blank" rel="noopener" className="contact-card phone">
-                <div className="contact-card-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <motion.div 
+              className="contact-form-side"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <form className="premium-form" onSubmit={(e) => { e.preventDefault(); const subject=e.currentTarget.subject.value; const message=e.currentTarget.message.value; window.location.href=`mailto:${resume.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`; }}>
+                <div className="premium-form-group">
+                  <input name="subject" type="text" className="premium-input" placeholder={trans.subject} required />
+                  <div className="input-focus-line"></div>
                 </div>
-                <div>
-                  <div className="contact-card-label">{lang === 'ar' ? 'واتساب / هاتف' : 'WhatsApp / Phone'}</div>
-                  <div className="contact-card-value">{resume.phone}</div>
+                <div className="premium-form-group">
+                  <textarea name="message" className="premium-textarea" placeholder={trans.message} required></textarea>
+                  <div className="input-focus-line"></div>
                 </div>
-              </a>
-            )}
-          </motion.div>
-
-          <motion.div 
-            className="contact-form-wrapper"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.8 }}
-          >
-            <form className="contact-form-modern" onSubmit={(e) => { e.preventDefault(); const subject=e.currentTarget.subject.value; const message=e.currentTarget.message.value; window.location.href=`mailto:${resume.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`; }}>
-              <div className="form-group">
-                <input name="subject" type="text" className="form-input" placeholder={trans.subject} required />
-              </div>
-              <div className="form-group">
-                <textarea name="message" className="form-textarea" placeholder={trans.message} required></textarea>
-              </div>
-              <button className="btn-submit-modern" type="submit">
-                <span>{trans.send}</span>
-              </button>
-            </form>
-          </motion.div>
+                <button className="premium-submit-btn" type="submit">
+                  <span className="btn-text">{trans.send}</span>
+                  <span className="btn-icon">→</span>
+                </button>
+              </form>
+            </motion.div>
+          </div>
         </div>
+        
+        {/* Animated Background Elements */}
+        <div className="contact-bg-glow"></div>
+        <div className="contact-lines"></div>
       </section>
 
       {/* Footer */}
