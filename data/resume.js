@@ -3,7 +3,7 @@
 
 const resume = {
   name: 'Luai Alaghbari',
-  role: 'Frontend Developer · UI/UX Designer · Flutter/Dart · React/Next.js',
+  role: 'Frontend Developer & UI/UX Designer',
   location: "Sana'a, Yemen",
   email: 'louiyaseralag@gmail.com',
   phone: '772642380',
@@ -13,7 +13,7 @@ const resume = {
     github: 'https://github.com',
   },
   summary:
-    'Frontend developer & UI/UX designer specializing in Flutter/Dart (mobile) and React/Next.js (web). I design and build pixel‑perfect, accessible, and performance‑first \n interfaces — from polished micro‑interactions to responsive systems — that help products feel fast, usable, and delightful for real users.',
+    'Frontend Developer & UI/UX Designer focused on building fast, accessible, and intuitive web experiences with clean, scalable UI.',
 
   education: [
     {

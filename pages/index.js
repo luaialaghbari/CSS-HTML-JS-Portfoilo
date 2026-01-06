@@ -22,30 +22,29 @@ export default function Home() {
       download: 'Download resume',
       available: 'Available for work',
       toolkit: 'Toolkit',
-      skills: 'SKILLS',
-      skillsSubtitle: 'Technologies I use to design, build, and ship quality software.',
+      skills: 'Skills',
+      skillsSubtitle: 'Toolkit',
       background: 'Background',
-      eduTitle: 'EDUCATION',
-      expTitle: 'EXPERIENCE',
-      projects: 'PROJECTS',
-      recentWork: 'Recent Work',
-      getInTouch: 'Get in Touch',
-      contactMe: 'CONTACT ME',
+      eduTitle: 'Education',
+      expTitle: 'Experience',
+      recentWork: 'Recent work',
+      getInTouch: 'Get in touch',
+      contactMe: 'Contact me',
       footer: 'All rights reserved.',
       dark: 'Dark',
       light: 'Light',
-      aboutMe: 'ABOUT ME',
+      aboutMe: 'About me',
       aboutMeStroke: 'ABOUT',
       aboutMeGradient: 'ME',
-      visionReality: 'Turning Vision into High-Performance Reality.',
-      aboutText1: 'I am a Software Engineer who thrives on technical challenges. I build robust digital products that bridge the gap between complex engineering and intuitive user experiences.',
-      aboutText2: 'My focus is on creating scalable, high-quality applications. I combine precision coding with innovative design to deliver solutions that are both powerful and beautiful.',
+      visionReality: 'Turning ideas into fast, polished products.',
+      aboutText1: 'I’m a Frontend Developer for Web and Mobile, building responsive interfaces with Next.js and Flutter.',
+      aboutText2: 'I translate UI/UX into clean, maintainable code—prioritizing performance, accessibility, and design consistency across platforms.',
       mastery: 'Mobile & Web Mastery',
-      masteryDesc: 'Advanced expertise in Flutter, Next.js, and modern architectures.',
+      masteryDesc: 'Next.js for modern web apps and Flutter for mobile—shipping smooth UI with scalable patterns.',
       designCentric: 'Design Centric',
-      designCentricDesc: 'Prioritizing UI/UX to create interfaces that feel natural and intuitive.',
-      globalVision: 'Global Vision',
-      globalVisionDesc: 'Fluent in Arabic and English, bringing a diverse perspective to every solution.',
+      designCentricDesc: 'Pixel‑focused UI craft: layout, typography, and motion that make interfaces feel premium.',
+      globalVision: 'Bilingual',
+      globalVisionDesc: 'Clear Arabic/English communication and a product mindset—from idea to release.',
       featuredWork: 'Featured Work',
       preview: 'Preview',
       source: 'Source',
@@ -68,11 +67,10 @@ export default function Home() {
       available: 'متاح للعمل',
       toolkit: 'الأدوات',
       skills: 'المهارات',
-      skillsSubtitle: 'التقنيات التي أستخدمها لتصميم وبناء وشحن برمجيات عالية الجودة.',
+      skillsSubtitle: 'الأدوات',
       background: 'الخلفية',
       eduTitle: 'التعليم',
       expTitle: 'الخبرة العملية',
-      projects: 'المشاريع',
       recentWork: 'أحدث الأعمال',
       getInTouch: 'تواصل معي',
       contactMe: 'اتصل بي',
@@ -82,15 +80,15 @@ export default function Home() {
       aboutMe: 'من أنا',
       aboutMeStroke: 'من',
       aboutMeGradient: 'أنا',
-      visionReality: 'تحويل الرؤية إلى حقيقة عالية الأداء.',
-      aboutText1: 'أنا مهندس برمجيات أحب التحديات التقنية. أقوم ببناء منتجات رقمية قوية تجسر الفجوة بين الهندسة المعقدة وتجارب المستخدم البديهية.',
-      aboutText2: 'ينصب تركيزي على إنشاء تطبيقات قابلة للتوسع وعالية الجودة. أجمع بين البرمجة الدقيقة والتصميم المبتكر لتقديم حلول قوية وجميلة.',
+      visionReality: 'تحويل الأفكار إلى منتجات سريعة ومصقولة.',
+      aboutText1: 'أنا مطوّر واجهات أمامية للويب والموبايل، أبني واجهات متجاوبة باستخدام Next.js و Flutter.',
+      aboutText2: 'أحوّل UI/UX إلى كود نظيف وسهل الصيانة مع التركيز على الأداء وإتاحة الوصول وتناسق التصميم عبر المنصات.',
       mastery: 'إتقان الموبايل والويب',
-      masteryDesc: 'خبرة متقدمة في فلاتر، Next.js، والمعماريات الحديثة.',
+      masteryDesc: 'Next.js لتطبيقات الويب الحديثة و Flutter للموبايل—واجهات سلسة مع بنية قابلة للتوسع.',
       designCentric: 'محور التصميم',
-      designCentricDesc: 'إعطاء الأولوية لواجهة المستخدم وتجربة المستخدم لإنشاء واجهات طبيعية وبديهية.',
-      globalVision: 'رؤية عالمية',
-      globalVisionDesc: 'أتقن اللغتين العربية والإنجليزية، مما يضفي منظوراً متنوعاً لكل حل.',
+      designCentricDesc: 'اهتمام بالتفاصيل: تخطيط، خطوط، وحركة تجعل التجربة أكثر احترافية.',
+      globalVision: 'ثنائي اللغة',
+      globalVisionDesc: 'تواصل عربي/إنجليزي وعقلية منتج من الفكرة إلى الإطلاق.',
       featuredWork: 'أعمال مختارة',
       preview: 'معاينة',
       source: 'المصدر',
@@ -146,12 +144,23 @@ export default function Home() {
   // Mouse move effect for cards
   useEffect(() => {
     const handleMouseMove = (e) => {
+      // Card mouse tracking
       for (const card of document.querySelectorAll('.node-card')) {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
         card.style.setProperty('--mouse-x', `${x}px`);
         card.style.setProperty('--mouse-y', `${y}px`);
+      }
+      
+      // Hero spotlight tracking
+      const hero = document.getElementById('profile');
+      if (hero) {
+        const rect = hero.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        hero.style.setProperty('--mouse-x', `${x}%`);
+        hero.style.setProperty('--mouse-y', `${y}%`);
       }
     };
     window.addEventListener('mousemove', handleMouseMove);
@@ -238,6 +247,13 @@ export default function Home() {
       figma: 'figma',
       git: 'git',
       github: 'github',
+      photoshop: 'adobephotoshop',
+      illustrator: 'adobeillustrator',
+      xd: 'adobexd',
+      sketch: 'sketch',
+      framer: 'framer',
+      dribbble: 'dribbble',
+      behance: 'behance',
       'c++': 'cplusplus',
       cpp: 'cplusplus',
       microsoft: 'microsoft',
@@ -250,7 +266,7 @@ export default function Home() {
     
     const iconName = iconMap[skillKey];
     if (iconName) {
-      const brandColors = { javascript: 'F7DF1E', html5: 'E34F26', css: '1572B6', react: '61DAFB', flutter: '02569B', dart: '0175C2', php: '777BB4', firebase: 'FFCA28', figma: 'F24E1E', github: '181717' };
+      const brandColors = { javascript: 'F7DF1E', html5: 'E34F26', css: '1572B6', react: '61DAFB', flutter: '02569B', dart: '0175C2', php: '777BB4', firebase: 'FFCA28', figma: 'F24E1E', github: '181717', adobephotoshop: '31A8FF', adobeillustrator: 'FF9A00', adobexd: 'FF61F6', sketch: 'FDB927', framer: '0055FF', dribbble: 'EA4C89', behance: '1769FF' };
       const color = brandColors[iconName];
       const src = color ? `https://cdn.simpleicons.org/${iconName}/${color}` : `https://cdn.simpleicons.org/${iconName}`;
       return <img src={src} alt={skillName} loading="lazy" />;
@@ -332,19 +348,68 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <section id="profile" className="hero-centered">
-        <motion.div className="hero-copy" initial={{opacity:0, x:-20}} animate={{opacity:1, x:0}} transition={{duration:.6}}>
+        {/* Aesthetic background floating elements */}
+        <div className="aesthetic-grid"></div>
+
+        {/* Distributed Floating Icons across the hero (can float behind text) */}
+        {[
+          { name: 'flutter', top: '12%', left: '6%', delay: 0 },
+          { name: 'figma', top: '6%', right: '8%', delay: 1 },
+          { name: 'react', top: '42%', left: '4%', delay: 0.5 },
+          { name: 'nextdotjs', top: '48%', right: '6%', delay: 2 },
+          { name: 'dart', top: '26%', left: '18%', delay: 1.5 },
+          { name: 'javascript', top: '30%', right: '18%', delay: 3 },
+          { name: 'nodedotjs', bottom: '14%', left: '8%', delay: 2.5 },
+          { name: 'postman', bottom: '18%', right: '10%', delay: 0.8 },
+          { name: 'html', top: '16%', right: '28%', delay: 1.2 },
+          { name: 'css', bottom: '28%', left: '22%', delay: 2.2 },
+          { name: 'supabase', top: '54%', right: '26%', delay: 0.4 },
+          { name: 'firebase', bottom: '10%', right: '24%', delay: 1.8 },
+        ].map((icon, idx) => (
+          <motion.div 
+            key={idx}
+            className="floating-skill-icon" 
+            style={{ 
+              position: 'absolute',
+              top: icon.top, 
+              left: icon.left, 
+              right: icon.right, 
+              bottom: icon.bottom,
+            }}
+            animate={{ 
+              y: [0, idx % 2 === 0 ? -20 : 20, 0],
+              opacity: [0.2, 0.55, 0.2],
+              scale: [0.9, 1.08, 0.9]
+            }}
+            transition={{ 
+              duration: 5 + idx, 
+              repeat: Infinity, 
+              ease: "easeInOut",
+              delay: icon.delay 
+            }}
+          >
+            {renderSkillIcon(icon.name)}
+          </motion.div>
+        ))}
+
+
+        <motion.div 
+          className="hero-copy" 
+          initial={{opacity:0, y: 20}} 
+          animate={{opacity:1, y:0}} 
+          transition={{duration:.8, ease: [0.16, 1, 0.3, 1]}}
+        >
           <motion.div className="badge" initial={{opacity:0, x:-20}} animate={{opacity:1, x:0}} transition={{delay:0.2}}>{trans.available}</motion.div>
-          <h1 className="title-massive hero-title">
-            <span className="text-stroke-gradient">{lang === 'ar' ? 'لؤي' : 'LUAI'}</span>
-            <span className="gradient-text">{lang === 'ar' ? 'الغبري' : 'ALAGHBARI'}</span>
+          <h1 className="title-massive hero-title hero-name">
+            <span>{lang === 'ar' ? 'لؤي' : 'Luai'}</span>
+            <span className="gradient-text">{lang === 'ar' ? ' الغبري.' : ' Alaghbari.'}</span>
           </h1>
           <motion.p className="section_text_p1" style={{opacity:.9}} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.4}}>
-            {lang === 'ar' ? 'مطور واجهات أمامية · مصمم تجربة مستخدم · فلاتر · ريأكت' : resume.role}
+            {lang === 'ar' ? 'مطور واجهات أمامية ومصمم تجربة مستخدم' : resume.role}
           </motion.p>
           <motion.p className="lead" initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{delay:0.5}}>
-            {lang === 'ar' ? 'مطور واجهات أمامية ومصمم تجربة مستخدم متخصص في فلاتر (موبايل) و ريأكت (ويب). أقوم بتصميم وبناء واجهات بكسل مثالية وسهلة الاستخدام وعالية الأداء.' : resume.summary}
+            {lang === 'ar' ? 'مطور واجهات أمامية ومصمم تجربة مستخدم متخصص في بناء تجارب رقمية بديهية وعالية الأداء.' : resume.summary}
           </motion.p>
           <motion.div className="btn-container" initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{delay:0.6}}>
             <button className="btn btn-color-2 btn-magnetic" onClick={() => window.open(resume.resumeUrl || '/assets/Ruesme.pdf','_blank')}><span>{trans.download}</span></button>
@@ -365,53 +430,11 @@ export default function Home() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {/* Floating Coding Icons */}
-          <div className="floating-icons-container">
-            {[
-              { name: 'flutter', top: '-10%', left: '0%', delay: 0 },
-              { name: 'react', top: '-5%', right: '5%', delay: 1 },
-              { name: 'javascript', bottom: '5%', left: '-5%', delay: 2 },
-              { name: 'dart', bottom: '-10%', right: '20%', delay: 1.5 },
-              { name: 'nodejs', top: '40%', right: '-10%', delay: 0.5 },
-              { name: 'figma', top: '25%', left: '-15%', delay: 2.5 },
-              { name: 'supabase', bottom: '20%', right: '-15%', delay: 3 },
-              { name: 'git', top: '70%', left: '-10%', delay: 1.2 },
-            ].map((icon, i) => (
-              <motion.div
-                key={i}
-                className="floating-icon"
-                style={{ 
-                  position: 'absolute',
-                  top: icon.top,
-                  left: icon.left,
-                  right: icon.right,
-                  bottom: icon.bottom,
-                  zIndex: 10
-                }}
-                animate={{
-                  y: [0, -15, 0],
-                  rotate: [0, 5, -5, 0],
-                  opacity: [0.6, 1, 0.6]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  delay: icon.delay,
-                  ease: "easeInOut"
-                }}
-              >
-                {renderSkillIcon(icon.name)}
-              </motion.div>
-            ))}
-          </div>
-
-          <MagneticAvatar>
-            <div className="avatar-ring">
-              <div className="image-frame">
-                <img src="/assets/profilepic.png" alt="Luai Alaghbari profile picture" />
-              </div>
+          <div className="avatar-ring">
+            <div className="image-frame">
+              <img src="/assets/profilepic.png" alt="Luai Alaghbari profile picture" />
             </div>
-          </MagneticAvatar>
+          </div>
         </motion.div>
       </section>
 
@@ -437,8 +460,8 @@ export default function Home() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             <h1 className="title-massive">
-              <span className="text-stroke">{lang === 'ar' ? 'من' : 'ABOUT'}</span>
-              <span className="gradient-text">{lang === 'ar' ? 'أنا' : 'ME'}</span>
+              <span className="text-stroke">{lang === 'ar' ? 'من' : 'About'}</span>
+              <span className="gradient-text">{lang === 'ar' ? ' أنا' : ' Me'}</span>
             </h1>
           </motion.div>
 
@@ -467,7 +490,11 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                {trans.aboutText1}
+                {lang === 'ar' ? (
+                  <>أنا <span className="gradient-text">مطوّر واجهات أمامية</span> للويب والموبايل، أبني واجهات متجاوبة باستخدام <span className="gradient-text">Next.js</span> و <span className="gradient-text">Flutter</span>.</>
+                ) : (
+                  <>I’m a <span className="gradient-text">Frontend Developer</span> for Web and Mobile, building responsive interfaces with <span className="gradient-text">Next.js</span> and <span className="gradient-text">Flutter</span>.</>
+                )}
               </motion.p>
             </div>
             <div className="grid-right">
@@ -477,7 +504,11 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                {trans.aboutText2}
+                {lang === 'ar' ? (
+                  <>أحوّل <span className="gradient-text">UI/UX</span> إلى كود نظيف وسهل الصيانة مع التركيز على <span className="gradient-text">الأداء</span> و <span className="gradient-text">إتاحة الوصول</span> وتناسق التصميم عبر المنصات.</>
+                ) : (
+                  <>I translate <span className="gradient-text">UI/UX</span> into clean, maintainable code—prioritizing <span className="gradient-text">performance</span>, <span className="gradient-text">accessibility</span>, and consistent design across platforms.</>
+                )}
               </motion.p>
             </div>
           </div>
@@ -526,12 +557,6 @@ export default function Home() {
 
       {/* Experience Section */}
       <section id="experience" className="modern-experience">
-        <div className="experience-ambient" aria-hidden="true">
-          <span className="experience-orb orb-1"></span>
-          <span className="experience-orb orb-2"></span>
-          <span className="experience-orb orb-3"></span>
-          <span className="experience-grid"></span>
-        </div>
         <motion.div 
           className="section-header"
           initial={{ opacity: 0, y: 20 }}
@@ -539,13 +564,14 @@ export default function Home() {
           viewport={{ once: false }}
           transition={{ duration: 0.6 }}
         >
-          <div className="overline text-stroke">{trans.recentWork}</div>
+          <p className="subtitle subtitle-stroke">{trans.recentWork}</p>
           <h1 className="title-massive">
             <span className="gradient-text">{trans.expTitle}</span>
           </h1>
         </motion.div>
 
         <div className="experience-container">
+          <div className="experience-vertical-line"></div>
           
           {resume.experience.map((exp, idx) => {
             const isCandy = exp.title.toLowerCase().includes('water delivery');
@@ -563,9 +589,6 @@ export default function Home() {
               >
                 {isCandy && (
                   <>
-                    <div className="project-hud-label">{lang === 'ar' ? 'معاينة_النظام' : 'SYSTEM_PREVIEW'}</div>
-                    <div className="data-fragment" style={{ top: '20%', left: '10%' }}></div>
-                    <div className="data-fragment" style={{ top: '60%', left: '15%', animationDelay: '1s' }}></div>
                     <div className="candy-phone-left-container">
                       <motion.div 
                         className="iphone-17-frame video-frame"
@@ -601,9 +624,6 @@ export default function Home() {
 
                 {isYemeniStore && (
                   <>
-                    <div className="project-hud-label">{lang === 'ar' ? 'بث_البيانات' : 'DATA_STREAM'}</div>
-                    <div className="data-fragment" style={{ top: '30%', right: '10%' }}></div>
-                    <div className="data-fragment" style={{ top: '70%', right: '15%', animationDelay: '1.5s' }}></div>
                     <div className="yemeni-phone-right-container">
                       <motion.div 
                         className="iphone-17-frame video-frame"
@@ -639,9 +659,6 @@ export default function Home() {
 
                 {isGraduation && (
                   <>
-                    <div className="project-hud-label">{lang === 'ar' ? 'نموذج_أولي' : 'CORE_PROTOTYPE'}</div>
-                    <div className="data-fragment" style={{ top: '15%', left: '12%' }}></div>
-                    <div className="data-fragment" style={{ top: '55%', left: '18%', animationDelay: '0.5s' }}></div>
                     <div className="graduation-phone-left-container">
                       <motion.div 
                         className="iphone-17-frame"
@@ -741,11 +758,10 @@ export default function Home() {
           viewport={{ once: false }}
           transition={{ duration: 0.6 }}
         >
-          <div className="overline text-stroke">{trans.toolkit}</div>
+          <p className="subtitle subtitle-stroke">{trans.skillsSubtitle}</p>
           <h1 className="title-massive">
             <span className="gradient-text">{trans.skills}</span>
           </h1>
-          <p className="subtitle">{trans.skillsSubtitle}</p>
         </motion.div>
 
         <div className="skills-layout">
@@ -756,8 +772,8 @@ export default function Home() {
                 <motion.div 
                   key={category.category}
                   className="skill-category-card"
-                  initial={{ opacity: 0, y: 50, rotateX: 15 }}
-                  whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: false, amount: 0.1 }}
                   transition={{ 
                     type: "spring",
@@ -818,12 +834,13 @@ export default function Home() {
       {/* Education Section */}
       <section id="education">
         <motion.div 
+          className="section-header"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.6 }}
         >
-          <p className="section_text_p1 text-stroke">{trans.background}</p>
+          <p className="subtitle subtitle-stroke">{trans.background}</p>
           <h1 className="title-massive">
             <span className="gradient-text">{trans.eduTitle}</span>
           </h1>
@@ -857,97 +874,83 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="contact-premium">
-        <div className="contact-container-modern">
-          <div className="contact-content-grid">
-            <motion.div 
-              className="contact-text-side"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              <span className="contact-overline">{trans.getInTouch}</span>
-              <h2 className="contact-big-title">
-                {(lang === 'ar' ? ['لنصنع', 'شيئاً'] : ["LET'S", "CREATE"]).map((word, i) => (
-                  <motion.span 
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 + 0.2 }}
-                    style={{ display: 'inline-block', marginInlineEnd: '0.3em' }}
-                  >
-                    {word}
-                  </motion.span>
-                ))}
-                <br />
-                <motion.span 
-                  className="gradient-text"
-                  initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
-                  whileInView={{ opacity: 1, clipPath: 'inset(0 0% 0 0)' }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                  style={{ display: 'inline-block' }}
-                >
-                  {lang === 'ar' ? 'عظيماً معاً' : "SOMETHING GREAT"}
-                </motion.span>
+      {/* Contact Section - Redesigned as Bento Hub */}
+      <section id="contact" className="contact-bento-section">
+        <div className="contact-bento-container">
+          <motion.div 
+            className="contact-bento-grid"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            {/* Main CTA Card */}
+            <div className="bento-card main-cta">
+              <span className="bento-tag">{trans.getInTouch}</span>
+              <h2 className="bento-title">
+                {lang === 'ar' ? "لنبتكر شيئاً مذهلاً" : "Let's build something iconic"}
               </h2>
-              
-              <div className="contact-info-list">
-                {[
-                  { label: "Email", value: resume.email, href: `mailto:${resume.email}` },
-                  { label: "LinkedIn", value: "Connect with me", href: resume.socials.linkedin },
-                  { label: "GitHub", value: "View my work", href: resume.socials.github },
-                  resume.phone && { label: lang === 'ar' ? "واتساب" : "WhatsApp", value: resume.phone, href: `https://wa.me/${resume.phone.replace(/\s+/g, '')}` }
-                ].filter(Boolean).map((link, i) => (
-                  <motion.a 
-                    key={i}
-                    href={link.href}
-                    target={link.label !== "Email" ? "_blank" : undefined}
-                    rel={link.label !== "Email" ? "noopener" : undefined}
-                    className="contact-link-item"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 + 0.6 }}
-                  >
-                    <span className="link-label">{link.label}</span>
-                    <span className="link-value">{link.value}</span>
-                  </motion.a>
-                ))}
-              </div>
-            </motion.div>
+              <p className="bento-desc">
+                {lang === 'ar' 
+                  ? "سواء كنت تبحث عن تطبيق موبايل جديد أو موقع ويب متطور، أنا هنا للمساعدة."
+                  : "Whether you're looking for a new mobile app or a high-performance web platform, I'm just a message away."}
+              </p>
+              <a href={`mailto:${resume.email}`} className="bento-email-btn">
+                {resume.email}
+                <span className="btn-circle">→</span>
+              </a>
+            </div>
 
-            <motion.div 
-              className="contact-form-side"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <form className="premium-form" onSubmit={(e) => { e.preventDefault(); const subject=e.currentTarget.subject.value; const message=e.currentTarget.message.value; window.location.href=`mailto:${resume.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`; }}>
-                <div className="premium-form-group">
-                  <input name="subject" type="text" className="premium-input" placeholder={trans.subject} required />
-                  <div className="input-focus-line"></div>
+            {/* Social Bento Group */}
+            <div className="bento-social-group">
+              <motion.a 
+                href={resume.socials.linkedin} 
+                target="_blank" 
+                className="bento-card social-tile linkedin"
+                whileHover={{ y: -5 }}
+              >
+                <div className="tile-icon">IN</div>
+                <span className="tile-label">LinkedIn</span>
+              </motion.a>
+              <motion.a 
+                href={resume.socials.github} 
+                target="_blank" 
+                className="bento-card social-tile github"
+                whileHover={{ y: -5 }}
+              >
+                <div className="tile-icon">GH</div>
+                <span className="tile-label">GitHub</span>
+              </motion.a>
+            </div>
+
+            {/* Availability Card */}
+            <div className="bento-card availability-card">
+              <div className="status-dot"></div>
+              <span>{trans.available}</span>
+              <div className="timezone">{lang === 'ar' ? "توقيت مكة المكرمة" : "Based in GMT+3"}</div>
+            </div>
+
+            {/* Form Card */}
+            <div className="bento-card form-card">
+              <form className="bento-form" onSubmit={(e) => { e.preventDefault(); const subject=e.currentTarget.subject.value; const message=e.currentTarget.message.value; window.location.href=`mailto:${resume.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`; }}>
+                <div className="form-row">
+                  <div className="field-group">
+                    <label>{trans.subject}</label>
+                    <input name="subject" type="text" placeholder="..." required />
+                  </div>
                 </div>
-                <div className="premium-form-group">
-                  <textarea name="message" className="premium-textarea" placeholder={trans.message} required></textarea>
-                  <div className="input-focus-line"></div>
+                <div className="field-group">
+                  <label>{trans.message}</label>
+                  <textarea name="message" placeholder={lang === 'ar' ? "كيف يمكنني مساعدتك؟" : "How can I help you?"} required></textarea>
                 </div>
-                <button className="premium-submit-btn" type="submit">
-                  <span className="btn-text">{trans.send}</span>
-                  <span className="btn-icon">→</span>
+                <button type="submit" className="bento-submit-btn">
+                  <span>{trans.send}</span>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </button>
               </form>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
-        
-        {/* Animated Background Elements */}
-        <div className="contact-bg-glow"></div>
-        <div className="contact-lines"></div>
       </section>
 
       {/* Footer */}

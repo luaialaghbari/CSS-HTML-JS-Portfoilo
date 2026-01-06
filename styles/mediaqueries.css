@@ -42,21 +42,20 @@
 			padding: 2rem 0;
 			gap: 3rem;
             flex-direction: column-reverse;
-            text-align: center;
+            text-align: left;
 	 }
      #profile .hero-copy {
-         align-items: center;
-         text-align: center;
+         align-items: flex-start;
+         text-align: left;
          max-width: 100%;
      }
      #profile .btn-container, #profile #socials-container {
-         justify-content: center;
+         justify-content: flex-start;
      }
      .hero-visual {
          width: 100%;
      }
      .hero-visual .avatar-ring {
-         max-width: 300px;
          margin: 0 auto;
      }
 
@@ -114,7 +113,7 @@
      .hero-copy .title-massive {
          flex-direction: column;
          gap: 0;
-         align-items: center;
+         align-items: flex-start;
      }
  }
  
