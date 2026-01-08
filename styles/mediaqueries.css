@@ -90,8 +90,7 @@
             border-radius: 40px;
         }
         .about-header-bold .title-massive {
-            flex-direction: column;
-            gap: 0;
+            gap: 0.5rem;
         }
  }
  
@@ -99,6 +98,8 @@
  @media screen and (max-width: 480px) {
 	 .logo {
 		 font-size: 1.5rem;
+		 white-space: nowrap;
+		 flex-shrink: 0;
 	 }
 	 .nav-links {
 			font-size: 0.95rem;
@@ -108,12 +109,10 @@
 		 text-underline-offset: 0.5rem;
 	 }
      .title-massive {
-         font-size: 2.8rem !important;
+         font-size: 2.2rem !important;
      }
      .hero-copy .title-massive {
-         flex-direction: column;
-         gap: 0;
-         align-items: flex-start;
+         gap: 0.5rem;
      }
  }
  
