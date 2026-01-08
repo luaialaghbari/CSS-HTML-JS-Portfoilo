@@ -640,7 +640,7 @@ export default function Home() {
                   <>
                     <div className="candy-phone-left-container">
                       <motion.div 
-                        className="iphone-17-frame video-frame"
+                        className="iphone-17-frame video-frame titanium-orange"
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false }}
@@ -653,7 +653,10 @@ export default function Home() {
                           <div className="volume-up"></div>
                           <div className="volume-down"></div>
                         </div>
-                        <div className="iphone-button-right"></div>
+                        <div className="iphone-buttons-right">
+                          <div className="power-button"></div>
+                          <div className="camera-control"></div>
+                        </div>
                         <div className="iphone-screen">
                           <video 
                             src="/assets/Screen_Recording_20260106_005631_Crystal Drop.mp4" 
@@ -662,6 +665,15 @@ export default function Home() {
                             muted 
                             playsInline 
                           />
+                        </div>
+                        <div className="iphone-bottom-details">
+                          <div className="speaker-grill">
+                            <span></span><span></span><span></span>
+                          </div>
+                          <div className="usb-c-port"></div>
+                          <div className="speaker-grill">
+                            <span></span><span></span><span></span>
+                          </div>
                         </div>
                       </motion.div>
                     </div>
@@ -675,7 +687,7 @@ export default function Home() {
                   <>
                     <div className="yemeni-phone-right-container">
                       <motion.div 
-                        className="iphone-17-frame video-frame"
+                        className="iphone-17-frame video-frame titanium-deep-blue"
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false }}
@@ -688,7 +700,10 @@ export default function Home() {
                           <div className="volume-up"></div>
                           <div className="volume-down"></div>
                         </div>
-                        <div className="iphone-button-right"></div>
+                        <div className="iphone-buttons-right">
+                          <div className="power-button"></div>
+                          <div className="camera-control"></div>
+                        </div>
                         <div className="iphone-screen">
                           <video 
                             src="/assets/Screen_Recording_20250725_203231.mp4" 
@@ -697,6 +712,15 @@ export default function Home() {
                             muted 
                             playsInline 
                           />
+                        </div>
+                        <div className="iphone-bottom-details">
+                          <div className="speaker-grill">
+                            <span></span><span></span><span></span>
+                          </div>
+                          <div className="usb-c-port"></div>
+                          <div className="speaker-grill">
+                            <span></span><span></span><span></span>
+                          </div>
                         </div>
                       </motion.div>
                     </div>
@@ -710,7 +734,7 @@ export default function Home() {
                   <>
                     <div className="graduation-phone-left-container">
                       <motion.div 
-                        className="iphone-17-frame"
+                        className="iphone-17-frame titanium-silver"
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false }}
@@ -723,9 +747,21 @@ export default function Home() {
                           <div className="volume-up"></div>
                           <div className="volume-down"></div>
                         </div>
-                        <div className="iphone-button-right"></div>
+                        <div className="iphone-buttons-right">
+                          <div className="power-button"></div>
+                          <div className="camera-control"></div>
+                        </div>
                         <div className="iphone-screen">
                           <img src="/assets/Screenshot_20250225_002302.jpg" alt="Graduation Project" />
+                        </div>
+                        <div className="iphone-bottom-details">
+                          <div className="speaker-grill">
+                            <span></span><span></span><span></span>
+                          </div>
+                          <div className="usb-c-port"></div>
+                          <div className="speaker-grill">
+                            <span></span><span></span><span></span>
+                          </div>
                         </div>
                       </motion.div>
                     </div>
