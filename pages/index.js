@@ -1047,22 +1047,9 @@ export default function Home() {
                   <div className="contact-apple-meta">{trans.available} • {lang === 'ar' ? trans.tzLineAr : trans.tzLine}</div>
                 </div>
 
-                <div className="contact-apple-social">
-                  <a href={resume.socials.linkedin} target="_blank" rel="noreferrer" className="contact-apple-social-link">
-                    <svg className="contact-apple-social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                      <path fill="currentColor" d="M20.45 20.45h-3.55v-5.56c0-1.33-.02-3.04-1.86-3.04-1.86 0-2.14 1.45-2.14 2.94v5.66H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.86 3.37-1.86 3.6 0 4.27 2.37 4.27 5.45v6.3zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.06 0-1.14.92-2.06 2.06-2.06 1.14 0 2.06.93 2.06 2.06 0 1.14-.93 2.06-2.06 2.06zM7.12 20.45H3.56V9h3.56v11.45z"/>
-                    </svg>
-                    <span>{trans.socialLinkedIn}</span>
-                  </a>
-                  <a href={resume.socials.github} target="_blank" rel="noreferrer" className="contact-apple-social-link">
-                    <svg className="contact-apple-social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                      <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.24c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.48 0-.24-.01-.86-.01-1.7-2.78.62-3.37-1.38-3.37-1.38-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1.01.07 1.54 1.06 1.54 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.27 2.75 1.05.8-.23 1.66-.34 2.52-.35.86.01 1.72.12 2.52.35 1.91-1.32 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.58 5.06.36.32.68.95.68 1.92 0 1.38-.01 2.49-.01 2.83 0 .27.18.58.69.48 3.96-1.35 6.83-5.18 6.83-9.7C22 6.58 17.52 2 12 2z"/>
-                    </svg>
-                    <span>{trans.socialGitHub}</span>
-                  </a>
-                </div>
 
-                <div className="contact-apple-fineprint">{trans.replyTime} • {trans.privacyNote}</div>
+
+
               </div>
 
               <div className="contact-apple-right">

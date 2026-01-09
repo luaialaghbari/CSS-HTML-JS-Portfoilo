@@ -378,131 +378,62 @@
     border-left: none;
   }
 
-  .contact-apple-form {
+  .contact-apple-links {
     display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    height: 100%;
+    align-content: center;
+  }
+
+  .contact-link-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 1rem;
+    padding: 2.5rem 1.5rem;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
   }
 
-  .contact-apple-form {
-    gap: 0.95rem;
+  .contact-link-pill svg {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-
-  .contact-apple-field {
-    display: grid;
-    gap: 0.45rem;
-  }
-
-  .contact-apple-field label {
-    font-size: 0.95rem;
-    font-weight: 650;
-    color: rgba(226, 232, 240, 0.86);
+  .contact-link-pill span {
+    font-size: 1.1rem;
+    font-weight: 600;
     letter-spacing: -0.01em;
   }
 
-  .contact-apple-field label {
-    text-transform: none;
-  }
-
-  .contact-apple-field input,
-  .contact-apple-field textarea,
-  .contact-apple-field select {
-    width: 100%;
-    border-radius: 16px;
-    padding: 0.9rem 0.95rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.10);
-    color: rgba(248, 250, 252, 0.95);
-    outline: none;
-    box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset;
-    transition:
-      border-color var(--dur-2) var(--ease-out-2),
-      background-color var(--dur-2) var(--ease-out-2),
-      box-shadow var(--dur-2) var(--ease-out-2),
-      transform var(--dur-2) var(--ease-out-2);
-  }
-
-  .contact-apple-field input:hover,
-  .contact-apple-field textarea:hover,
-  .contact-apple-field select:hover {
-    border-color: rgba(255, 255, 255, 0.16);
+  .contact-link-pill:hover {
     background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px);
   }
 
-  .contact-apple-field select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    padding-right: 2.2rem;
-    background-image:
-      linear-gradient(45deg, transparent 50%, rgba(226, 232, 240, 0.75) 50%),
-      linear-gradient(135deg, rgba(226, 232, 240, 0.75) 50%, transparent 50%);
-    background-position:
-      calc(100% - 1.05rem) calc(50% - 2px),
-      calc(100% - 0.85rem) calc(50% - 2px);
-    background-size: 6px 6px, 6px 6px;
-    background-repeat: no-repeat;
+  .contact-link-pill:hover svg {
+    transform: scale(1.15);
   }
 
-  .contact-apple-field textarea {
-    min-height: 140px;
-    resize: vertical;
-  }
+  .contact-link-pill.whatsapp:hover { border-color: #25D366; color: #25D366; }
+  .contact-link-pill.linkedin:hover { border-color: #0077b5; color: #0077b5; }
+  .contact-link-pill.github:hover { border-color: #fff; color: #fff; }
+  .contact-link-pill.email:hover { border-color: #7c3aed; color: #7c3aed; }
 
-  .contact-apple-field textarea {
-    line-height: 1.6;
-  }
-
-  .contact-apple-field input::placeholder,
-  .contact-apple-field textarea::placeholder {
-    color: rgba(148, 163, 184, 0.75);
-  }
-
-  .contact-apple-field input:focus,
-  .contact-apple-field textarea:focus,
-  .contact-apple-field select:focus {
-    border-color: rgba(99, 102, 241, 0.65);
-    box-shadow:
-      0 0 0 4px rgba(99, 102, 241, 0.18),
-      0 1px 0 rgba(255,255,255,0.06) inset;
-    background: rgba(255, 255, 255, 0.07);
-  }
-
-  .contact-apple-submit {
-    margin-top: 0.25rem;
-    width: 100%;
-    border: 0;
-    padding: 0.9rem 1rem;
-    border-radius: 999px;
-    font-weight: 750;
-    letter-spacing: -0.02em;
-    color: #0b0b0f;
-    background: radial-gradient(120% 120% at 20% 0%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.72) 24%, rgba(255,255,255,0.22) 62%),
-          var(--about-gradient);
-    box-shadow:
-      0 16px 34px rgba(0,0,0,0.32),
-      0 1px 0 rgba(255,255,255,0.18) inset;
-    cursor: pointer;
-    transition: transform var(--dur-2) var(--ease-out-2), box-shadow var(--dur-2) var(--ease-out-2), filter var(--dur-2) var(--ease-out-2);
-  }
-
-  .contact-apple-submit:hover {
-    transform: translateY(-2px);
-    filter: saturate(1.05);
-    box-shadow:
-      0 22px 46px rgba(0,0,0,0.38),
-      0 1px 0 rgba(255,255,255,0.22) inset;
-  }
-
-  .contact-apple-submit:active {
-    transform: translateY(0px);
-  }
-
-  .contact-apple-submit:focus-visible {
-    outline: none;
-    box-shadow:
-      0 0 0 4px rgba(59, 130, 246, 0.22),
-      0 26px 65px rgba(0,0,0,0.55);
+  @media (max-width: 640px) {
+    .contact-apple-links {
+      grid-template-columns: 1fr;
+    }
   }
 
   /* RTL: flip divider and align social row */
