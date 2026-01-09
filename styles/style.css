@@ -791,8 +791,260 @@
 	   font-size: clamp(2rem, 4vw, 3rem);
    }
    
-   /* Profile Section (landing) */
+   /* Profile Section (Modern Redesign - Nolan Blake Style) */
+   .hero-modern {
+     min-height: 100vh;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     position: relative;
+     background: #000;
+     padding: 0 !important;
+     margin: 0 auto !important;
+     max-width: none !important;
+     width: 100% !important;
+     overflow: hidden;
+     border-radius: 0;
+   }
+   
+   .hero-bg-glow {
+     display: none; /* Removed blurriness */
+   }
+
+   .hero-rings {
+     display: none; /* Cleaning up background elements */
+   }
+
+   .ring {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     border: 1px solid rgba(255, 255, 255, 0.05);
+     border-radius: 50%;
+   }
+
+   .ring-1 { width: 300px; height: 300px; }
+   .ring-2 { width: 600px; height: 600px; }
+   .ring-3 { width: 900px; height: 900px; }
+   
+   .hero-modern-container {
+     width: 100%;
+     max-width: none;
+     margin: 0;
+     padding: 0;
+     position: relative;
+     z-index: 2;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     min-height: 100vh;
+   }
+   
+   .hero-name-bg {
+     position: absolute;
+     top: -6vh;
+     left: 0;
+     width: 100%;
+     display: flex;
+     justify-content: center;
+     z-index: 5;
+     pointer-events: none;
+     user-select: none;
+     padding: 0;
+     margin: 0;
+   }
+   
+   .name-accent {
+     background: var(--title-accent);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     background-size: 200% auto;
+   }
+   
+   .hero-name-bg h1 {
+     font-size: clamp(4rem, 11.5vw, 18rem);
+     line-height: 1;
+     font-weight: 900;
+     color: #fff;
+     margin: 0;
+     letter-spacing: -0.02em;
+     display: block;
+     white-space: nowrap;
+     text-transform: none;
+     text-align: center;
+     width: 100%;
+     transform: scaleY(1.3);
+ 
+     padding-top: 35px;
+     transform-origin: center top;
+   }
+   
+   .hero-modern-grid {
+     display: grid;
+     grid-template-columns: 1fr 1.2fr 1fr;
+     align-items: center;
+     gap: 3rem;
+     position: relative;
+     z-index: 5;
+     width: 100%;
+   }
+   
+   .hero-col-left {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: flex-start;
+     padding: 0 0 0 4rem; /* Specific padding for bio text only, not the section */
+     margin: 0;
+   }
+   
+   .hero-bio-box {
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+   }
+   
+   .text-gradient-small {
+     background: var(--title-accent);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     font-weight: 700;
+   }
+   
+   .hero-bio-box p {
+     font-size: 1.05rem; /* Increased size */
+     color: rgba(255, 255, 255, 0.8);
+     line-height: 1.6;
+     max-width: 320px;
+     margin-bottom: 1.5rem;
+     font-weight: 400;
+     text-align: left;
+   }
+   
+   .hero-social-circles {
+     display: flex;
+     gap: 0.8rem;
+   }
+   
+   .social-circle {
+     width: 36px;
+     height: 36px;
+     border-radius: 50%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: #fff;
+     background: #7c3aed; /* Purple as in image */
+     transition: transform 0.3s ease, filter 0.3s ease;
+   }
+   
+   .social-circle svg {
+     width: 18px;
+     height: 18px;
+   }
+   
+   .social-circle:hover {
+     transform: scale(1.1);
+     filter: brightness(1.2);
+   }
+   
+   .hero-col-center {
+     display: flex;
+     justify-content: center;
+     align-items: flex-end;
+     position: static; /* Allow absolute child to reference hero-modern */
+     height: 100vh;
+     z-index: 20;
+   }
+   
+   .hero-portrait {
+     position: absolute;
+     bottom: -8vh; /* Moved up slightly */
+     left: 0;
+     width: 100%;
+     max-width: none;
+     z-index: 15;
+     height: 100vh;
+     display: flex;
+     align-items: flex-end;
+     justify-content: center;
+     pointer-events: none;
+   }
+   
+   .hero-portrait img {
+     width: auto;
+     height: 100%;
+     max-width: 1200px; /* Reduced from 1400px */
+     object-fit: contain;
+     display: block;
+     position: relative;
+     z-index: 2;
+     filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5));
+   }
+   
+   .portrait-glow-circle {
+     display: none; /* Removed blurriness */
+   }
+   
+   .hero-col-right {
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-end;
+     text-align: right;
+     height: 100%;
+     padding: 0 0 12vh 0; /* Removed right padding completely (top right bottom left) */
+     margin: 0;
+   }
+   
+   .cta-blurb {
+     font-size: 1.05rem; /* Increased size */
+     color: rgba(255, 255, 255, 0.8);
+     line-height: 1.6;
+     max-width: 320px;
+     margin-bottom: 2rem;
+     font-weight: 400;
+   }
+   
+   .btn-modern-pill {
+     background: #7c3aed;
+     color: #fff;
+     border: none;
+     padding: 0.4rem 0.4rem 0.4rem 1.6rem;
+     border-radius: 999px;
+     font-size: 1rem;
+     font-weight: 600;
+     display: flex;
+     align-items: center;
+     gap: 1.2rem;
+     cursor: pointer;
+     transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+     box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+   }
+   
+   .btn-modern-pill .btn-icon {
+     width: 36px;
+     height: 36px;
+     background: #fff;
+     color: #7c3aed;
+     border-radius: 50%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
+   
+   .btn-modern-pill:hover {
+     background: #6d28d9;
+     transform: scale(1.05) translateY(-2px);
+     box-shadow: 0 15px 40px rgba(124, 58, 237, 0.4);
+   }
+   
    .hero-centered {
+     display: none; /* Hide old hero if still in DOM elsewhere */
+   }
+
+   /* Profile Section (landing) */
+   .hero-centered-old {
      display: flex;
      flex-direction: row;
      align-items: center;
@@ -1133,13 +1385,21 @@
     z-index: 6;
   }
 
-  .iphone-screen img, 
-  .iphone-screen video {
+  .iphone-screen img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     position: absolute;
     top: 0;
+    left: 0;
+  }
+
+  .iphone-screen video {
+    width: 100%;
+    height: calc(100% - 40px);
+    object-fit: fill;
+    position: absolute;
+    top: 40px;
     left: 0;
   }
 
@@ -5331,5 +5591,234 @@
   .contact-modern { padding: 5rem 1rem 4rem; }
   .contact-heading { font-size: 2rem; }
 }
+
+/* Footer Effect - Nafas Style */
+.footer-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6rem 1rem 0;
+  background: #000;
+  color: #fff;
+  margin-top: 4rem;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+}
+
+.footer-nav-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  font-size: 1.2rem;
+}
+
+@media (min-width: 769px) {
+  .footer-nav-links {
+    flex-direction: row;
+    gap: 4rem;
+  }
+}
+
+.footer-nav-links a {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.footer-tagline {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  max-width: 500px;
+  text-align: center;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+  padding: 0 1rem;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.footer-social-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  background: transparent; /* Ensure no background */
+  border: none; /* Ensure no border */
+}
+
+.footer-social-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.footer-social-icon:hover {
+  opacity: 0.7;
+  transform: scale(1.1);
+}
+
+.footer-middle-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  padding-bottom: 3rem;
+}
+
+.footer-copyright {
+  font-size: 1rem;
+  color: #94a3b8;
+  margin-bottom: 0.5rem;
+}
+
+.footer-bottom-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+@media (min-width: 769px) {
+  .footer-bottom-info {
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.footer-links a {
+  color: #64748b;
+  text-decoration: none;
+}
+
+.footer-payments {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.footer-payments svg,
+.footer-payments img {
+  height: 20px;
+  filter: brightness(0) invert(1);
+}
+
+.footer-massive-logo {
+  width: 100%;
+  text-align: center;
+  margin-top: 4rem;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  margin-bottom: -0.2em; /* Increased to close the gap and touch the bottom */
+  position: relative;
+  z-index: 1;
+}
+
+.footer-massive-logo h2 {
+  font-size: clamp(10rem, 35vw, 40rem);
+  font-weight: 900;
+  margin: 0;
+  padding: 0.15em 0.3em 0; /* Extra top padding for 'i' dot and side padding for end dot */
+  background: var(--title-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.07em;
+  font-family: "Poppins", sans-serif;
+  text-transform: lowercase;
+  line-height: 0.7; /* Tightened further to bring the baseline to the very edge */
+}
+
+@media (max-width: 768px) {
+  .footer-logo-container {
+    padding-top: 5rem;
+  }
+  .footer-nav-links {
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+  .footer-nav-links a {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .footer-massive-logo {
+    margin-bottom: -0.2em;
+  }
+  .footer-massive-logo h2 {
+    font-size: 48vw;
+    line-height: 0.7;
+  }
+  .footer-tagline {
+    font-size: 1rem;
+    margin-bottom: 3.5rem;
+  }
+
+  /* Hero Modern Responsive */
+  .hero-modern {
+    margin: 0;
+    padding: 0;
+    min-height: auto;
+    border-radius: 0;
+  }
+  .hero-modern-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+    margin-top: 0;
+  }
+  .hero-col-left, .hero-col-right {
+    padding-top: 0;
+    order: 2;
+    align-items: center;
+    text-align: center;
+  }
+  .hero-col-center {
+    order: 1;
+    padding-top: 0;
+  }
+  .hero-bio-box, .hero-cta-box {
+    align-items: center;
+    text-align: center;
+  }
+  .hero-name-bg h1 {
+    font-size: 15vw;
+    flex-direction: column;
+    gap: 0;
+  }
+  .hero-portrait {
+    max-width: 100%;
+  }
+  .hero-bio-box p, .cta-blurb {
+    max-width: 100%;
+    font-size: 1.05rem;
+  }
+  .hero-social-circles {
+    justify-content: center;
+  }
+  .btn-modern-pill {
+    width: fit-content;
+    padding: 0.3rem 0.3rem 0.3rem 1.5rem;
+  }
+}
+
+
 
 

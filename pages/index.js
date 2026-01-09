@@ -398,94 +398,95 @@ export default function Home() {
         </div>
       </nav>
 
-      <section id="profile" className="hero-centered">
-        {/* Aesthetic background floating elements */}
-        <div className="aesthetic-grid"></div>
+      <section id="profile" className="hero-modern">
+        {/* Aesthetic background elements */}
+        <div className="hero-bg-glow"></div>
+        <div className="hero-rings">
+          <div className="ring ring-1"></div>
+          <div className="ring ring-2"></div>
+          <div className="ring ring-3"></div>
+        </div>
+        
+        <div className="hero-modern-container">
+          {/* Large Background Name */}
+          <div className="hero-name-bg">
+            <h1 className="name-main">
+              {lang === 'ar' ? (
+                <>لؤي <span className="name-accent">الغبري</span></>
+              ) : (
+                <>Luai <span className="name-accent">Alaghbari</span></>
+              )}
+            </h1>
+          </div>
 
-        {/* Distributed Floating Icons across the hero (can float behind text) */}
-        {[
-          { name: 'flutter', top: '12%', left: '6%', delay: 0 },
-          { name: 'figma', top: '6%', right: '8%', delay: 1 },
-          { name: 'react', top: '42%', left: '4%', delay: 0.5 },
-          { name: 'nextdotjs', top: '48%', right: '6%', delay: 2 },
-          { name: 'dart', top: '26%', left: '18%', delay: 1.5 },
-          { name: 'javascript', top: '30%', right: '18%', delay: 3 },
-          { name: 'nodedotjs', bottom: '14%', left: '8%', delay: 2.5 },
-          { name: 'postman', bottom: '18%', right: '10%', delay: 0.8 },
-          { name: 'html', top: '16%', right: '28%', delay: 1.2 },
-          { name: 'css', bottom: '28%', left: '22%', delay: 2.2 },
-          { name: 'supabase', top: '54%', right: '26%', delay: 0.4 },
-          { name: 'firebase', bottom: '10%', right: '24%', delay: 1.8 },
-        ].map((icon, idx) => (
-          <motion.div 
-            key={idx}
-            className="floating-skill-icon" 
-            style={{ 
-              position: 'absolute',
-              top: icon.top, 
-              left: icon.left, 
-              right: icon.right, 
-              bottom: icon.bottom,
-            }}
-            animate={{ 
-              y: [0, idx % 2 === 0 ? -20 : 20, 0],
-              opacity: [0.2, 0.55, 0.2],
-              scale: [0.9, 1.08, 0.9]
-            }}
-            transition={{ 
-              duration: 5 + idx, 
-              repeat: Infinity, 
-              ease: "easeInOut",
-              delay: icon.delay 
-            }}
-          >
-            {renderSkillIcon(icon.name)}
-          </motion.div>
-        ))}
+          <div className="hero-modern-grid">
+            {/* Left Column: Bio & Socials */}
+            <div className="hero-col-left">
+              <motion.div 
+                className="hero-bio-box"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <p>
+                  {lang === 'ar' ? (
+                    <>أقوم بإنشاء <span className="text-gradient-small">واجهات</span> تمزج بين <span className="text-gradient-small">الوظيفة</span> والعاطفة، لتجربة رقمية تبدو بديهية وسلسة وذات <span className="text-gradient-small">مغزى</span>.</>
+                  ) : (
+                    <>I create <span className="text-gradient-small">interfaces</span> that blend <span className="text-gradient-small">function</span> with emotion, crafting <span className="text-gradient-small">digital experiences</span> that feel intuitive, seamless, and meaningful.</>
+                  )}
+                </p>
+                <div className="hero-social-circles">
+                  <a href="#" target="_blank" rel="noopener" className="social-circle x">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  </a>
+                  <a href="#" target="_blank" rel="noopener" className="social-circle instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                  </a>
+                  <a href="#" target="_blank" rel="noopener" className="social-circle youtube">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                  </a>
+                </div>
+              </motion.div>
+            </div>
 
+            {/* Center Column: Portrait Image */}
+            <div className="hero-col-center">
+              <motion.div 
+                className="hero-portrait"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <div className="portrait-glow-circle"></div>
+                <img src="/assets/newprofilelogo.png" alt="Luai Alaghbari" />
+              </motion.div>
+            </div>
 
-        <motion.div 
-          className="hero-copy" 
-          initial={{opacity:0, y: 20}} 
-          animate={{opacity:1, y:0}} 
-          transition={{duration:.8, ease: [0.16, 1, 0.3, 1]}}
-        >
-          <motion.div className="badge" initial={{opacity:0, x:-20}} animate={{opacity:1, x:0}} transition={{delay:0.2}}>{trans.available}</motion.div>
-          <h1 className="title-massive hero-title hero-name">
-            <span>{lang === 'ar' ? 'لؤي' : 'Luai'}</span>
-            <span className="gradient-text">{lang === 'ar' ? ' الغبري.' : ' Alaghbari.'}</span>
-          </h1>
-          <motion.p className="section_text_p1" style={{opacity:.9}} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.4}}>
-            {lang === 'ar' ? trans.heroRole : resume.role}
-          </motion.p>
-          <motion.p className="lead" initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{delay:0.5}}>
-            {lang === 'ar' ? trans.heroLead : resume.summary}
-          </motion.p>
-          <motion.div className="btn-container" initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{delay:0.6}}>
-            <button className="btn btn-color-2 btn-magnetic" onClick={() => window.open(resume.resumeUrl || '/assets/Ruesme.pdf','_blank')}><span>{trans.download}</span></button>
-          </motion.div>
-          <motion.div id="socials-container" initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.7}}>
-            <a href={resume.socials.linkedin} target="_blank" rel="noopener">
-              <img src="/assets/linkedin.png" className="icon" alt="LinkedIn"/>
-            </a>
-            <a href={resume.socials.github} target="_blank" rel="noopener">
-              <img src="/assets/github.png" className="icon" alt="GitHub"/>
-            </a>
-          </motion.div>
-        </motion.div>
-
-        <motion.div 
-          className="hero-visual"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="avatar-ring">
-            <div className="image-frame">
-              <img src="/assets/profilepic.png" alt="Luai Alaghbari profile picture" />
+            {/* Right Column: CTA & Blurb */}
+            <div className="hero-col-right">
+              <motion.div 
+                className="hero-cta-box"
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <p className="cta-blurb">
+                  {lang === 'ar' ? (
+                    <>دمج <span className="text-gradient-small">التفكير التصميمي</span> مع الرؤية البشرية لإنشاء تجارب رقمية لا تبدو <span className="text-gradient-small">رائعة</span> فحسب - بل تؤدي مهمتها <span className="text-gradient-small">ببراعة</span>.</>
+                  ) : (
+                    <>Merging <span className="text-gradient-small">design thinking</span> with human insight to create digital experiences that don't just <span className="text-gradient-small">look great</span> — they perform <span className="text-gradient-small">effortlessly</span>.</>
+                  )}
+                </p>
+                <button className="btn-modern-pill" onClick={() => document.getElementById('contact').scrollIntoView({behavior: 'smooth'})}>
+                  <span>{lang === 'ar' ? 'لنبدأ العمل' : 'Let\'s Talk'}</span>
+                  <div className="btn-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </div>
+                </button>
+              </motion.div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* About Section */}
@@ -1103,9 +1104,35 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer style={{textAlign:'center', color:'#94a3b8', padding:'2rem 1rem'}}>
-        <small>© <span ref={yearRef} /> {lang === 'ar' ? 'لؤي الغبري' : 'Luai Alaghbari'}. {trans.footer}</small>
+      <footer className="footer-logo-container">
+        <p className="footer-tagline">
+          {lang === 'ar' ? 'تحويل الأفكار إلى واقع رقمي ملموس — شغف بالإتقان وتركيز على التفاصيل في كل سطر برمجِي.' : 'Turning ideas into tangible digital reality — a passion for perfection and focus on details in every line of code.'}
+        </p>
+
+        <div className="footer-socials">
+          <a href="#" className="footer-social-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+          </a>
+          <a href="#" className="footer-social-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="#" className="footer-social-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z"></path></svg>
+          </a>
+        </div>
+
+        <div className="footer-middle-row">
+          <div className="footer-copyright">
+            © <span ref={yearRef} /> {lang === 'ar' ? 'لؤي الغبري. جميع الحقوق محفوظة.' : 'Luai Alaghbari. All Rights Reserved.'}
+          </div>
+        </div>
+
+        <div className="footer-massive-logo">
+          <h2>luai.</h2>
+        </div>
       </footer>
+
+
     </>
   );
 }
