@@ -11,6 +11,7 @@ const resume = {
   socials: {
     linkedin: 'https://linkedin.com',
     github: 'https://github.com',
+    whatsapp: 'https://wa.me/967772642380',
   },
   summary:
     'Frontend Developer & UI/UX Designer focused on building fast, accessible, and intuitive web experiences with clean, scalable UI.',
