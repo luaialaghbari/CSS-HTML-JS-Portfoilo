@@ -47,14 +47,14 @@ export default function Home() {
       aboutMeStroke: 'ABOUT',
       aboutMeGradient: 'ME',
       visionReality: 'Turning ideas into fast, polished products.',
-      aboutText1: 'I’m a Frontend Developer for Web and Mobile, building responsive interfaces with Next.js and Flutter.',
-      aboutText2: 'I translate UI/UX into clean, maintainable code—prioritizing performance, accessibility, and design consistency across platforms.',
-      mastery: 'Mobile & Web Mastery',
-      masteryDesc: 'Next.js for modern web apps and Flutter for mobile—shipping smooth UI with scalable patterns.',
-      designCentric: 'Design Centric',
-      designCentricDesc: 'Pixel‑focused UI craft: layout, typography, and motion that make interfaces feel premium.',
-      globalVision: 'Bilingual',
-      globalVisionDesc: 'Clear Arabic/English communication and a product mindset—from idea to release.',
+      aboutText1: 'I’m a Frontend Developer for web and mobile, turning design ideas into sleek, responsive interfaces that delight users.',
+      aboutText2: 'I create modern, visually appealing UI/UX designs that prioritize user experience, clarity, and engagement across web and mobile.',
+      mastery: '01 – Frontend Development',
+      masteryDesc: 'Building responsive apps with Next.js for web and Flutter for mobile, writing clean, maintainable code for high performance across devices.',
+      designCentric: '02 – UI/UX Design',
+      designCentricDesc: 'Designing intuitive interfaces with attention to layout, typography, colors, and interactions for a seamless user experience.',
+      globalVision: '03 – Languages',
+      globalVisionDesc: 'Fluent in English and Arabic, enabling clear communication and smooth collaboration from design to implementation.',
       featuredWork: 'Featured Work',
       preview: 'Preview',
       source: 'Source',
@@ -109,7 +109,7 @@ export default function Home() {
       expTitle: 'الخبرة العملية',
       recentWork: 'أحدث الأعمال',
       getInTouch: 'دعنا نتواصل',
-      contactMe: 'راسلني',
+      contactMe: 'للتواصل',
       footer: 'جميع الحقوق محفوظة.',
       dark: 'داكن',
       light: 'فاتح',
@@ -117,14 +117,14 @@ export default function Home() {
       aboutMeStroke: 'نبذة',
       aboutMeGradient: 'عنّي',
       visionReality: 'أحوّل الأفكار إلى منتجات سريعة ومصقولة.',
-      aboutText1: 'أنا مطوّر واجهات أمامية للويب والموبايل، وأبني واجهات متجاوبة باستخدام Next.js وFlutter.',
-      aboutText2: 'أحوّل تصميم واجهة المستخدم وتجربته إلى كود نظيف وسهل الصيانة، مع التركيز على الأداء وإتاحة الوصول وتناسق التصميم عبر المنصات.',
-      mastery: 'إتقان الويب والموبايل',
-      masteryDesc: 'Next.js لتطبيقات ويب حديثة وFlutter للموبايل—واجهات سلسة مع بنية قابلة للتوسع.',
-      designCentric: 'تصميم أولاً',
-      designCentricDesc: 'اهتمام بالتفاصيل: تخطيط، خطوط، وحركة تمنح المنتج طابعًا احترافيًا.',
-      globalVision: 'ثنائي اللغة',
-      globalVisionDesc: 'تواصل عربي/إنجليزي واضح، وعقلية منتج من الفكرة إلى الإطلاق.',
+      aboutText1: 'أنا مطوّر واجهات أمامية للويب والموبايل، أحوّل أفكار التصميم إلى واجهات عصرية ومتجاوبة تبسط تجربة المستخدم وتشد انتباهه.',
+      aboutText2: 'أصمّم واجهات حديثة وجذابة بصريًا تركز على تجربة المستخدم والوضوح والتفاعل، لتعمل بسلاسة على الويب والموبايل.',
+      mastery: '01 – تطوير الواجهات',
+      masteryDesc: 'بناء تطبيقات متجاوبة باستخدام  Next.js للويب و Flutter للجوال، مع كود نظيف وقابل للصيانة لضمان أداء عالي عبر الأجهزة.',
+      designCentric: '02 – تصميم UI/UX',
+      designCentricDesc: 'تصميم واجهات بديهية مع الاهتمام بالتخطيط، الخطوط، الألوان، والتفاعلات لتجربة مستخدم سلسة وجذابة.',
+      globalVision: '03 – اللغات',
+      globalVisionDesc: 'أتقن العربية والإنجليزية بطلاقة، مما يضمن تواصلًا واضحًا وعملًا سلسًا من التصميم حتى التنفيذ.',
       featuredWork: 'أعمال مختارة',
       preview: 'معاينة',
       source: 'المصدر',
@@ -425,11 +425,7 @@ export default function Home() {
           {/* Large Background Name */}
           <div className="hero-name-bg">
             <h1 className="name-main">
-              {lang === 'ar' ? (
-                <><span className="first-name">لؤي</span> <span className="name-accent">الغبري</span></>
-              ) : (
-                <><span className="first-name">Luai</span> <span className="name-accent">Alaghbari</span></>
-              )}
+              <span className="first-name">Luai</span> <span className="name-accent">Alaghbari</span>
             </h1>
           </div>
 
@@ -465,13 +461,14 @@ export default function Home() {
                 <div className="hero-line-separator"></div>
               </motion.div>
 
+              {/* Mobile-only CTA */}
               <motion.div
-                className="hero-center-cta"
+                className="hero-center-cta mobile-only-btn"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                <button className="btn-modern-pill" onClick={() => window.open('/resume.pdf', '_blank')}>
+                <button className="btn-modern-pill" onClick={() => window.open('/assets/My Resume.pdf', '_blank')}>
                   <span>{lang === 'ar' ? 'تحميل السيرة الذاتية' : 'Download Resume'}</span>
                   <div className="btn-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
@@ -495,6 +492,21 @@ export default function Home() {
                     <>Dedicated to high-end craftsmanship, I deliver superior <span className="text-gradient-small">UI/UX & Frontend solutions</span> that combine technical precision with <span className="text-gradient-small">elegant design</span>.</>
                   )}
                 </p>
+              </motion.div>
+
+              {/* Desktop-only CTA */}
+              <motion.div
+                className="hero-right-cta desktop-only-btn"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                <button className="btn-modern-pill" onClick={() => window.open('/assets/My Resume.pdf', '_blank')}>
+                  <span>{lang === 'ar' ? 'تحميل السيرة الذاتية' : 'Download Resume'}</span>
+                  <div className="btn-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </div>
+                </button>
               </motion.div>
             </div>
           </div>
@@ -554,9 +566,9 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 {lang === 'ar' ? (
-                  <>أنا <span className="gradient-text">مطوّر واجهات أمامية</span> للويب والموبايل، أبني واجهات متجاوبة باستخدام <span className="gradient-text">Next.js</span> و <span className="gradient-text">Flutter</span>.</>
+                  <>أنا <span className="gradient-text">مطوّر واجهات أمامية</span> للويب والموبايل، أحوّل <span className="gradient-text">أفكار التصميم</span> إلى واجهات عصرية ومتجاوبة تبسط تجربة المستخدم وتشد انتباهه.</>
                 ) : (
-                  <>I’m a <span className="gradient-text">Frontend Developer</span> for Web and Mobile, building responsive interfaces with <span className="gradient-text">Next.js</span> and <span className="gradient-text">Flutter</span>.</>
+                  <>I’m a <span className="gradient-text">Frontend Developer</span> for web and mobile, turning design ideas into <span className="gradient-text">sleek, responsive interfaces</span> that delight users.</>
                 )}
               </motion.p>
             </div>
@@ -568,9 +580,9 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
                 {lang === 'ar' ? (
-                  <>أحوّل <span className="gradient-text">UI/UX</span> إلى كود نظيف وسهل الصيانة مع التركيز على <span className="gradient-text">الأداء</span> و <span className="gradient-text">إتاحة الوصول</span> وتناسق التصميم عبر المنصات.</>
+                  <>أصمّم <span className="gradient-text">واجهات حديثة وجذابة بصريًا</span> تركز على <span className="gradient-text">تجربة المستخدم</span> والوضوح والتفاعل، لتعمل بسلاسة على الويب والموبايل.</>
                 ) : (
-                  <>I translate <span className="gradient-text">UI/UX</span> into clean, maintainable code—prioritizing <span className="gradient-text">performance</span>, <span className="gradient-text">accessibility</span>, and consistent design across platforms.</>
+                  <>I create <span className="gradient-text">modern, visually appealing UI/UX designs</span> that prioritize <span className="gradient-text">user experience</span>, clarity, and engagement across web and mobile.</>
                 )}
               </motion.p>
             </div>
@@ -581,7 +593,6 @@ export default function Home() {
             <div className="node-item">
               <div className="node-line"></div>
               <div className="node-content">
-                <span className="node-num">01</span>
                 <h3 className="gradient-text">{trans.mastery}</h3>
                 <p>{trans.masteryDesc}</p>
               </div>
@@ -589,7 +600,6 @@ export default function Home() {
             <div className="node-item">
               <div className="node-line"></div>
               <div className="node-content">
-                <span className="node-num">02</span>
                 <h3 className="gradient-text">{trans.designCentric}</h3>
                 <p>{trans.designCentricDesc}</p>
               </div>
@@ -597,7 +607,6 @@ export default function Home() {
             <div className="node-item">
               <div className="node-line"></div>
               <div className="node-content">
-                <span className="node-num">03</span>
                 <h3 className="gradient-text">{trans.globalVision}</h3>
                 <p>{trans.globalVisionDesc}</p>
               </div>
@@ -856,20 +865,20 @@ export default function Home() {
                         ))}
                       </div>
 
-                      {(exp.preview || exp.source) && (
+                      {(exp.preview && exp.preview !== '#') || (exp.source && exp.source !== '#') ? (
                         <div className="node-actions">
-                          {exp.preview && (
+                          {exp.preview && exp.preview !== '#' && (
                             <a href={exp.preview} target="_blank" rel="noopener" className="btn btn-color-2 btn-sm">
                               {trans.preview}
                             </a>
                           )}
-                          {exp.source && (
+                          {exp.source && exp.source !== '#' && (
                             <a href={exp.source} target="_blank" rel="noopener" className="btn btn-color-1 btn-sm">
                               {trans.source}
                             </a>
                           )}
                         </div>
-                      )}
+                      ) : null}
                     </div>
                   </div>
                 </div>
@@ -1000,7 +1009,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1, delay: 0.2 }}
                 >
-                  {ed.period.split('–')[0] || ed.period.split('-')[0]}
+                  {lang === 'ar' ? ed.periodAr.split('–')[0] || ed.periodAr.split('-')[0] : ed.period.split('–')[0] || ed.period.split('-')[0]}
                 </motion.div>
 
                 <div className="edu-premium-card">
@@ -1008,17 +1017,19 @@ export default function Home() {
                   <div className="edu-card-content">
                     <div className="edu-header">
                       <span className="edu-number">0{idx + 1}</span>
-                      {idx !== 1 && <span className="edu-period-tag">{ed.period}</span>}
+                      {idx !== 1 && <span className="edu-period-tag">{lang === 'ar' ? ed.periodAr : ed.period}</span>}
                     </div>
-                    <h3 className="edu-degree-title">{ed.degree}</h3>
+                    <h3 className="edu-degree-title">{lang === 'ar' ? ed.degreeAr : ed.degree}</h3>
                     <div className="edu-institution">
-                      <span className="edu-school-name">{ed.school}</span>
+                      <span className="edu-school-name">{lang === 'ar' ? ed.schoolAr : ed.school}</span>
                       <span className="edu-location-dot"></span>
-                      <span className="edu-location-text">{ed.location}</span>
+                      <span className="edu-location-text">{lang === 'ar' ? ed.locationAr : ed.location}</span>
                     </div>
-                    {ed.details && (
+                    {(ed.details || ed.detailsAr) && (
                       <p className="edu-details-text">
-                        {Array.isArray(ed.details) ? ed.details.join(' ') : ed.details}
+                        {lang === 'ar' 
+                          ? (Array.isArray(ed.detailsAr) ? ed.detailsAr.join(' ') : ed.detailsAr)
+                          : (Array.isArray(ed.details) ? ed.details.join(' ') : ed.details)}
                       </p>
                     )}
                   </div>
@@ -1160,7 +1171,7 @@ export default function Home() {
         </div>
 
         <div className="footer-massive-logo">
-          <h2>{lang === 'ar' ? 'ابتكر.' : 'create.'}</h2>
+          <h2>create.</h2>
         </div>
       </footer>
 

@@ -13,7 +13,7 @@
    - Edit variables under :root to change theme spacing/colors.
    ================================================== */
 
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
 
    :root {
 	   /* Dark theme colors */
@@ -128,8 +128,16 @@
   }
 
   html[dir="rtl"] .section-header-left {
-    align-items: flex-end;
+    align-items: flex-start;
     text-align: right;
+  }
+  
+  /* About Me stays centered - removed title-massive right alignment */
+
+  html[dir="rtl"] .edu-watermark,
+  html[dir="rtl"] .edu-period-tag,
+  html[dir="rtl"] .edu-number {
+    font-family: 'Inter', sans-serif !important;
   }
 
   /* RTL: ensure common "left aligned" typography becomes right aligned */
@@ -834,6 +842,7 @@
    }
    
    .hero-name-bg h1 {
+     font-family: 'Inter', sans-serif !important;
      font-size: clamp(4rem, 11.5vw, 18rem);
      line-height: 1;
      font-weight: 900;
@@ -917,12 +926,7 @@
    }
 
    .hero-center-cta {
-     position: relative;
-     z-index: 40; /* High z-index to stay above portrait */
-     margin-top: -10vh; /* Give it some breathing room below the portrait line */
-     display: flex;
-     justify-content: center;
-     width: 100%;
+     display: none;
    }
    
    .hero-portrait {
@@ -980,12 +984,33 @@
       0 0 15px rgba(124, 58, 237, 0.7);
    }
 
+   [dir="rtl"] .hero-bio-box {
+     border-radius: 28px 0 0 28px;
+     align-items: flex-end;
+   }
+   [dir="rtl"] .hero-cta-box {
+     border-radius: 0 28px 28px 0;
+     align-items: flex-end;
+   }
+   [dir="rtl"] .hero-bio-box p,
+   [dir="rtl"] .cta-blurb {
+     text-align: right;
+   }
+
    .hero-right-cta {
-    display: none;
-  }
+     align-self: flex-start;
+     margin-left: -8.5rem;
+     margin-top: 2rem;
+     position: relative;
+     z-index: 10;
+     display: flex;
+   }
 
    [dir="rtl"] .hero-right-cta {
-     display: none;
+     margin-left: 0;
+     margin-right: -8.5rem;
+     display: flex;
+     align-self: flex-start;
    }
 
    .cta-blurb {
@@ -1664,8 +1689,8 @@
   
   /* Specific layout for Candy project node */
   .candy-node {
-    flex-direction: row !important;
-    justify-content: flex-start !important;
+    flex-direction: row;
+    justify-content: flex-start;
   }
 
   .candy-phone-left-container::before,
@@ -1870,9 +1895,9 @@
   .yemeni-node .node-content-wrapper {
     display: flex;
     flex-direction: column;
-    width: 42% !important;
-    margin-right: 58% !important;
-    margin-left: 0 !important;
+    width: 42%;
+    margin-right: 58%;
+    margin-left: 0;
     text-align: left;
   }
 
@@ -2255,10 +2280,6 @@
       }
     }
 
-   [dir="rtl"] .section-header-left {
-       align-items: flex-start; /* flex-start in RTL is right */
-       text-align: right;
-   }
 
    .title-massive {
        font-size: clamp(3rem, 8vw, 6rem) !important;
@@ -3291,7 +3312,7 @@
    [dir="rtl"] .yemeni-node .node-content-wrapper, [dir="rtl"] .internship-node .node-content-wrapper {
      margin-right: 0 !important;
      margin-left: 58% !important;
-     text-align: right;
+     text-align: right !important;
    }
 
    /* Flip the projection beams and arrows in RTL */
@@ -3388,9 +3409,9 @@
      [dir="rtl"] .experience-vertical-line { left: auto; right: 20px; display: none !important; }
      [dir="rtl"] .node-dot { left: auto; right: 20px; display: none !important; }
      [dir="rtl"] .node-content-wrapper { 
-       margin-left: 0 !important; 
-       margin-right: 60px !important;
-       width: calc(100% - 60px) !important;
+       margin-left: auto !important; 
+       margin-right: auto !important;
+       width: 100% !important;
        max-width: 550px;
        text-align: right !important; 
      }
@@ -5814,6 +5835,7 @@
     overflow: visible;
   }
   .hero-name-bg h1 {
+    font-family: 'Inter', sans-serif !important;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -5922,17 +5944,22 @@
     font-size: 0.95rem;
   }
   .hero-right-cta {
-    display: none; /* Hide on mobile if still in right col structure */
+    display: none !important;
   }
   .hero-center-cta {
     display: flex;
     justify-content: center;
-    margin-top: -5vh; /* Moved further down from the line */
-    padding-bottom: 8vh; /* Added more space before the first card */
+    margin-top: -5vh; /* Properly positioned below the line on mobile */
+    padding-bottom: 8vh;
     position: relative;
     z-index: 20;
     width: 100%;
-    transform: translateX(6vw); /* Match portrait shift */
+    transform: translateX(6vw);
+  }
+  
+  [dir="rtl"] .hero-portrait,
+  [dir="rtl"] .hero-center-cta {
+    transform: translateX(-6vw); /* Reverse shift in RTL */
   }
 }
 
