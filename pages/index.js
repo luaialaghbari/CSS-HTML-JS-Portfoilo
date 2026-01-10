@@ -9,7 +9,17 @@ export default function Home() {
   const [theme, setTheme] = useState('dark');
   const [active, setActive] = useState('profile');
   const [lang, setLang] = useState('en');
+  const [scrolled, setScrolled] = useState(false);
   const yearRef = useRef(null);
+  
+  // Scroll listener for hero shadow
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
   const t = {
     en: {
@@ -402,7 +412,7 @@ export default function Home() {
         </div>
       </nav>
 
-      <section id="profile" className="hero-modern">
+      <section id="profile" className={`hero-modern ${scrolled ? 'scrolled' : ''}`}>
         {/* Aesthetic background elements */}
         <div className="hero-bg-glow"></div>
         <div className="hero-rings">
@@ -416,9 +426,9 @@ export default function Home() {
           <div className="hero-name-bg">
             <h1 className="name-main">
               {lang === 'ar' ? (
-                <>لؤي <span className="name-accent">الغبري</span></>
+                <><span className="first-name">لؤي</span> <span className="name-accent">الغبري</span></>
               ) : (
-                <>Luai <span className="name-accent">Alaghbari</span></>
+                <><span className="first-name">Luai</span> <span className="name-accent">Alaghbari</span></>
               )}
             </h1>
           </div>
@@ -433,14 +443,12 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <p>
-                  <span className="text-dot"></span>
                   {lang === 'ar' ? (
-                    <>أقوم بإنشاء <span className="text-gradient-small">واجهات</span> تمزج بين <span className="text-gradient-small">الوظيفة</span> والعاطفة، لتجربة رقمية تبدو بديهية وسلسة وذات <span className="text-gradient-small">مغزى</span>.</>
+                    <>أنا <span className="text-gradient-small">مصمم UI/UX ومطور واجهات أمامية</span>، أصمم تجارب رقمية سلسة وعالية الأداء.</>
                   ) : (
-                    <>I create <span className="text-gradient-small">interfaces</span> that blend <span className="text-gradient-small">function</span> with emotion, crafting <span className="text-gradient-small">digital experiences</span> that feel intuitive, seamless, and meaningful.</>
+                    <>I'm a <span className="text-gradient-small">UI/UX Designer & Frontend Developer</span> crafting high-performance, intuitive digital experiences.</>
                   )}
                 </p>
-
               </motion.div>
             </div>
 
@@ -454,6 +462,21 @@ export default function Home() {
               >
                 <div className="portrait-glow-circle"></div>
                 <img src="/assets/newprofilelogo.png" alt="Luai Alaghbari" />
+                <div className="hero-line-separator"></div>
+              </motion.div>
+
+              <motion.div
+                className="hero-center-cta"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                <button className="btn-modern-pill" onClick={() => window.open('/resume.pdf', '_blank')}>
+                  <span>{lang === 'ar' ? 'تحميل السيرة الذاتية' : 'Download Resume'}</span>
+                  <div className="btn-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </div>
+                </button>
               </motion.div>
             </div>
 
@@ -466,19 +489,12 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 <p className="cta-blurb">
-                  <span className="text-dot"></span>
                   {lang === 'ar' ? (
-                    <>دمج <span className="text-gradient-small">التفكير التصميمي</span> مع الرؤية البشرية لإنشاء تجارب رقمية لا تبدو <span className="text-gradient-small">رائعة</span> فحسب - بل تؤدي مهمتها <span className="text-gradient-small">ببراعة</span>.</>
+                    <>ملتزم بالإتقان الفني، أقدم حلولاً متفوقة في <span className="text-gradient-small">الـ UI/UX والواجهات الأمامية</span> تجمع بين الدقة التقنية و <span className="text-gradient-small">الأناقة في التصميم</span>.</>
                   ) : (
-                    <>Merging <span className="text-gradient-small">design thinking</span> with human insight to create digital experiences that don't just <span className="text-gradient-small">look great</span> — they perform <span className="text-gradient-small">effortlessly</span>.</>
+                    <>Dedicated to high-end craftsmanship, I deliver superior <span className="text-gradient-small">UI/UX & Frontend solutions</span> that combine technical precision with <span className="text-gradient-small">elegant design</span>.</>
                   )}
                 </p>
-                <button className="btn-modern-pill" onClick={() => window.open('/resume.pdf', '_blank')}>
-                  <span>{lang === 'ar' ? 'تحميل السيرة الذاتية' : 'Download Resume'}</span>
-                  <div className="btn-icon">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                  </div>
-                </button>
               </motion.div>
             </div>
           </div>
@@ -622,17 +638,59 @@ export default function Home() {
             const isCandy = exp.title.toLowerCase().includes('water delivery');
             const isYemeniStore = exp.title.toLowerCase().includes('yemeni store');
             const isGraduation = exp.title.toLowerCase().includes('graduation project');
+            const isInternship = exp.title.toLowerCase().includes('summer internship');
             
             return (
               <motion.div 
                 key={idx}
-                className={`experience-node ${idx % 2 === 0 ? 'left' : 'right'} ${isCandy ? 'candy-node' : ''} ${isYemeniStore ? 'yemeni-node' : ''} ${isGraduation ? 'graduation-node' : ''}`}
+                className={`experience-node ${idx % 2 === 0 ? 'left' : 'right'} ${isCandy ? 'candy-node' : ''} ${isYemeniStore ? 'yemeni-node' : ''} ${isGraduation ? 'graduation-node' : ''} ${isInternship ? 'internship-node' : ''}`}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.8, delay: idx * 0.1 }}
               >
                 <div className="node-dot"></div>
+                {isInternship && (
+                  <>
+                    <div className="internship-phone-right-container">
+                      <motion.div 
+                        className="iphone-17-frame titanium-natural"
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false }}
+                        transition={{ duration: 0.8 }}
+                      >
+                        <div className="iphone-inner-border"></div>
+                        <div className="iphone-dynamic-island"></div>
+                        <div className="iphone-buttons-left">
+                          <div className="action-button"></div>
+                          <div className="volume-up"></div>
+                          <div className="volume-down"></div>
+                        </div>
+                        <div className="iphone-buttons-right">
+                          <div className="power-button"></div>
+                          <div className="camera-control"></div>
+                        </div>
+                        <div className="iphone-screen">
+                          <img src="/assets/Screenshot 2026-01-09 233757.png" alt="Internship Project" />
+                        </div>
+                        <div className="iphone-bottom-details">
+                          <div className="speaker-grill">
+                            <span></span><span></span><span></span>
+                          </div>
+                          <div className="usb-c-port"></div>
+                          <div className="speaker-grill">
+                            <span></span><span></span><span></span>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </div>
+                    <div className="project-connector-line">
+                      <div className="project-beam-arrow"></div>
+                    </div>
+                  </>
+                )}
+
                 {isCandy && (
                   <>
                     <div className="candy-phone-left-container">

@@ -748,6 +748,12 @@
      background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, transparent 100%);
      z-index: 25;
      pointer-events: none;
+     opacity: 0;
+     transition: opacity 0.5s ease;
+   }
+
+   .hero-modern.scrolled::before {
+     opacity: 1;
    }
 
    .hero-modern::after {
@@ -759,6 +765,17 @@
      height: 2px;
      background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 1), transparent);
      z-index: 30;
+     opacity: 0;
+     transition: opacity 0.5s ease;
+   }
+
+   .hero-modern.scrolled::after {
+     opacity: 1;
+   }
+   
+   .hero-modern.scrolled {
+     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 5px 20px rgba(124, 58, 237, 0.3);
+     transition: box-shadow 0.5s ease;
    }
    
    .hero-bg-glow {
@@ -849,7 +866,8 @@
      flex-direction: column;
      justify-content: center;
      align-items: flex-start;
-     padding:  0 0 0 6vw; /* Specific padding for bio text only, not the section */
+     padding: 0 0 4vh 0; 
+     height: 100%;
      margin: 0;
    }
    
@@ -857,6 +875,15 @@
      display: flex;
      flex-direction: column;
      align-items: flex-start;
+     background: rgba(33, 33, 33, 0.4);
+     backdrop-filter: blur(12px);
+     -webkit-backdrop-filter: blur(12px);
+     padding: 1.5rem 2.5rem;
+     border-radius: 0 28px 28px 0;
+     border: none;
+     box-shadow: 
+       0 0 40px rgba(0, 0, 0, 1),
+       0 0 15px rgba(124, 58, 237, 0.7);
    }
    
    .text-gradient-small {
@@ -867,11 +894,11 @@
    }
    
    .hero-bio-box p {
-     font-size:  1.2rem; /* Increased size */
-     color: rgba(255, 255, 255, 0.8);
+     font-size:  1.1rem; 
+     color: rgba(255, 255, 255, 0.85);
      line-height: 1.6;
-     max-width:   450px;
-     margin-bottom: 1.5rem;
+     max-width:   600px;
+     margin-bottom: 0;
      font-weight: 400;
      text-align: left;
    }
@@ -880,11 +907,22 @@
    
    .hero-col-center {
      display: flex;
+     flex-direction: column;
      justify-content: center;
-     align-items: flex-end;
+     align-items: center;
      position: static; /* Allow absolute child to reference hero-modern */
      height: 100vh;
      z-index: 20;
+     gap: 2rem;
+   }
+
+   .hero-center-cta {
+     position: relative;
+     z-index: 40; /* High z-index to stay above portrait */
+     margin-top: -10vh; /* Give it some breathing room below the portrait line */
+     display: flex;
+     justify-content: center;
+     width: 100%;
    }
    
    .hero-portrait {
@@ -893,7 +931,7 @@
      left: 0;
      width: 100%;
      max-width: none;
-     z-index: 15;
+     z-index: 30;
      height: 100vh;
      display: flex;
      align-items: flex-end;
@@ -920,25 +958,48 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    align-items: flex-end;
+    align-items: flex-start;
     text-align: left;
     height: 100%;
-    padding: 0 4rem 12vh 0;
+    padding: 0 0 15vh 0;
     margin: 0;
   }
    
+   .hero-cta-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: rgba(33, 33, 33, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 1.5rem 2.5rem;
+    border-radius: 28px 0 0 28px;
+    border: none;
+    box-shadow: 
+      0 0 40px rgba(0, 0, 0, 1),
+      0 0 15px rgba(124, 58, 237, 0.7);
+   }
+
+   .hero-right-cta {
+    display: none;
+  }
+
+   [dir="rtl"] .hero-right-cta {
+     display: none;
+   }
+
    .cta-blurb {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.85);
     line-height: 1.6;
-    max-width:  450px;
-    margin-bottom: 2rem;
+    max-width:  600px;
+    margin-bottom: 0;
     font-weight: 400;
     text-align: left;
   }
    
    .btn-modern-pill {
-     background: #7c3aed;
+     background: var(--title-accent);
      color: #fff;
      border: none;
      padding: 0.4rem 0.4rem 0.4rem 1.6rem;
@@ -949,15 +1010,15 @@
      align-items: center;
      gap: 1.2rem;
      cursor: pointer;
-     transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-     box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+     transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+     box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
    }
    
    .btn-modern-pill .btn-icon {
      width: 36px;
      height: 36px;
      background: #fff;
-     color: #7c3aed;
+     color: #7c3aed; /* Keep icon color or make it match */
      border-radius: 50%;
      display: flex;
      align-items: center;
@@ -965,9 +1026,9 @@
    }
    
    .btn-modern-pill:hover {
-     background: #6d28d9;
+     opacity: 0.9;
      transform: scale(1.05) translateY(-2px);
-     box-shadow: 0 15px 40px rgba(124, 58, 237, 0.4);
+     box-shadow: 0 15px 40px rgba(124, 58, 237, 0.6);
    }
    
    .hero-centered {
@@ -1591,7 +1652,7 @@
   }
   @media screen and (max-width: 768px) {
     .iphone-17-frame { transform: scale(1); position: relative; left: auto; top: auto; margin-bottom: 20px; }
-    .candy-phone-left-container, .yemeni-phone-right-container, .graduation-phone-left-container { 
+    .candy-phone-left-container, .yemeni-phone-right-container, .graduation-phone-left-container, .internship-phone-right-container { 
       position: relative; width: 100%; height: auto; transform: none; padding: 20px 0;
     }
     .experience-node { flex-direction: column !important; height: auto !important; padding: 40px 20px !important; }
@@ -1758,7 +1819,7 @@
 
 
 
-  .yemeni-phone-right-container {
+  .yemeni-phone-right-container, .internship-phone-right-container {
     position: absolute;
     right: 0;
     width: 42%;
@@ -1771,7 +1832,7 @@
     transform: translateY(40px); /* Align centered with card */
   }
 
-  .yemeni-phone-right-container .iphone-17-frame {
+  .yemeni-phone-right-container .iphone-17-frame, .internship-phone-right-container .iphone-17-frame {
     pointer-events: auto;
   }
 
@@ -1805,10 +1866,7 @@
     background: #ffffff; /* Match background for non-cropped areas */
   }
 
-  /* Specific layout for Yemen Store project node */
-  .yemeni-node {
-  }
-
+  .internship-node .node-content-wrapper,
   .yemeni-node .node-content-wrapper {
     display: flex;
     flex-direction: column;
@@ -1818,6 +1876,7 @@
     text-align: left;
   }
 
+  .internship-node .node-tech, .internship-node .node-actions,
   .yemeni-node .node-tech, .yemeni-node .node-actions {
     justify-content: flex-start;
   }
@@ -3224,12 +3283,12 @@
      right: 0;
    }
 
-   [dir="rtl"] .yemeni-phone-right-container {
+   [dir="rtl"] .yemeni-phone-right-container, [dir="rtl"] .internship-phone-right-container {
      right: auto;
      left: 0;
    }
 
-   [dir="rtl"] .yemeni-node .node-content-wrapper {
+   [dir="rtl"] .yemeni-node .node-content-wrapper, [dir="rtl"] .internship-node .node-content-wrapper {
      margin-right: 0 !important;
      margin-left: 58% !important;
      text-align: right;
@@ -3241,7 +3300,7 @@
      clip-path: polygon(0% 0%, 100% 30%, 100% 70%, 0% 100%);
    }
 
-   [dir="rtl"] .yemeni-node .project-connector-line {
+   [dir="rtl"] .yemeni-node .project-connector-line, [dir="rtl"] .internship-node .project-connector-line {
      clip-path: polygon(0% 30%, 100% 0%, 100% 100%, 0% 70%);
    }
 
@@ -3256,7 +3315,7 @@
      --rot: 45deg;
    }
 
-   [dir="rtl"] .yemeni-node .project-beam-arrow {
+   [dir="rtl"] .yemeni-node .project-beam-arrow, [dir="rtl"] .internship-node .project-beam-arrow {
      transform: translate(-50%, -50%) rotate(225deg);
      margin-left: -5px;
      --rot: 225deg;
@@ -5719,49 +5778,161 @@
 
   /* Hero Modern Responsive */
   .hero-modern {
-    margin: 0;
+    padding: 0 !important;
+    min-height: 100svh; /* Use SVH for mobile browser bars */
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+  .hero-modern-container {
     padding: 0;
-    min-height: auto;
-    border-radius: 0;
+    width: 100%;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
   }
   .hero-modern-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    text-align: center;
-    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 1.5rem;
+    padding-top: 10vh;
+    padding-bottom: 5vh;
+    z-index: 10;
   }
-  .hero-col-left, .hero-col-right {
-    padding-top: 0;
-    order: 2;
-    align-items: center;
+  .hero-name-bg {
+    position: absolute;
+    top: 6vh; /* Under the navigation bar */
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    opacity: 1; /* Fully visible */
     text-align: center;
+    pointer-events: none;
+    overflow: visible;
+  }
+  .hero-name-bg h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 900;
+    margin: 0;
+    text-transform: uppercase;
+    line-height: 0.6;
+    background: none;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    background-clip: initial;
+  }
+  .first-name {
+    display: block;
+    font-size: 24vw; 
+    transform: scaleY(2.2) scaleX(1.1); 
+    transform-origin: center;
+    letter-spacing: -0.02em;
+    margin-bottom: 5vh;
+    color: #ffffff; /* Explicitly white */
+  }
+  .name-accent {
+    display: block;
+    font-size: 15vw;
+    transform: scaleY(2) scaleX(1.1); 
+    transform-origin: center;
+    letter-spacing: -0.01em;
+    /* Apply gradient only to Alaghbari */
+    background: var(--title-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   .hero-col-center {
     order: 1;
-    padding-top: 0;
-  }
-  .hero-bio-box, .hero-cta-box {
-    align-items: center;
-    text-align: center;
-  }
-  .hero-name-bg h1 {
-    font-size: 15vw;
+    width: 100%;
+    margin-top: -22vh; 
+    margin-bottom: 2vh; 
+    z-index: 5;
+    height: auto;
+    display: flex;
     flex-direction: column;
-    gap: 0;
-  }
-  .hero-portrait {
-    max-width: 100%;
-  }
-  .hero-bio-box p, .cta-blurb {
-    max-width:   450px;
-    font-size:  1.2rem;
-  }
-  .hero-social-circles {
+    align-items: center; /* Horizontally center everything */
     justify-content: center;
   }
-  .btn-modern-pill {
-    width: fit-content;
-    padding: 0.3rem 0.3rem 0.3rem 1.5rem;
+  .hero-portrait {
+    position: relative;
+    height: 75svh;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center; /* Ensure image is centered within container */
+    overflow: visible;
+    transform: translateX(6vw); /* Only the portrait is shifted right */
+  }
+  .hero-portrait img {
+    height: 100%;
+    width: auto;
+    max-width: 120%; /* Width from 3:38 */
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+    display: block;
+  }
+  /* The line exactly under the pic bottom */
+  .hero-line-separator {
+    position: absolute;
+    bottom: 16.5vh; /* Final precise adjustment as requested */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #8b5cf6, transparent);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+    z-index: 10;
+  }
+  /* Remove old pseudo-elements */
+  .hero-col-center::after,
+  .hero-portrait::after {
+    display: none !important;
+  }
+  .hero-col-left {
+    order: 2;
+    align-items: flex-start;
+    position: relative;
+    z-index: 10;
+    margin-top: 1rem;
+  }
+  .hero-col-right {
+    order: 3;
+    align-items: flex-end;
+    position: relative;
+    z-index: 15;
+    margin-top: 1.5rem;
+  }
+  .hero-bio-box {
+    border-radius: 0 24px 24px 0;
+    width: 85%;
+    padding: 1.2rem 1.5rem;
+  }
+  .hero-cta-box {
+    border-radius: 24px 0 0 24px;
+    width: 85%;
+    padding: 1.2rem 1.5rem;
+  }
+  .hero-bio-box p, .cta-blurb {
+    font-size: 0.95rem;
+  }
+  .hero-right-cta {
+    display: none; /* Hide on mobile if still in right col structure */
+  }
+  .hero-center-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: -5vh; /* Moved further down from the line */
+    padding-bottom: 8vh; /* Added more space before the first card */
+    position: relative;
+    z-index: 20;
+    width: 100%;
+    transform: translateX(6vw); /* Match portrait shift */
   }
 }
 
