@@ -1414,10 +1414,12 @@
   .iphone-screen video {
     width: 100%;
     height: calc(100% - 40px);
-    object-fit: fill;
+    object-fit: contain; /* ensures full recording stays visible */
     position: absolute;
-    top: 40px;
+    top: 40px; /* start right below status bar */
     left: 0;
+    image-rendering: auto;
+    background: #000; /* subtle letterbox framing */
   }
 
   /* Status Bar Shadow */
@@ -1431,6 +1433,13 @@
     background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
     z-index: 20;
     pointer-events: none;
+  }
+
+  /* Water app frame uses a light status bar to match UI */
+  .candy-node .iphone-screen::before {
+    background: #ffffff;
+    height: 40px;
+    box-shadow: none;
   }
 
   .iphone-dynamic-island {
@@ -1621,17 +1630,7 @@
   }
 
   .iphone-bottom-details {
-    position: absolute;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 65%;
-    height: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 10;
-    opacity: 0.8;
+    display: none; /* remove decorative dots/ports per updated design */
   }
 
   .speaker-grill {
