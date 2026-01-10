@@ -262,6 +262,7 @@ export default function Home() {
     return () => io.disconnect();
   }, []);
 
+
   // --- Magnetic Avatar Component ---
   const MagneticAvatar = ({ children }) => {
     const ref = useRef(null);
@@ -648,17 +649,58 @@ export default function Home() {
             const isYemeniStore = exp.title.toLowerCase().includes('yemeni store');
             const isGraduation = exp.title.toLowerCase().includes('graduation project');
             const isInternship = exp.title.toLowerCase().includes('summer internship');
+            const isQrEvents = exp.title.toLowerCase().includes('qr events');
             
             return (
               <motion.div 
                 key={idx}
-                className={`experience-node ${idx % 2 === 0 ? 'left' : 'right'} ${isCandy ? 'candy-node' : ''} ${isYemeniStore ? 'yemeni-node' : ''} ${isGraduation ? 'graduation-node' : ''} ${isInternship ? 'internship-node' : ''}`}
+                className={`experience-node ${idx % 2 === 0 ? 'left' : 'right'} ${isCandy ? 'candy-node' : ''} ${isYemeniStore ? 'yemeni-node' : ''} ${isGraduation ? 'graduation-node' : ''} ${isInternship ? 'internship-node' : ''} ${isQrEvents ? 'qr-node' : ''}`}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.8, delay: idx * 0.1 }}
               >
                 <div className="node-dot"></div>
+                {isQrEvents && (
+                  <>
+                    <div className="qr-phone-right-container">
+                      <motion.div 
+                        className="iphone-17-frame titanium-silver"
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false }}
+                        transition={{ duration: 0.8 }}
+                      >
+                        <div className="iphone-inner-border"></div>
+                        <div className="iphone-dynamic-island"></div>
+                        <div className="iphone-buttons-left">
+                          <div className="action-button"></div>
+                          <div className="volume-up"></div>
+                          <div className="volume-down"></div>
+                        </div>
+                        <div className="iphone-buttons-right">
+                          <div className="power-button"></div>
+                          <div className="camera-control"></div>
+                        </div>
+                        <div className="iphone-screen">
+                          <img src="/assets/Screenshot_20250703_173702.jpg" alt="QR Events App" />
+                        </div>
+                        <div className="iphone-bottom-details">
+                          <div className="speaker-grill">
+                            <span></span><span></span><span></span>
+                          </div>
+                          <div className="usb-c-port"></div>
+                          <div className="speaker-grill">
+                            <span></span><span></span><span></span>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </div>
+                    <div className="project-connector-line">
+                      <div className="project-beam-arrow"></div>
+                    </div>
+                  </>
+                )}
                 {isInternship && (
                   <>
                     <div className="internship-phone-right-container">

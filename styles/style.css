@@ -1364,6 +1364,15 @@
       0 15px 35px rgba(0,0,0,0.4) !important;
   }
 
+  .titanium-cyan {
+    background: linear-gradient(135deg, #1fb6ff 0%, #0ea5e9 35%, #0b77c4 70%, #0b486b 100%) !important;
+    color: #1fb6ff;
+    box-shadow:
+      0 0 0 0.5px #7dd3fc,
+      inset 0 0 2px rgba(255,255,255,0.25),
+      0 15px 35px rgba(0,0,0,0.4) !important;
+  }
+
   /* Precision Hardware Details */
   .iphone-17-frame::before,
   .iphone-17-frame::after {
@@ -1409,6 +1418,18 @@
     position: absolute;
     top: 0;
     left: 0;
+  }
+
+  /* Prevent cropping for QR Events mockup and keep white background */
+  .qr-node .iphone-screen {
+    background: #ffffff;
+  }
+
+  .qr-node .iphone-screen img {
+    object-fit: contain;
+    height: calc(100% - 35px);
+    margin-top: 35px; /* start below status bar */
+    background: #ffffff;
   }
 
   .iphone-screen video {
@@ -1677,7 +1698,7 @@
   }
   @media screen and (max-width: 768px) {
     .iphone-17-frame { transform: scale(1); position: relative; left: auto; top: auto; margin-bottom: 20px; }
-    .candy-phone-left-container, .yemeni-phone-right-container, .graduation-phone-left-container, .internship-phone-right-container { 
+    .candy-phone-left-container, .yemeni-phone-right-container, .graduation-phone-left-container, .internship-phone-right-container, .qr-phone-right-container { 
       position: relative; width: 100%; height: auto; transform: none; padding: 20px 0;
     }
     .experience-node { flex-direction: column !important; height: auto !important; padding: 40px 20px !important; }
@@ -1759,7 +1780,7 @@
     clip-path: polygon(0% 30%, 100% 0%, 100% 100%, 0% 70%);
   }
 
-  .yemeni-node .project-connector-line {
+  .yemeni-node .project-connector-line, .qr-node .project-connector-line {
     clip-path: polygon(0% 0%, 100% 30%, 100% 70%, 0% 100%);
   }
 
@@ -1844,7 +1865,7 @@
 
 
 
-  .yemeni-phone-right-container, .internship-phone-right-container {
+  .yemeni-phone-right-container, .internship-phone-right-container, .qr-phone-right-container {
     position: absolute;
     right: 0;
     width: 42%;
@@ -1857,7 +1878,7 @@
     transform: translateY(40px); /* Align centered with card */
   }
 
-  .yemeni-phone-right-container .iphone-17-frame, .internship-phone-right-container .iphone-17-frame {
+  .yemeni-phone-right-container .iphone-17-frame, .internship-phone-right-container .iphone-17-frame, .qr-phone-right-container .iphone-17-frame {
     pointer-events: auto;
   }
 
@@ -1891,8 +1912,13 @@
     background: #ffffff; /* Match background for non-cropped areas */
   }
 
+  .qr-node .iphone-screen::before {
+    background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0));
+  }
+
   .internship-node .node-content-wrapper,
-  .yemeni-node .node-content-wrapper {
+  .yemeni-node .node-content-wrapper,
+  .qr-node .node-content-wrapper {
     display: flex;
     flex-direction: column;
     width: 42%;
@@ -1936,7 +1962,8 @@
 
     .candy-phone-left-container, 
     .yemeni-phone-right-container, 
-    .graduation-phone-left-container {
+    .graduation-phone-left-container,
+    .qr-phone-right-container {
       position: relative !important;
       left: 0 !important;
       right: 0 !important;
@@ -2957,7 +2984,7 @@
     margin-left: -5px;
   }
 
-  .yemeni-node .project-beam-arrow {
+  .yemeni-node .project-beam-arrow, .qr-node .project-beam-arrow {
     transform: translate(-50%, -50%) rotate(45deg); /* Points right toward phone */
     margin-left: 5px;
   }
@@ -2973,7 +3000,7 @@
   }
 
   .candy-node:hover .project-beam-arrow, .graduation-node:hover .project-beam-arrow { --rot: 225deg; }
-  .yemeni-node:hover .project-beam-arrow { --rot: 45deg; }
+  .yemeni-node:hover .project-beam-arrow, .qr-node:hover .project-beam-arrow { --rot: 45deg; }
 
   /* Gradient Timeline Nodes - RESTORED */
   .node-dot {
@@ -3304,12 +3331,12 @@
      right: 0;
    }
 
-   [dir="rtl"] .yemeni-phone-right-container, [dir="rtl"] .internship-phone-right-container {
+   [dir="rtl"] .yemeni-phone-right-container, [dir="rtl"] .internship-phone-right-container, [dir="rtl"] .qr-phone-right-container {
      right: auto;
      left: 0;
    }
 
-   [dir="rtl"] .yemeni-node .node-content-wrapper, [dir="rtl"] .internship-node .node-content-wrapper {
+   [dir="rtl"] .yemeni-node .node-content-wrapper, [dir="rtl"] .internship-node .node-content-wrapper, [dir="rtl"] .qr-node .node-content-wrapper {
      margin-right: 0 !important;
      margin-left: 58% !important;
      text-align: right !important;
@@ -3321,7 +3348,7 @@
      clip-path: polygon(0% 0%, 100% 30%, 100% 70%, 0% 100%);
    }
 
-   [dir="rtl"] .yemeni-node .project-connector-line, [dir="rtl"] .internship-node .project-connector-line {
+   [dir="rtl"] .yemeni-node .project-connector-line, [dir="rtl"] .internship-node .project-connector-line, [dir="rtl"] .qr-node .project-connector-line {
      clip-path: polygon(0% 30%, 100% 0%, 100% 100%, 0% 70%);
    }
 
@@ -3336,7 +3363,7 @@
      --rot: 45deg;
    }
 
-   [dir="rtl"] .yemeni-node .project-beam-arrow, [dir="rtl"] .internship-node .project-beam-arrow {
+   [dir="rtl"] .yemeni-node .project-beam-arrow, [dir="rtl"] .internship-node .project-beam-arrow, [dir="rtl"] .qr-node .project-beam-arrow {
      transform: translate(-50%, -50%) rotate(225deg);
      margin-left: -5px;
      --rot: 225deg;

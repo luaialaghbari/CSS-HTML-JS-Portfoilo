@@ -244,6 +244,29 @@ const resume = {
       ],
       technologies: ['Flutter', 'Dart', 'React.js', 'Node.js', 'Supabase', 'Mapbox', 'Git/GitHub'],
     },
+    {
+      title: 'QR Events — Invitation & Check-in App (KSA) | 2025 – Present',
+      titleAr: 'تطبيق فعاليات QR — الدعوات وتسجيل الحضور (السعودية) | 2025 – الآن',
+      company: 'QR Events Platform',
+      companyAr: 'منصة فعاليات QR',
+      location: '',
+      locationAr: '',
+      period: '2025 – Present',
+      periodAr: '2025 – الآن',
+      preview: '/assets/Screenshot_20250703_173702.jpg',
+      source: '#',
+      highlights: [
+        'QR invitation and on-site check-in app for public and private events.',
+        'Led UI/UX and frontend; built the mobile flow to create, send, and scan event QR passes.',
+        'Integrated WhatsApp Cloud API and SMS flows for RSVPs, reminders, and navigation deep links.',
+      ],
+      highlightsAr: [
+        'تطبيق دعوات وتسجيل حضور بالـ QR للفعاليات العامة والخاصة.',
+        'قدت تصميم وتجربة المستخدم وتطوير الفرونت إند؛ بناء تدفق الموبايل لإنشاء وإرسال ومسح تذاكر QR.',
+        'دمج WhatsApp Cloud API ورسائل SMS لمسارات RSVP والتذكيرات وروابط التنقل.',
+      ],
+      technologies: ['Flutter', 'Dart', 'React/Next.js', 'Node.js', 'Supabase/Postgres', 'WhatsApp Cloud API', 'QR Scanning'],
+    },
   ],
 
   skills: [
