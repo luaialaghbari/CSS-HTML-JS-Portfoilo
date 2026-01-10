@@ -1414,12 +1414,13 @@
   .iphone-screen video {
     width: 100%;
     height: calc(100% - 40px);
-    object-fit: contain; /* ensures full recording stays visible */
+    object-fit: contain; /* show full 1080p frame without cropping */
+    object-position: center top;
     position: absolute;
     top: 40px; /* start right below status bar */
     left: 0;
-    image-rendering: auto;
-    background: #000; /* subtle letterbox framing */
+    image-rendering: optimizeQuality;
+    background: #000; /* letterbox gap mimics real phone bezel */
   }
 
   /* Status Bar Shadow */
@@ -1437,7 +1438,7 @@
 
   /* Water app frame uses a light status bar to match UI */
   .candy-node .iphone-screen::before {
-    background: #ffffff;
+    background: #000000;
     height: 40px;
     box-shadow: none;
   }
