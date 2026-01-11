@@ -426,88 +426,56 @@ export default function Home() {
           {/* Large Background Name */}
           <div className="hero-name-bg">
             <h1 className="name-main">
-              <span className="first-name">Luai</span> <span className="name-accent">Alaghbari</span>
+              <span className="hi-text">Hi</span>
+              <span className="first-name">, I’m Luai Alaghbari</span>
+              <div className="hero-subtitle-container">
+                <span className="name-accent">Frontend Developer &</span>
+                <span className="name-accent">UI UX designer<span className="dot-accent">.</span></span>
+              </div>
             </h1>
           </div>
 
           <div className="hero-modern-grid">
-            {/* Left Column: Bio & Socials */}
-            <div className="hero-col-left">
+            {/* Left Column: Name, Bio & CTA */}
+            <div className="hero-col-content">
               <motion.div 
-                className="hero-bio-box"
+                className="hero-text-block"
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <p>
-                  {lang === 'ar' ? (
-                    <>أنا <span className="text-gradient-small">مصمم UI/UX ومطور واجهات أمامية</span>، أصمم تجارب رقمية سلسة وعالية الأداء.</>
-                  ) : (
-                    <>I'm a <span className="text-gradient-small">UI/UX Designer & Frontend Developer</span> crafting high-performance, intuitive digital experiences.</>
-                  )}
+                <p className="hero-description">
+                  {/* Text removed */}
                 </p>
+              </motion.div>
+
+              {/* Action Button */}
+              <motion.div
+                className="hero-action-btn"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                <button className="btn-modern-pill" onClick={() => window.open('/assets/My Resume.pdf', '_blank')}>
+                  <span>{lang === 'ar' ? 'تحميل السيرة الذاتية' : 'Download Resume'}</span>
+                  <div className="btn-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </div>
+                </button>
               </motion.div>
             </div>
 
-            {/* Center Column: Portrait Image */}
-            <div className="hero-col-center">
+            {/* Right Column: Portrait Image */}
+            <div className="hero-col-portrait">
               <motion.div 
                 className="hero-portrait"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="portrait-glow-circle"></div>
+                <div className="portrait-bg-shape"></div>
                 <img src="/assets/newprofilelogo.png" alt="Luai Alaghbari" />
                 <div className="hero-line-separator"></div>
-              </motion.div>
-
-              {/* Mobile-only CTA */}
-              <motion.div
-                className="hero-center-cta mobile-only-btn"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-              >
-                <button className="btn-modern-pill" onClick={() => window.open('/assets/My Resume.pdf', '_blank')}>
-                  <span>{lang === 'ar' ? 'تحميل السيرة الذاتية' : 'Download Resume'}</span>
-                  <div className="btn-icon">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                  </div>
-                </button>
-              </motion.div>
-            </div>
-
-            {/* Right Column: CTA & Blurb */}
-            <div className="hero-col-right">
-              <motion.div 
-                className="hero-cta-box"
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                <p className="cta-blurb">
-                  {lang === 'ar' ? (
-                    <>ملتزم بالإتقان الفني، أقدم حلولاً متفوقة في <span className="text-gradient-small">الـ UI/UX والواجهات الأمامية</span> تجمع بين الدقة التقنية و <span className="text-gradient-small">الأناقة في التصميم</span>.</>
-                  ) : (
-                    <>Dedicated to high-end craftsmanship, I deliver superior <span className="text-gradient-small">UI/UX & Frontend solutions</span> that combine technical precision with <span className="text-gradient-small">elegant design</span>.</>
-                  )}
-                </p>
-              </motion.div>
-
-              {/* Desktop-only CTA */}
-              <motion.div
-                className="hero-right-cta desktop-only-btn"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-              >
-                <button className="btn-modern-pill" onClick={() => window.open('/assets/My Resume.pdf', '_blank')}>
-                  <span>{lang === 'ar' ? 'تحميل السيرة الذاتية' : 'Download Resume'}</span>
-                  <div className="btn-icon">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                  </div>
-                </button>
               </motion.div>
             </div>
           </div>
