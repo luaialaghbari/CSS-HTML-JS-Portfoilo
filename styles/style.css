@@ -1340,11 +1340,11 @@
 
   /* iPhone 17 Pro Max Frame Styles */
   .iphone-17-frame {
-    width: 250px;
-    height: 541px;
+    width: 280px;
+    height: 606px;
     background: #000; 
-    border-radius: 46px; /* Authentic iPhone Squircle */
-    padding: 2px; 
+    border-radius: 44px; /* Restored to previous refined radius */
+    padding: 4.5px; /* Slimmer, ultra-realistic titanium rim */
     position: relative;
     z-index: 20;
     display: flex;
@@ -1356,39 +1356,67 @@
       0 0 0 0.5px rgba(0,0,0,0.9),
       0 12px 40px rgba(0,0,0,0.6);
     overflow: visible;
+    /* Maintain sharpness during and after animations */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform;
   }
 
   /* Hyper-Realistic Titanium Finishes */
   .titanium-orange { 
-    background: linear-gradient(135deg, #d38e5d 0%, #a26543 50%, #613926 100%) !important;
-    color: #d38e5d; /* Reference for children */
+    background: linear-gradient(135deg, 
+      #e5a47e 0%, 
+      #d38e5d 25%, 
+      #a26543 50%, 
+      #d38e5d 75%, 
+      #613926 100%
+    ) !important;
+    color: #d38e5d;
     box-shadow: 
-      0 0 0 0.5px #e5a47e, /* Edge light */
-      inset 0 0.5px 1px rgba(255,255,255,0.4),
-      0 15px 35px rgba(0,0,0,0.4) !important;
+      0 0 0 0.8px #f0c4aa, /* Brighter outer rim highlight */
+      inset 0 0 2px rgba(255,255,255,0.4), /* Metallic inner reflection */
+      0 15px 35px rgba(0,0,0,0.5) !important;
   }
   .titanium-silver { 
-    background: linear-gradient(135deg, #f5f5f7 0%, #9ba3af 50%, #5d646e 100%) !important;
-    color: #f5f5f7;
+    background: linear-gradient(135deg, 
+      #d1d1d6 0%, 
+      #ebebed 25%, 
+      #8e8e93 50%, 
+      #c7c7cc 75%, 
+      #adb5bd 100%
+    ) !important;
+    color: #c7c7cc;
     box-shadow: 
-      0 0 0 0.5px #fff,
-      inset 0 0 2px rgba(255,255,255,0.3),
+      0 0 0 0.8px #e5e5ea,
+      inset 0 0 2px rgba(255,255,255,0.4),
       0 15px 35px rgba(0,0,0,0.4) !important;
   }
   .titanium-deep-blue { 
-    background: linear-gradient(135deg, #3a4b5c 0%, #1e2933 50%, #0d1217 100%) !important;
+    background: linear-gradient(135deg, 
+      #5e7fa3 0%, 
+      #3a4b5c 25%, 
+      #1e2933 50%, 
+      #3a4b5c 75%, 
+      #0d1217 100%
+    ) !important;
     color: #3a4b5c;
     box-shadow: 
-      0 0 0 0.5px #5e7fa3,
-      inset 0 0 2px rgba(255,255,255,0.1),
-      0 15px 35px rgba(0,0,0,0.4) !important;
+      0 0 0 0.8px #7aa0c7,
+      inset 0 0 2px rgba(255,255,255,0.2),
+      0 15px 35px rgba(0,0,0,0.5) !important;
   }
   .titanium-natural {
-    background: linear-gradient(135deg, #b7b0a7 0%, #8e877e 50%, #56514a 100%) !important;
+    background: linear-gradient(135deg, 
+      #d1ccc5 0%, 
+      #b7b0a7 25%, 
+      #8e877e 50%, 
+      #b7b0a7 75%, 
+      #56514a 100%
+    ) !important;
     color: #b7b0a7;
     box-shadow: 
-      0 0 0 0.5px #d1ccc5,
-      inset 0 0 2px rgba(255,255,255,0.2),
+      0 0 0 0.8px #e6e2dd,
+      inset 0 0 2px rgba(255,255,255,0.3),
       0 15px 35px rgba(0,0,0,0.4) !important;
   }
 
@@ -1419,8 +1447,8 @@
 
   .iphone-inner-border {
     position: absolute;
-    inset: 2px; 
-    border-radius: 44px;
+    inset: 2.5px; /* Ultra-slim professional bezel */
+    border-radius: 42px; 
     background: #000; /* Real display bezel */
     pointer-events: none;
     z-index: 5;
@@ -1430,13 +1458,17 @@
   }
 
   .iphone-screen {
-    width: calc(100% - 6px); /* Ultra-slim bezel */
-    height: calc(100% - 6px);
+    width: 100%; /* Fills the padded content area */
+    height: 100%;
     background: #000;
-    border-radius: 42px;
+    border-radius: 40px; /* Matches inner curve perfectly */
     overflow: hidden;
     position: relative;
     z-index: 6;
+    /* Maintain hardware acceleration to keep video sharp */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
   }
 
   .iphone-screen img {
@@ -1468,7 +1500,18 @@
     position: absolute;
     top: 40px; /* start right below status bar */
     left: 0;
-    image-rendering: optimizeQuality;
+    /* Ultra-aggressive high-quality rendering path */
+    image-rendering: -webkit-optimize-contrast;
+    -webkit-transform: translate3d(0, 0, 0) scale(1.0001);
+    transform: translate3d(0, 0, 0) scale(1.0001);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+    will-change: transform, opacity, contents;
+    /* Subtle filter hack to keep GPU compositor active and sharp */
+    -webkit-filter: brightness(1.000001) contrast(1.000001);
+    filter: brightness(1.000001) contrast(1.000001);
     background: #000; /* letterbox gap mimics real phone bezel */
   }
 
@@ -1549,7 +1592,7 @@
 
   .iphone-buttons-left {
     position: absolute;
-    left: -4.5px; /* Increased protrusion */
+    left: -3.5px; /* Restored protrusion */
     top: 110px;
     display: flex;
     flex-direction: column;
@@ -1559,7 +1602,7 @@
 
   .iphone-buttons-right {
     position: absolute;
-    right: -4.5px; 
+    right: -3.5px; 
     top: 160px;
     display: flex;
     flex-direction: column;
@@ -1570,29 +1613,31 @@
 
   /* Vibrant 3D Hardware Buttons */
   .action-button, .volume-up, .volume-down {
-    width: 4.5px;
-    background: inherit;
-    border-radius: 3px 0 0 3px;
+    width: 3.5px;
+    background: currentColor;
+    border-radius: 6px 0 0 6px; /* Pill-shaped outer edge */
     position: relative;
     box-shadow: 
-      -3px 0 5px rgba(0,0,0,0.4),
-      inset -1.5px 0 1px rgba(255,255,255,0.5),
-      inset 1px 0 2px rgba(0,0,0,0.3);
+      -1px 0 2px rgba(0,0,0,0.3),
+      inset -1px 0 1px rgba(255,255,255,0.4),
+      inset 0 1px 1px rgba(255,255,255,0.2), /* Top highlight */
+      inset 0 -1px 1px rgba(0,0,0,0.2); /* Bottom shadow */
     z-index: 15;
-    filter: brightness(1.1);
+    filter: brightness(1.08); 
     transition: transform 0.1s ease;
   }
 
   .power-button {
-    width: 4.5px;
+    width: 3.5px;
     height: 62px;
-    border-radius: 0 3px 3px 0;
+    border-radius: 0 6px 6px 0; /* Pill-shaped outer edge */
     box-shadow: 
-      3px 0 5px rgba(0,0,0,0.4),
-      inset 1.5px 0 1px rgba(255,255,255,0.5),
-      inset -1px 0 2px rgba(0,0,0,0.3);
-    background: inherit;
-    filter: brightness(1.1);
+      1px 0 2px rgba(0,0,0,0.3),
+      inset 1px 0 1px rgba(255,255,255,0.4),
+      inset 0 1px 1px rgba(255,255,255,0.2),
+      inset 0 -1px 1px rgba(0,0,0,0.2);
+    background: currentColor;
+    filter: brightness(1.08);
   }
 
   /* Enhanced 3D Specular Highlight */
@@ -1635,97 +1680,15 @@
 
 
 
-  /* Photorealistic Camera Control (Protruding & Color Matched) */
-  .camera-control {
-    height: 72px;
-    width: 6.5px;
-    border-radius: 4px 0 0 4px;
-    background: inherit;
-    box-shadow: 
-      3px 0 5px rgba(0,0,0,0.4),
-      inset 1.5px 0 1.5px rgba(255,255,255,0.4),
-      inset -1px 0 2px rgba(0,0,0,0.2);
-    border: none;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    filter: brightness(1.1);
-    z-index: 15;
-  }
-
-  .camera-control:hover {
-    filter: brightness(1.3);
-  }
-
-  /* 3D Glass Surface for Camera Control */
-  .camera-control::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0.1), transparent, rgba(0,0,0,0.2));
-    z-index: 2;
-  }
-
-  .camera-control::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 1px;
-    background: rgba(255,255,255,0.03);
-    box-shadow: 0 4px 0 rgba(255,255,255,0.03), 0 -4px 0 rgba(255,255,255,0.03);
-  }
-
-  .iphone-bottom-details {
-    display: none; /* remove decorative dots/ports per updated design */
-  }
-
-  .speaker-grill {
-    display: flex;
-    gap: 2.5px;
-  }
-
-  .speaker-grill span {
-    width: 3px;
-    height: 3px;
-    background: #000;
-    border-radius: 50%;
-    box-shadow: inset 0 0.5px 1px rgba(255,255,255,0.1);
-  }
-
-  .usb-c-port {
-    width: 28px;
-    height: 6px;
-    background: #050505;
-    border-radius: 3px;
-    border: 0.5px solid rgba(255,255,255,0.05);
-    box-shadow: 
-      inset 0 2px 4px rgba(0,0,0,1),
-      0 0.5px 0.5px rgba(255,255,255,0.1);
-    position: relative;
-  }
-
-  .usb-c-port::after {
-    content: '';
-    position: absolute;
-    inset: 1px 5px;
-    background: #0a0a0a;
-    border-radius: 1px;
-    box-shadow: 0 0 1px rgba(0,0,0,0.5);
-  }
-
   /* Responsive Scaling (Restored) */
   @media screen and (max-width: 1200px) {
-    .iphone-17-frame { transform: scale(0.9); }
+    .iphone-17-frame { transform: scale(0.9) translateZ(0); }
   }
   @media screen and (max-width: 992px) {
-    .iphone-17-frame { transform: scale(0.85); }
+    .iphone-17-frame { transform: scale(0.85) translateZ(0); }
   }
   @media screen and (max-width: 768px) {
-    .iphone-17-frame { transform: scale(1); position: relative; left: auto; top: auto; margin-bottom: 20px; }
+    .iphone-17-frame { transform: scale(1) translateZ(0); position: relative; left: auto; top: auto; margin-bottom: 20px; }
     .candy-phone-left-container, .yemeni-phone-right-container, .graduation-phone-left-container, .internship-phone-right-container, .qr-phone-right-container { 
       position: relative; width: 100%; height: auto; transform: none; padding: 20px 0;
     }
@@ -1733,7 +1696,7 @@
     .project-connector-line { display: none; }
   }
   @media screen and (max-width: 480px) {
-    .iphone-17-frame { transform: scale(0.8); }
+    .iphone-17-frame { transform: scale(0.8) translateZ(0); }
   }
   
   /* Specific layout for Candy project node */
@@ -3155,7 +3118,7 @@
      -webkit-backdrop-filter: blur(12px);
      border: 1px solid rgba(33, 33, 33, 0.4);
      border-radius: 28px;
-     padding: 2.5rem;
+     padding: 1.75rem;
      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
      overflow: visible;
      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
@@ -3205,7 +3168,7 @@
    }
 
    .node-company-row {
-     margin-bottom: 1.5rem;
+     margin-bottom: 0.8rem;
    }
 
    .node-company {
@@ -3221,10 +3184,10 @@
    .node-highlights {
      list-style: none;
      padding: 0;
-     margin: 0 0 2rem 0;
+     margin: 0 0 1rem 0;
      display: flex;
      flex-direction: column;
-     gap: 0.75rem;
+     gap: 0.5rem;
    }
 
    .node-highlights li {
@@ -3267,7 +3230,7 @@
      flex-wrap: wrap;
      gap: 0.6rem;
      justify-content: flex-start;
-     margin-bottom: 2rem;
+     margin-bottom: 1.2rem;
    }
 
    .node-actions {
@@ -3288,7 +3251,7 @@
    .tech-badge {
      background: rgba(255, 255, 255, 0.03);
      border: 1px solid rgba(255, 255, 255, 0.08);
-     padding: 0.4rem 0.9rem;
+     padding: 0.3rem 0.75rem;
      border-radius: 12px;
      font-size: 0.75rem;
      font-weight: 500;
@@ -3580,7 +3543,7 @@
      backdrop-filter: none !important;
      border: none !important; 
      border-radius: 32px;
-     padding: 2.1rem;
+     padding: 1.5rem;
      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
      overflow: hidden;
@@ -3649,7 +3612,7 @@
      display: flex;
      justify-content: space-between;
      align-items: center;
-     margin-bottom: 2rem;
+     margin-bottom: 1.2rem;
    }
 
    .edu-number {
@@ -3695,7 +3658,7 @@
      display: flex;
      align-items: center;
      gap: 0.8rem;
-     margin-bottom: 1.2rem;
+     margin-bottom: 0.8rem;
    }
 
    .edu-school-name {

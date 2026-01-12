@@ -47,14 +47,14 @@ export default function Home() {
       aboutMeStroke: 'ABOUT',
       aboutMeGradient: 'ME',
       visionReality: 'Turning ideas into fast, polished products.',
-      aboutText1: 'I’m a Frontend Developer for web and mobile, turning design ideas into sleek, responsive interfaces that delight users.',
-      aboutText2: 'I create modern, visually appealing UI/UX designs that prioritize user experience, clarity, and engagement across web and mobile.',
+      aboutText1: 'I’m a Frontend Developer for web and mobile, bringing design ideas to life as sleek, responsive interfaces that users enjoy.',
+      aboutText2: 'I craft modern, engaging UI/UX designs that focus on clarity, usability, and a seamless experience across web and mobile.',
       mastery: '01 – Frontend Development',
-      masteryDesc: 'Building responsive apps with Next.js for web and Flutter for mobile, writing clean, maintainable code for high performance across devices.',
+      masteryDesc: 'Building responsive web and mobile apps with Next.js and Flutter.',
       designCentric: '02 – UI/UX Design',
-      designCentricDesc: 'Designing intuitive interfaces with attention to layout, typography, colors, and interactions for a seamless user experience.',
+      designCentricDesc: 'Designing intuitive interfaces with strong attention to detail.',
       globalVision: '03 – Languages',
-      globalVisionDesc: 'Fluent in English and Arabic, enabling clear communication and smooth collaboration from design to implementation.',
+      globalVisionDesc: 'Fluent in English and Arabic.',
       featuredWork: 'Featured Work',
       preview: 'Preview',
       source: 'Source',
@@ -117,14 +117,14 @@ export default function Home() {
       aboutMeStroke: 'نبذة',
       aboutMeGradient: 'عنّي',
       visionReality: 'أحوّل الأفكار إلى منتجات سريعة ومصقولة.',
-      aboutText1: 'أنا مطوّر واجهات أمامية للويب والموبايل، أحوّل أفكار التصميم إلى واجهات عصرية ومتجاوبة تبسط تجربة المستخدم وتشد انتباهه.',
-      aboutText2: 'أصمّم واجهات حديثة وجذابة بصريًا تركز على تجربة المستخدم والوضوح والتفاعل، لتعمل بسلاسة على الويب والموبايل.',
+      aboutText1: 'أنا مطوّر واجهات أمامية للويب والموبايل، أحوّل أفكار التصميم إلى واجهات عصرية ومتجاوبة يستمتع بها المستخدمون.',
+      aboutText2: 'أقوم بتصميم واجهات UI/UX حديثة وجذابة تركز على الوضوح وسهولة الاستخدام وتجربة سلسة عبر الويب والموبايل.',
       mastery: '01 – تطوير الواجهات',
-      masteryDesc: 'بناء تطبيقات متجاوبة باستخدام  Next.js للويب و Flutter للجوال، مع كود نظيف وقابل للصيانة لضمان أداء عالي عبر الأجهزة.',
+      masteryDesc: 'بناء تطبيقات ويب وجوال متجاوبة باستخدام Next.js و Flutter.',
       designCentric: '02 – تصميم UI/UX',
-      designCentricDesc: 'تصميم واجهات بديهية مع الاهتمام بالتخطيط، الخطوط، الألوان، والتفاعلات لتجربة مستخدم سلسة وجذابة.',
+      designCentricDesc: 'تصميم واجهات بديهية مع اهتمام قوي بالتفاصيل.',
       globalVision: '03 – اللغات',
-      globalVisionDesc: 'أتقن العربية والإنجليزية بطلاقة، مما يضمن تواصلًا واضحًا وعملًا سلسًا من التصميم حتى التنفيذ.',
+      globalVisionDesc: 'أتقن اللغتين الإنجليزية والعربية بطلاقة.',
       featuredWork: 'أعمال مختارة',
       preview: 'معاينة',
       source: 'المصدر',
@@ -518,9 +518,9 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               {lang === 'ar' ? (
-                <>تحويل <span className="gradient-text">الرؤية</span> إلى <br /> <span className="gradient-text">حقيقة عالية الأداء</span>.</>
+                <>خلق تجارب <span className="gradient-text">UI/UX</span> بديهية <br /> وتحويلها إلى واقع في <span className="gradient-text">الواجهات الأمامية</span>.</>
               ) : (
-                <>Turning <span className="gradient-text">Vision</span> into <br /> <span className="gradient-text">High-Performance Reality</span>.</>
+                <>Creating intuitive <span className="gradient-text">UI/UX</span> and <br /> bringing it to life on the <span className="gradient-text">frontend</span>.</>
               )}
             </motion.h2>
           </div>
@@ -535,9 +535,9 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 {lang === 'ar' ? (
-                  <>أنا <span className="gradient-text">مطوّر واجهات أمامية</span> للويب والموبايل، أحوّل <span className="gradient-text">أفكار التصميم</span> إلى واجهات عصرية ومتجاوبة تبسط تجربة المستخدم وتشد انتباهه.</>
+                  <>أنا <span className="gradient-text">مطوّر واجهات أمامية</span> للويب والموبايل، أحوّل <span className="gradient-text">أفكار التصميم</span> إلى واجهات عصرية ومتجاوبة يستمتع بها المستخدمون.</>
                 ) : (
-                  <>I’m a <span className="gradient-text">Frontend Developer</span> for web and mobile, turning design ideas into <span className="gradient-text">sleek, responsive interfaces</span> that delight users.</>
+                  <>I’m a <span className="gradient-text">Frontend Developer</span> for web and mobile, bringing design ideas to life as <span className="gradient-text">sleek, responsive interfaces</span> that users enjoy.</>
                 )}
               </motion.p>
             </div>
@@ -549,9 +549,9 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
                 {lang === 'ar' ? (
-                  <>أصمّم <span className="gradient-text">واجهات حديثة وجذابة بصريًا</span> تركز على <span className="gradient-text">تجربة المستخدم</span> والوضوح والتفاعل، لتعمل بسلاسة على الويب والموبايل.</>
+                  <>أقوم بتصميم واجهات <span className="gradient-text">UI/UX</span> حديثة وجذابة تركز على <span className="gradient-text">الوضوح وسهولة الاستخدام</span> وتجربة سلسة عبر الويب والموبايل.</>
                 ) : (
-                  <>I create <span className="gradient-text">modern, visually appealing UI/UX designs</span> that prioritize <span className="gradient-text">user experience</span>, clarity, and engagement across web and mobile.</>
+                  <>I craft <span className="gradient-text">modern, engaging UI/UX designs</span> that focus on <span className="gradient-text">clarity, usability</span>, and a seamless experience across web and mobile.</>
                 )}
               </motion.p>
             </div>
@@ -648,7 +648,6 @@ export default function Home() {
                         </div>
                         <div className="iphone-buttons-right">
                           <div className="power-button"></div>
-                          <div className="camera-control"></div>
                         </div>
                         <div className="iphone-screen">
                           <img src="/assets/Screenshot_20250703_173702.jpg" alt="QR Events App" />
@@ -688,7 +687,6 @@ export default function Home() {
                         </div>
                         <div className="iphone-buttons-right">
                           <div className="power-button"></div>
-                          <div className="camera-control"></div>
                         </div>
                         <div className="iphone-screen">
                           <img src="/assets/Screenshot 2026-01-09 233757.png" alt="Internship Project" />
@@ -716,9 +714,10 @@ export default function Home() {
                       <motion.div 
                         className="iphone-17-frame video-frame titanium-orange"
                         initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        whileInView={{ opacity: 1, x: 0, z: 0.01 }}
                         viewport={{ once: false }}
                         transition={{ duration: 0.8 }}
+                        style={{ transform: 'translate3d(0,0,0)' }}
                       >
                         <div className="iphone-inner-border"></div>
                         <div className="iphone-dynamic-island"></div>
@@ -729,7 +728,6 @@ export default function Home() {
                         </div>
                         <div className="iphone-buttons-right">
                           <div className="power-button"></div>
-                          <div className="camera-control"></div>
                         </div>
                         <div className="iphone-screen">
                           <video 
@@ -738,6 +736,16 @@ export default function Home() {
                             loop 
                             muted 
                             playsInline 
+                            preload="auto"
+                            width="1080"
+                            height="1920"
+                            style={{ 
+                              transform: 'translate3d(0, 0, 0) scale(1.0001)',
+                              backfaceVisibility: 'hidden',
+                              WebkitBackfaceVisibility: 'hidden',
+                              filter: 'brightness(1.000001) contrast(1.000001)',
+                              WebkitFilter: 'brightness(1.000001) contrast(1.000001)'
+                            }}
                           />
                         </div>
                         <div className="iphone-bottom-details">
@@ -763,9 +771,10 @@ export default function Home() {
                       <motion.div 
                         className="iphone-17-frame video-frame titanium-deep-blue"
                         initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        whileInView={{ opacity: 1, x: 0, z: 0.01 }}
                         viewport={{ once: false }}
                         transition={{ duration: 0.8 }}
+                        style={{ transform: 'translate3d(0,0,0)' }}
                       >
                         <div className="iphone-inner-border"></div>
                         <div className="iphone-dynamic-island"></div>
@@ -776,7 +785,6 @@ export default function Home() {
                         </div>
                         <div className="iphone-buttons-right">
                           <div className="power-button"></div>
-                          <div className="camera-control"></div>
                         </div>
                         <div className="iphone-screen">
                           <video 
@@ -785,6 +793,16 @@ export default function Home() {
                             loop 
                             muted 
                             playsInline 
+                            preload="auto"
+                            width="1080"
+                            height="1920"
+                            style={{ 
+                              transform: 'translate3d(0, 0, 0) scale(1.0001)',
+                              backfaceVisibility: 'hidden',
+                              WebkitBackfaceVisibility: 'hidden',
+                              filter: 'brightness(1.000001) contrast(1.000001)',
+                              WebkitFilter: 'brightness(1.000001) contrast(1.000001)'
+                            }}
                           />
                         </div>
                         <div className="iphone-bottom-details">
@@ -823,7 +841,6 @@ export default function Home() {
                         </div>
                         <div className="iphone-buttons-right">
                           <div className="power-button"></div>
-                          <div className="camera-control"></div>
                         </div>
                         <div className="iphone-screen">
                           <img src="/assets/Screenshot_20250225_002302.jpg" alt="Graduation Project" />
