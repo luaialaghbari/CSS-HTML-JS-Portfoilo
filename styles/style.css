@@ -117,6 +117,12 @@
     flex-direction: row-reverse;
   }
 
+  html[dir="rtl"] .nav-controls,
+  html[dir="rtl"] .nav-controls-mobile {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
   html[dir="rtl"] .hero-centered .hero-copy {
     align-items: flex-end;
     text-align: right;
@@ -184,6 +190,7 @@
   .contact-apple-container {
     position: relative;
     max-width: 1100px;
+    width: 100%;
     margin: 0 auto;
     padding: clamp(0.75rem, 1.2vw, 1.25rem);
     background: transparent;
@@ -196,6 +203,7 @@
   .contact-apple-surface {
     position: relative;
     max-width: 1180px;
+    width: 100%;
     margin: 18px auto 0;
     padding: clamp(1rem, 2vw, 1.6rem);
     border-radius: 40px;
@@ -290,6 +298,8 @@
 
   .contact-apple-right {
     padding-top: clamp(0.4rem, 1vw, 0.9rem);
+    padding: clamp(0.25rem, 0.8vw, 0.75rem);
+    border-left: none;
   }
 
   .contact-apple-primary {
@@ -382,14 +392,23 @@
   .contact-apple-right {
     padding: clamp(0.25rem, 0.8vw, 0.75rem);
     border-left: none;
+    /* Restore original behavior: let the links occupy the card width */
+    /* Center the icons container while preserving its grid sizing */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
 
   .contact-apple-links {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    /* 3 equal columns for the social pills; allow shrinking to prevent overflow */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.25rem;
     height: 100%;
     align-content: center;
+    justify-items: center; /* center icon content inside each cell */
+    width: 100%;
   }
 
   .contact-link-pill {
@@ -397,11 +416,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.7rem;
-    padding: 1.3rem 0.8rem;
-    border-radius: 24px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    gap: 0.5rem;
+    padding: 1.1rem 0.7rem;
+    border-radius: 20px;
+    background: linear-gradient(#111, #111) padding-box,
+                var(--gradient-accent) border-box;
+    border: 2.2px solid transparent;
     color: #fff;
     text-decoration: none;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -409,36 +429,69 @@
     overflow: hidden;
   }
 
+  .contact-link-pill.email {
+    grid-column: 1 / -1; /* span full width */
+    flex-direction: row;
+    padding: 0.9rem 1.2rem;
+  }
+
+  .contact-link-pill.whatsapp,
+  .contact-link-pill.github,
+  .contact-link-pill.linkedin {
+    grid-column: span 1; /* each occupies one of the three equal columns */
+    width: 100%;
+    max-width: none;
+  }
+
   .contact-link-pill svg {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .contact-link-pill span {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     letter-spacing: -0.01em;
   }
 
   .contact-link-pill:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-4px);
+    background: linear-gradient(#1a1a1a, #1a1a1a) padding-box,
+                var(--gradient-accent) border-box;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(124, 58, 237, 0.15);
   }
 
   .contact-link-pill:hover svg {
-    transform: scale(1.15);
+    transform: scale(1.1);
   }
 
-  .contact-link-pill.whatsapp:hover { border-color: #25D366; color: #25D366; }
-  .contact-link-pill.linkedin:hover { border-color: #0077b5; color: #0077b5; }
-  .contact-link-pill.github:hover { border-color: #fff; color: #fff; }
-  .contact-link-pill.email:hover { border-color: #7c3aed; color: #7c3aed; }
+  @media (max-width: 900px) {
+    .contact-apple-links {
+      width: 100%;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .contact-link-pill.whatsapp,
+    .contact-link-pill.github,
+    .contact-link-pill.linkedin {
+      grid-column: span 1;
+      max-width: none;
+    }
+    .contact-link-pill.email {
+      grid-column: 1 / -1;
+      font-size: 0.9rem;
+    }
+  }
 
   @media (max-width: 640px) {
     .contact-apple-links {
       grid-template-columns: 1fr;
+    }
+    .contact-link-pill.whatsapp,
+    .contact-link-pill.github,
+    .contact-link-pill.linkedin,
+    .contact-link-pill.email {
+      grid-column: span 1;
     }
   }
 
@@ -529,8 +582,9 @@
    /* Desktop nav */
    nav, .nav-links { display: flex; }
    nav {
-	   justify-content: space-between;
+	   justify-content: flex-start;
 	   align-items: center;
+	   gap: clamp(2rem, 5vw, 6rem);
 	   /* use explicit vertical padding token to control header height */
 	   padding: var(--nav-vertical) clamp(0.5rem, 1.2vw, 0.75rem);
 	   background: rgba(15,17,23,0.55);
@@ -574,6 +628,7 @@
        display: flex;
        align-items: center;
        gap: 1rem;
+       margin-left: auto;
    }
 
    .lang-toggle {
@@ -742,24 +797,15 @@
      width: 100% !important;
      overflow: hidden;
      border-radius: 0;
+     direction: ltr !important;
    }
    
    .hero-modern::before {
-     content: "";
-     position: absolute;
-     bottom: 0;
-     left: 0;
-     width: 100%;
-     height: 25vh;
-     background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, transparent 100%);
-     z-index: 25;
-     pointer-events: none;
-     opacity: 0;
-     transition: opacity 0.5s ease;
+     display: none;
    }
 
    .hero-modern.scrolled::before {
-     opacity: 1;
+     display: none;
    }
 
    .hero-modern::after {
@@ -771,7 +817,7 @@
    }
    
    .hero-modern.scrolled {
-     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 5px 20px rgba(124, 58, 237, 0.3);
+     box-shadow: none;
      transition: box-shadow 0.5s ease;
    }
    
@@ -999,38 +1045,6 @@
      display: none;
    }
 
-   [dir="rtl"] .hero-modern-grid {
-     padding-left: 0;
-     padding-right: 5vw;
-     grid-template-columns: 1fr 1.2fr;
-   }
-
-   [dir="rtl"] .hero-col-content {
-     align-items: flex-end;
-   }
-
-   [dir="rtl"] .hero-bio-box p, 
-   [dir="rtl"] .cta-blurb {
-     text-align: right;
-   }
-
-   [dir="rtl"] .hero-portrait {
-     right: auto;
-     left: -12vw;
-     justify-content: flex-start;
-     align-items: flex-start;
-   }
-
-   [dir="rtl"] .hero-line-separator {
-     display: none;
-   }
-   
-   [dir="rtl"] .hero-portrait img {
-     filter: drop-shadow(20px 0 50px rgba(0,0,0,0.8));
-     -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-     mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-   }
-
   @media (max-width: 900px) {
     .portrait-bg-shape {
       width: 280px;
@@ -1045,7 +1059,8 @@
 
    
    .btn-modern-pill {
-     background: var(--title-accent);
+    background: var(--title-accent);
+    font-family: 'Rubik', system-ui, -apple-system, 'Segoe UI', Tahoma, Arial, sans-serif;
      color: #fff;
      border: none;
      padding: 0.8rem 0.8rem 0.8rem 1.8rem;
@@ -1767,27 +1782,29 @@
     position: absolute;
     top: 50%;
     height: 140px;
-    width: 20%; /* Increased to bridge the 42%-58% gap */
+    width: 20%; /* bridge the 42%-58% gap */
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 15;
     opacity: 0.3; /* Base visibility */
     transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     pointer-events: none;
-    background: none; /* Removed glowy background */
+    background: none; /* original: no gradient */
   }
 
   .candy-node .project-connector-line, .graduation-node .project-connector-line {
-    clip-path: polygon(0% 30%, 100% 0%, 100% 100%, 0% 70%);
+    -webkit-clip-path: polygon(0% 30%, 100% 0%, 100% 100%, 0% 70%);
+            clip-path: polygon(0% 30%, 100% 0%, 100% 100%, 0% 70%);
   }
 
   .yemeni-node .project-connector-line, .qr-node .project-connector-line {
-    clip-path: polygon(0% 0%, 100% 30%, 100% 70%, 0% 100%);
+    -webkit-clip-path: polygon(0% 0%, 100% 30%, 100% 70%, 0% 100%);
+            clip-path: polygon(0% 0%, 100% 30%, 100% 70%, 0% 100%);
   }
 
   .experience-node:hover .project-connector-line {
     opacity: 0.8;
-    height: 180px;
+    height: 260px;
   }
 
   /* Digital Dust / Particles in the beam */
@@ -2274,7 +2291,6 @@
          align-items: center;
          text-align: center;
          z-index: 0;
-         pointer-events: none;
      }
 
 
@@ -2289,16 +2305,23 @@
          position: relative;
          z-index: 0;
          font-size: clamp(3.4rem, 9.5vw, 6.6rem);
-         line-height: 0.9;
+         line-height: 0.8;
          letter-spacing: -0.05em;
-        opacity: 1;
-        filter: none;
-        mix-blend-mode: normal;
+         margin-bottom: -0.35em;
+         display: block;
+         opacity: 1;
        }
+
+      /* Center the contact card content vertically so icons sit in the middle */
+      #contact.contact-apple .contact-apple-grid {
+        align-items: center;
+      }
 
        #contact.contact-apple .contact-apple-surface {
          position: relative;
-         z-index: 1;
+         z-index: 2;
+         background: #111111; /* Ensure it's opaque */
+         pointer-events: auto;
        }
 
       @media (max-width: 900px) {
@@ -2381,6 +2404,7 @@
    #skills {
      position: relative;
      overflow: hidden;
+     padding-top: 4rem !important;
    }
 
    #skills::before {
@@ -2726,7 +2750,7 @@
    .modern-experience {
      position: relative;
      overflow: visible;
-     padding: 6rem var(--gutter);
+     padding: 6rem var(--gutter) 4rem;
    }
 
    .experience-ambient {
@@ -2777,7 +2801,7 @@
      position: relative;
      max-width: 1200px;
      margin: 2rem auto 0;
-     padding: 8rem 0 2rem 0;
+     padding: 6rem 0 2rem 0;
      overflow: visible;
    }
 
@@ -2801,12 +2825,13 @@
      position: absolute;
      top: 100%;
      left: 50%;
-     width: 71%; 
-     height: 18.5rem; 
+     width: 80%; 
+     height: 19rem; 
      border-left: 2px solid var(--color-accent);
      border-bottom: 2px solid var(--color-accent);
      border-bottom-left-radius: 20px;
      box-shadow: none;
+     filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.4));
      z-index: 10;
      pointer-events: none;
    }
@@ -2816,12 +2841,13 @@
      position: absolute;
      top: 100%;
      right: 50%;
-     width: 71%;
-     height: 18.5rem;
+     width: 80%;
+     height: 17rem;
      border-right: 2px solid var(--color-accent);
      border-bottom: 2px solid var(--color-accent);
      border-bottom-right-radius: 20px;
      box-shadow: none;
+     filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.4));
      z-index: 10;
      pointer-events: none;
    }
@@ -2832,12 +2858,13 @@
      position: absolute;
      bottom: 100%;
      right: 50%;
-     width: 71%;
-     height: 18.5rem; 
+     width: 80%;
+     height: 9rem; 
      border-right: 2px solid var(--color-accent);
      border-top: 2px solid var(--color-accent);
      border-top-right-radius: 20px;
      box-shadow: none;
+     filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.4));
      z-index: 10;
      pointer-events: none;
    }
@@ -2847,12 +2874,13 @@
      position: absolute;
      bottom: 100%;
      left: 50%;
-     width: 71%;
-     height: 18.5rem;
+     width: 80%;
+     height: 11rem;
      border-left: 2px solid var(--color-accent);
      border-top: 2px solid var(--color-accent);
      border-top-left-radius: 20px;
      box-shadow: none;
+     filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.4));
      z-index: 10;
      pointer-events: none;
    }
@@ -2894,11 +2922,15 @@
    .experience-node {
      position: relative;
      width: 100%;
-     margin-bottom: 33rem; /* Increased height between milestones */
+    margin-bottom: 24rem; /* Increased spacing between milestones */
      display: flex;
      justify-content: center;
      align-items: flex-start;
      transition: none;
+   }
+
+   .experience-node:last-child {
+     margin-bottom: 2rem;
    }
 
   /* Workbench Grid - REMOVED */
@@ -4047,6 +4079,18 @@
     border-radius: 999px;
     background: linear-gradient(180deg, rgba(59,130,246,0.85), rgba(168,85,247,0.85));
     opacity: 0.65;
+  }
+
+  [dir="rtl"] .about-grid-bold .grid-left,
+  [dir="rtl"] .about-grid-bold .grid-right {
+    padding-left: 0;
+    padding-right: 0.75rem;
+  }
+
+  [dir="rtl"] .about-grid-bold .grid-left::before,
+  [dir="rtl"] .about-grid-bold .grid-right::before {
+    left: auto;
+    right: 0;
   }
 
    .about-nodes-bold {

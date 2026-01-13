@@ -27,12 +27,12 @@ const resume = {
       period: '2021–2025',
       periodAr: '2021–2025',
       details: [
-        'Focused on full‑stack development, system analysis, and UI/UX design.',
-        'Completed graduation project: Real‑time delivery app with modern UI and live tracking.',
+        'Awarded a Bachelor of Software Engineering.',
+        'Graduation project: Instant delivery app with a modern UI and real‑time tracking.',
       ],
       detailsAr: [
-        'التركيز على التطوير الكامل (Full-stack)، تحليل النظم، وتصميم واجهة وتجربة المستخدم (UI/UX).',
-        'إكمال مشروع التخرج: تطبيق توصيل في الوقت الفعلي بواجهة حديثة وتتبع مباشر.',
+        'حاصل على درجة البكالوريوس في هندسة البرمجيات.',
+        'مشروع التخرج: تطبيق توصيل فوري مع واجهة حديثة وتتبع مباشر في الوقت الحقيقي',
       ],
     },
     {
@@ -45,10 +45,12 @@ const resume = {
       period: '2021',
       periodAr: '2021',
       details: [
-        'Intensive program focused on advanced grammar, writing, speaking, and listening skills.',
+        'Intensive English program covering Grammar, Writing, Speaking, and Listening.',
+        'Passed proficiency testing and received the official certificate.',
       ],
       detailsAr: [
-        'برنامج مكثف يركز على القواعد المتقدمة، الكتابة، المحادثة، ومهارات الاستماع.',
+        'برنامج مكثف في اللغة الإنجليزية Grammar، Writing، Speaking، Listening.',
+        'اجتياز اختبار الكفاءة والحصول على الشهادة الرسمية.',
       ],
     },
 	{
@@ -60,12 +62,12 @@ const resume = {
 		locationAr: 'صنعاء، اليمن',
 		period: '2021',
 		periodAr: '2021',
-		details: [
-			'Business English training focused on professional communication, presentations, and workplace writing.',
-		],
-		detailsAr: [
-			'تدريب على اللغة الإنجليزية للأعمال يركز على التواصل المهني، العروض التقديمية، والكتابة في بيئة العمل.',
-		],
+    details: [
+      'Certificate focused on professional English communication for workplace and business environments.',
+    ],
+    detailsAr: [
+      'شهادة في English for Business تركز على مهارات التواصل باللغة الإنجليزية في بيئة العمل.',
+    ],
 	},
     { 
       degree: 'TOEFL Certificate', 
@@ -77,10 +79,10 @@ const resume = {
       period: '2021', 
       periodAr: '2021',
       details: [
-        'Test of English as a Foreign Language certification demonstrating proficiency in English reading, writing, listening, and speaking skills.',
+        'TOEFL certificate demonstrating high proficiency across the four core English language skills: reading, writing, listening, and speaking.',
       ],
       detailsAr: [
-        'شهادة اختبار اللغة الإنجليزية كلغة أجنبية تثبت الكفاءة في مهارات القراءة والكتابة والاستماع والتحدث باللغة الإنجليزية.',
+        'شهادة TOEFL مع كفاءة عالية في مهارات اللغة الإنجليزية الأربع.',
       ]
     },
     { 
@@ -93,10 +95,10 @@ const resume = {
       period: '2021', 
       periodAr: '2021',
       details: [
-        'International Computer Driving Licence certification covering essential computer skills including word processing, spreadsheets, and digital literacy.',
+        'ICDL certification with proficiency in core computer applications and digital skills.',
       ],
       detailsAr: [
-        'شهادة الرخصة الدولية لقيادة الحاسوب تغطي مهارات الحاسوب الأساسية بما في ذلك معالجة النصوص، الجداول البيانات، والوعي الرقمي.',
+        'شهادة ICDL مع إتقان تطبيقات الحاسوب الأساسية والمهارات الرقمية.',
       ]
     },
 	{
@@ -108,12 +110,12 @@ const resume = {
 		locationAr: '',
 		period: '2022',
 		periodAr: '2022',
-		details: [
-			'Completed Cisco Certified Network Associate (CNA 1) covering networking fundamentals and basic routing/switching concepts.',
-		],
-		detailsAr: [
-			'إكمال دورة سيسكو المعتمدة في الشبكات (CNA 1) التي تغطي أساسيات الشبكات ومفاهيم التوجيه والتبديل الأساسية.',
-		],
+ 		details: [
+ 			'Cisco-accredited certificate covering networking fundamentals, basic routing, and switching concepts.',
+ 		],
+ 		detailsAr: [
+ 			'شهادة معتمدة في أساسيات الشبكات، تشمل مفاهيم الشبكات، التوجيه (Routing)، والتبديل (Switching).',
+ 		],
 	},
     { 
       degree: 'TESOL Certificate', 
@@ -125,10 +127,32 @@ const resume = {
       period: '2023', 
       periodAr: '2023',
       details: [
-        'Training in modern teaching methods, classroom management, and curriculum development.',
+        'Certificate in Teaching English to Speakers of Other Languages (TESOL).',
+        'Training in modern teaching methods and classroom management.',
+        'Worked as an English teacher at the institute.',
       ],
       detailsAr: [
-        'تدريب على أساليب التدريس الحديثة، إدارة الفصول الدراسية، وتطوير المناهج.',
+        'شهادة تدريس اللغة الإنجليزية لغير الناطقين بها.',
+        'تدريب على أساليب التدريس الحديثة وإدارة الصف.',
+        'العمل كمدرّس لغة إنجليزية في المعهد.',
+      ]
+    },
+    {
+      degree: 'NDG Linux Essentials',
+      degreeAr: 'NDG أساسيات لينوكس',
+      school: 'Cisco Networking Academy',
+      schoolAr: 'Cisco Networking Academyصنعاء',
+      location: "Sana'a, Yemen",
+      locationAr: 'صنعاء، اليمن',
+      period: '2023',
+      periodAr: '2023',
+      details: [
+        'Official certificate from Cisco Networking Academy.',
+        'Practical knowledge of Linux fundamentals, networking, and core IT concepts.',
+      ],
+      detailsAr: [
+        'شهادة رسمية من Cisco Networking Academy.',
+        'معرفة عملية بأساسيات Linux، الشبكات، ومفاهيم IT الأساسية',
       ]
     },
 	{
@@ -140,19 +164,26 @@ const resume = {
 		locationAr: 'صنعاء، اليمن',
 		period: '2024',
 		periodAr: '2024',
-		details: [
-			'3‑month internship across system analysis, UI/UX, and implementation in a professional software team.',
-		],
+    details: [
+      'Received an internship certificate for completing a practical software engineering internship.',
+      'Practical training covering the full software development lifecycle from system analysis to UI/UX design.',
+      'Contributed to the development of an English institutes management application.',
+      'Worked on improving user experience and the application technical architecture.',
+    ],
 		detailsAr: [
-			'تدريب لمدة 3 أشهر شمل تحليل النظم، واجهة وتجربة المستخدم (UI/UX)، والتنفيذ ضمن فريق برمجيات محترف.',
+      'حصلت على شهادة تدريب للانتهاء من التدريب العملي في هندسة البرمجيات.',
+      'تدريب عملي شمل دورة تطوير البرمجيات كاملة من System Analysis إلى UI/UX Design.',
+      'المساهمة في تطوير تطبيق لإدارة نظام المعاهد للغة الإنجليزية.',
+      'العمل على تحسين تجربة المستخدم والبنية التقنية للتطبيق',
 		],
-	},
+      technologies: ['Figma', 'Flutter', 'Dart']
+    },
   ],
-
   experience: [
     {
       title: 'Software Engineer & UI/UX Designer — Summer Internship Program',
-      titleAr: 'مهندس برمجيات ومصمم واجهات — برنامج التدريب الصيفي',
+      titleAr: 'برنامج التدريب الصيفي',
+      role: 'Software Engineer & UI/UX Designer',
       company: 'Yemen Soft',
       companyAr: 'يمن سوفت',
       location: "Sana'a, Yemen",
@@ -165,13 +196,14 @@ const resume = {
       ],
       highlightsAr: [
         'تدريب مكثف لمدة 3 أشهر شمل دورة حياة تطوير البرمجيات بالكامل — من تحليل النظام إلى تصميم الواجهات.',
-        'المشاركة في تطوير تطبيق لإدارة اللغة الإنجليزية، والمساهمة في بناء الهيكل التقني وتحسين تجربة المستخدم.',
+        'المشاركة في تطوير تطبيق لإدارة نظام المعاهد للغة الإنجليزية.',
       ],
-      technologies: ['UI/UX', 'Figma', 'SDLC', 'Flutter', 'Dart'],
+      technologies: ['Figma', 'Flutter', 'Dart'],
     },
     {
       title: 'Graduation Project — Food Delivery App',
       titleAr: 'مشروع التخرج — تطبيق توصيل طعام متكامل',
+      role: 'Fullstack & UI/UX Designer',
       company: 'Universtiy of scince and Techonalogy',
       companyAr: 'جامعة العلوم والتكنولوجيا',
       location: '',
@@ -197,6 +229,7 @@ const resume = {
     {
       title: 'Yemeni Store E‑commerce App (Frontend — UI/UX) — In Progress',
       titleAr: 'تطبيق متجر يمني للتجارة الإلكترونية (واجهات أمامية — UI/UX) — قيد التنفيذ',
+      role: 'Frontend — UI/UX Designer',
       company: '',
       companyAr: '',
       location: '',
@@ -212,20 +245,20 @@ const resume = {
         'Focused on delivering a user-friendly, engaging, and visually appealing experience.',
       ],
       highlightsAr: [
-        'تطبيق متجر لبيع المنتجات اليمنية في السعودية باستخدام Flutter، يقدّم تجربة تسوق سلسة ومريحة.',
-        'تصميم وتنفيذ الواجهات الأمامية (Frontend) بواجهات UI/UX حديثة وبديهية.',
-        'بناء شاشات تفاعلية ومتجاوبة لضمان تنقل سهل وسلس داخل التطبيق.',
-        'التركيز على تقديم تجربة مستخدم جذابة، سهلة الاستخدام، ومميزة بصرياً.',
+        'تطوير تطبيق E-commerce  باستخدام Flutter لعرض وبيع المنتجات اليمنية في المملكة العربية السعودية.',
+        'تصميم UI/UX  مع التركيز على وضوح تجربة المستخدم، سهولة الاستخدام، والاتساق البصري.',
+        'تنفيذ Frontend بشاشات تفاعلية وسريعة الاستجابة لتحسين تفاعل المستخدم وتجربة الاستخدام.',
       ],
-      technologies: ['Flutter', 'Dart', 'Supabase Auth', 'Figma', 'Git', 'GitHub'],
+      technologies: ['Flutter', 'Dart', 'Supabase Auth', 'Figma', 'Git', 'GitHub', 'Jira'],
     },
     {
-      title: 'Candy Water — Water Delivery App (UI/UX Designer & Frontend/Backend)',
-      titleAr: 'تطبيق مياه كاندي — تطبيق توصيل مياه (مصمم واجهات ومطور شامل)',
+      title: 'Candy Water — Water Delivery App (Fullstack & UI/UX Designer)',
+      titleAr: 'تطبيق كاندي لتوصيل مياه في جدة',
+      role: 'Fullstack & UI/UX Designer',
       company: 'Aljazeera Springs Factory',
       companyAr: 'مصنع ينابيع الجزيرة',
       location: 'Jeddah',
-      locationAr: 'جدة',
+      locationAr: 'عن بعد',
       period: 'July – September 2025',
       periodAr: 'يوليو – سبتمبر 2025',
       preview: '#',
@@ -237,16 +270,17 @@ const resume = {
         'Implemented frontend and backend features for orders, products, users, and app interactions.',
       ],
       highlightsAr: [
-        'تطوير تطبيق العملاء لتقديم الطلبات وجدولة مواعيد توصيل المياه.',
-        'بناء تطبيق السائقين بواجهات لإدارة عمليات التوصيل والمهام.',
-        'تصميم واجهة وتجربة مستخدم (UI/UX) حديثة وبديهية لكلا التطبيقين لضمان تجربة سلسة وسهلة الاستخدام.',
-        'تنفيذ ميزات الفرونت إند والباك إند للطلبات، المنتجات، المستخدمين، وتفاعلات التطبيق.',
+        'تطوير تطبيق العملاء لطلب وجدولة توصيل المياه.',
+        'تطوير تطبيق السائق لإدارة مهام التوصيل.',
+        'تصميم UI/UX حديثة لكلا التطبيقين.',
+        'تنفيذ خصائص Frontend و Backend لإدارة الطلبات والمستخدمين',
       ],
       technologies: ['Flutter', 'Dart', 'Supabase', 'Firebase Messaging', 'Figma', 'Mapbox', 'Git/GitHub'],
     },
     {
       title: 'QR Events — Invitation & Check-in App (KSA)',
-      titleAr: 'تطبيق فعاليات QR — الدعوات وتسجيل الحضور (السعودية)',
+      titleAr: 'تطبيق Event QR — الدعوات وتسجيل الحضور (السعودية)',
+      role: 'Frontend & UI/UX Designer',
       company: 'QR Events Platform',
       companyAr: 'منصة فعاليات QR',
       location: '',
@@ -261,11 +295,11 @@ const resume = {
         'Developed frontend in Flutter, building smooth and responsive interfaces.',
       ],
       highlightsAr: [
-        'منصة إدارة فعاليات للفعاليات العامة والخاصة في المملكة العربية السعودية.',
+        'تطوير تطبيق Event QR للفعاليات العامة والخاصة في المملكة العربية السعودية.',
         'تصميم واجهة وتجربة المستخدم (UI/UX)، وبناء تجارب موبايل بديهية وجذابة.',
         'تطوير الواجهات الأمامية باستخدام Flutter، وبناء واجهات سلسة ومتجاوبة.',
       ],
-      technologies: ['Flutter', 'Dart', 'React/Next.js', 'Node.js', 'Supabase/Postgres', 'Figma', 'QR Scanning'],
+      technologies: ['Flutter', 'Dart', 'Figma', 'QR Scanning', 'Jira'],
     },
   ],
 
