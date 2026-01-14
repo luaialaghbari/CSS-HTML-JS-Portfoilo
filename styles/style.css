@@ -748,6 +748,36 @@
     aspect-ratio: 1 / 1;
     overflow: hidden;
 }
+
+/* --------------------------------------------------------------------------
+   Remove all animations on experience cards globally (all viewports)
+   - This disables transforms, transitions and pseudo-element ornaments for
+     experience nodes and card surfaces while leaving `.iphone-17-frame`
+     selectors untouched so frame animations continue to run.
+---------------------------------------------------------------------------- */
+.experience-node,
+.experience-node .node-card,
+.experience-node .node-card:hover,
+.experience-node .project-connector-line {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.experience-node::before,
+.project-connector-line::before,
+.node-card::before,
+.node-card::after,
+.node-card-content::after,
+.node-card:hover::before,
+.node-card:hover .node-card-content::after {
+  animation: none !important;
+  transition: none !important;
+  opacity: 0 !important;
+  display: none !important;
+  pointer-events: none !important;
+}
 .avatar-ring .image-frame {
     background: transparent;
     border-radius: 50%;
@@ -1208,7 +1238,7 @@
       mask-image: linear-gradient(to bottom, black 15%, transparent 60%);
     }
     .hero-action-btn {
-      margin-top: 2.5rem;
+      margin-top: 0.5rem;
     }
   }
 
@@ -1628,7 +1658,7 @@
   .internship-node .iphone-screen img {
     object-fit: contain;
     height: calc(100% - 35px);
-    margin-top: 35px; /* start below status bar */
+    margin-top: 30px; /* start below status bar */
     background: #000000;
   }
 
@@ -1640,17 +1670,17 @@
   .qr-node .iphone-screen img {
     object-fit: contain;
     height: calc(100% - 35px);
-    margin-top: 35px; /* start below status bar */
+    margin-top: 30px; /* start below status bar */
     background: #ffffff;
   }
 
   .iphone-screen video {
     width: 100%;
-    height: calc(100% - 40px);
+    height: calc(100% - 30px);
     object-fit: contain; /* show full 1080p frame without cropping */
     object-position: center top;
     position: absolute;
-    top: 40px; /* start right below status bar */
+    top: 30px; /* start right below status bar */
     left: 0;
     /* Ultra-aggressive high-quality rendering path */
     image-rendering: -webkit-optimize-contrast;
@@ -1683,8 +1713,10 @@
   /* Water app frame uses a light status bar to match UI */
   .candy-node .iphone-screen::before {
     background: #000000;
-    height: 40px;
+    height: 30px;
     box-shadow: none;
+        object-fit: contain; /* show full 1080p frame without cropping */
+    z-index: 0; 
   }
 
   .iphone-dynamic-island {
@@ -1735,6 +1767,28 @@
     left: 14px;
     top: 50%;
     transform: translateY(-50%);
+/* --------------------------------------------------------------------------
+   Remove all animations/transitions for the visual phone frame
+   - This forces the frame and its decorative pseudo-elements to be static.
+   - We keep this isolated so other animated elements aren't affected.
+---------------------------------------------------------------------------- */
+.iphone-17-frame,
+.iphone-17-frame::before,
+.iphone-17-frame::after,
+.iphone-inner-border,
+.iphone-screen,
+.iphone-screen img,
+.iphone-screen video,
+.iphone-dynamic-island,
+.action-button,
+.volume-up,
+.volume-down,
+.power-button {
+  animation: none !important;
+  transition: none !important;
+  will-change: auto !important;
+  /* Preserve layout but stop any movement */
+}
     width: 5px;
     height: 5px;
     background: #0a0a0a;
@@ -1888,6 +1942,49 @@
     transform: translateY(40px); /* Align centered with card */
   }
 
+/* --------------------------------------------------------------------------
+   Desktop: disable animations on experience cards (keep frame animations)
+   - Make card surfaces static on wider viewports while preserving phone/frame
+     animations (do NOT target `.iphone-17-frame` selectors here).
+---------------------------------------------------------------------------- */
+@media screen and (min-width: 993px) {
+  /* Stop particle/background drift for the experience container only */
+  .experience-node::before {
+    animation: none !important;
+    transition: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Make node cards visually static on desktop: remove transforms/transitions */
+  .node-card,
+  .node-card:hover {
+    transform: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Keep the connector visible but prevent it from expanding on hover */
+  .experience-node:hover .project-connector-line {
+    opacity: 0.3 !important;
+    height: 140px !important;
+  }
+  /* Disable remaining UI ornament and beam animations on desktop - target
+     card-specific selectors only so `.iphone-17-frame` pseudo-elements remain
+     untouched. */
+  .project-connector-line::before,
+  .node-card::before,
+  .node-card:hover::before,
+  .node-card-content::after,
+  .node-card:hover .node-card-content::after {
+    animation: none !important;
+    transition: none !important;
+    opacity: 0 !important;
+    display: none !important;
+    pointer-events: none !important;
+  }
+}
+  
   /* Volumetric Projection Beam (Bridging Phone and Card) */
   .project-connector-line {
     position: absolute;
@@ -6129,7 +6226,7 @@
     line-height: 1.6;
   }
   .hero-action-btn {
-    margin-top: 5rem;
+    margin-top: 1.5rem; /* Reduced from 5rem to move it up */
   }
   [dir="rtl"] .hero-col-content {
     align-items: center;

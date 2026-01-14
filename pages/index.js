@@ -11,6 +11,55 @@ export default function Home() {
   const [lang, setLang] = useState('en');
   const [scrolled, setScrolled] = useState(false);
   const yearRef = useRef(null);
+  const eduScrollRef = useRef(null);
+
+  // Direction-aware auto-sliding for Education cards
+  useEffect(() => {
+    const container = eduScrollRef.current;
+    if (!container) return;
+
+    let autoScrollInterval;
+    const startAutoScroll = () => {
+      autoScrollInterval = setInterval(() => {
+        const { scrollLeft, scrollWidth, clientWidth } = container;
+        const isRTL = lang === 'ar';
+        
+        if (isRTL) {
+          // In RTL, scrollLeft is 0 at start and decreases (negative)
+          if (Math.abs(scrollLeft) + clientWidth >= scrollWidth - 10) {
+            container.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            container.scrollBy({ left: -340, behavior: 'smooth' });
+          }
+        } else {
+          // In LTR, scrollLeft is 0 at start and increases
+          if (scrollLeft + clientWidth >= scrollWidth - 10) {
+            container.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            container.scrollBy({ left: 340, behavior: 'smooth' });
+          }
+        }
+      }, 3500); // 3.5 seconds interval
+    };
+
+    startAutoScroll();
+    
+    const pauseScroll = () => clearInterval(autoScrollInterval);
+    const resumeScroll = () => startAutoScroll();
+    
+    container.addEventListener('mouseenter', pauseScroll);
+    container.addEventListener('mouseleave', resumeScroll);
+    container.addEventListener('touchstart', pauseScroll);
+    container.addEventListener('touchend', resumeScroll);
+
+    return () => {
+      clearInterval(autoScrollInterval);
+      container.removeEventListener('mouseenter', pauseScroll);
+      container.removeEventListener('mouseleave', resumeScroll);
+      container.removeEventListener('touchstart', pauseScroll);
+      container.removeEventListener('touchend', resumeScroll);
+    };
+  }, [lang]); // Re-run if language changes
   
   // Scroll listener for hero shadow
   useEffect(() => {
@@ -669,10 +718,16 @@ export default function Home() {
               <motion.div 
                 key={idx}
                 className={`experience-node ${idx % 2 === 0 ? 'left' : 'right'} ${isCandy ? 'candy-node' : ''} ${isYemeniStore ? 'yemeni-node' : ''} ${isGraduation ? 'graduation-node' : ''} ${isInternship ? 'internship-node' : ''} ${isQrEvents ? 'qr-node' : ''}`}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.8, delay: idx * 0.1 }}
+                initial={{ opacity: 0, y: 80 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.1 }}
+                transition={{ 
+                  duration: 1, 
+                  ease: [0.16, 1, 0.3, 1],
+                  type: "spring",
+                  stiffness: 50,
+                  damping: 15
+                }}
               >
                 <div className="node-dot"></div>
                 {isQrEvents && (
@@ -680,10 +735,15 @@ export default function Home() {
                     <div className="qr-phone-right-container">
                       <motion.div 
                         className="iphone-17-frame titanium-silver"
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ duration: 0.8 }}
+                        initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                        viewport={{ once: false, amount: 0.2 }}
+                        transition={{ 
+                          duration: 0.8, 
+                          type: "spring",
+                          stiffness: 45,
+                          damping: 12
+                        }}
                       >
                         <div className="iphone-inner-border"></div>
                         <div className="iphone-dynamic-island"></div>
@@ -710,7 +770,22 @@ export default function Home() {
                       </motion.div>
                     </div>
                     <div className="project-connector-line">
-                      <div className="project-beam-arrow"></div>
+                      <div className="project-beam-arrow" style={{
+                        display: 'block',
+                        position: 'absolute',
+                        left: '50%',
+                        top: '72%',
+                        transform: 'translate(-50%, -50%)',
+                        width: '40px',
+                        height: '28px',
+                        background: 'linear-gradient(135deg, #3b82f6 0%, #7c3aed 50%, #ff6fbf 100%)',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundSize: 'cover',
+                        clipPath: 'polygon(50% 100%, 0% 0%, 100% 0%)',
+                        WebkitClipPath: 'polygon(50% 100%, 0% 0%, 100% 0%)',
+                        zIndex: 2147483647,
+                        pointerEvents: 'none'
+                      }}></div>
                     </div>
                   </>
                 )}
@@ -719,10 +794,15 @@ export default function Home() {
                     <div className="internship-phone-right-container">
                       <motion.div 
                         className="iphone-17-frame titanium-natural"
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ duration: 0.8 }}
+                        initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                        viewport={{ once: false, amount: 0.2 }}
+                        transition={{ 
+                          duration: 0.8, 
+                          type: "spring",
+                          stiffness: 45,
+                          damping: 12
+                        }}
                       >
                         <div className="iphone-inner-border"></div>
                         <div className="iphone-dynamic-island"></div>
@@ -749,7 +829,20 @@ export default function Home() {
                       </motion.div>
                     </div>
                     <div className="project-connector-line">
-                      <div className="project-beam-arrow"></div>
+                      <div className="project-beam-arrow" style={{
+                        display: 'block',
+                        position: 'absolute',
+                        left: '50%',
+                        top: '72%',
+                        transform: 'translate(-50%, -50%)',
+                        width: '40px',
+                        height: '28px',
+                        background: 'linear-gradient(135deg, #3b82f6 0%, #7c3aed 50%, #ff6fbf 100%)',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundSize: 'contain',
+                        zIndex: 2147483647,
+                        pointerEvents: 'none'
+                      }}></div>
                     </div>
                   </>
                 )}
@@ -759,10 +852,15 @@ export default function Home() {
                     <div className="candy-phone-left-container">
                       <motion.div 
                         className="iphone-17-frame video-frame titanium-orange"
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0, z: 0.01 }}
-                        viewport={{ once: false }}
-                        transition={{ duration: 0.8 }}
+                        initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                        whileInView={{ opacity: 1, scale: 1, y: 0, z: 0.01 }}
+                        viewport={{ once: false, amount: 0.2 }}
+                        transition={{ 
+                          duration: 0.8, 
+                          type: "spring",
+                          stiffness: 45,
+                          damping: 12
+                        }}
                         style={{ transform: 'translate3d(0,0,0)' }}
                       >
                         <div className="iphone-inner-border"></div>
@@ -806,7 +904,20 @@ export default function Home() {
                       </motion.div>
                     </div>
                     <div className="project-connector-line">
-                      <div className="project-beam-arrow"></div>
+                      <div className="project-beam-arrow" style={{
+                        display: 'block',
+                        position: 'absolute',
+                        left: '50%',
+                        top: '72%',
+                        transform: 'translate(-50%, -50%)',
+                        width: '40px',
+                        height: '28px',
+                        background: 'linear-gradient(135deg, #3b82f6 0%, #7c3aed 50%, #ff6fbf 100%)',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundSize: 'contain',
+                        zIndex: 2147483647,
+                        pointerEvents: 'none'
+                      }}></div>
                     </div>
                   </>
                 )}
@@ -816,10 +927,15 @@ export default function Home() {
                     <div className="yemeni-phone-right-container">
                       <motion.div 
                         className="iphone-17-frame video-frame titanium-deep-blue"
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0, z: 0.01 }}
-                        viewport={{ once: false }}
-                        transition={{ duration: 0.8 }}
+                        initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                        whileInView={{ opacity: 1, scale: 1, y: 0, z: 0.01 }}
+                        viewport={{ once: false, amount: 0.2 }}
+                        transition={{ 
+                          duration: 0.8, 
+                          type: "spring",
+                          stiffness: 45,
+                          damping: 12
+                        }}
                         style={{ transform: 'translate3d(0,0,0)' }}
                       >
                         <div className="iphone-inner-border"></div>
@@ -863,7 +979,20 @@ export default function Home() {
                       </motion.div>
                     </div>
                     <div className="project-connector-line">
-                      <div className="project-beam-arrow"></div>
+                      <div className="project-beam-arrow" style={{
+                        display: 'block',
+                        position: 'absolute',
+                        left: '50%',
+                        top: '72%',
+                        transform: 'translate(-50%, -50%)',
+                        width: '40px',
+                        height: '28px',
+                        backgroundImage: 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'28\' viewBox=\'0 0 40 28\'><defs><linearGradient id=\'g2\' x1=\'0\' x2=\'1\' y1=\'0\' y2=\'1\'><stop offset=\'0\' stop-color=\'%233b82f6\'/><stop offset=\'0.6\' stop-color=\'%238b5cf6\'/><stop offset=\'1\' stop-color=\'%23ff6fbf\'/></linearGradient></defs><path d=\'M2 2 L20 20 L38 2 L30 2 L20 12 L10 2 Z\' fill=\'url(%23g2)\' /></svg>")',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundSize: 'contain',
+                        zIndex: 2147483647,
+                        pointerEvents: 'none'
+                      }}></div>
                     </div>
                   </>
                 )}
@@ -873,10 +1002,15 @@ export default function Home() {
                     <div className="graduation-phone-left-container">
                       <motion.div 
                         className="iphone-17-frame titanium-silver"
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ duration: 0.8 }}
+                        initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                        viewport={{ once: false, amount: 0.2 }}
+                        transition={{ 
+                          duration: 0.8, 
+                          type: "spring",
+                          stiffness: 45,
+                          damping: 12
+                        }}
                       >
                         <div className="iphone-inner-border"></div>
                         <div className="iphone-dynamic-island"></div>
@@ -908,7 +1042,19 @@ export default function Home() {
                   </>
                 )}
                 
-                <div className="node-content-wrapper">
+                <motion.div 
+                  className="node-content-wrapper"
+                  initial={{ opacity: 0, scale: 0.9, y: 40 }}
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  transition={{ 
+                    duration: 0.8, 
+                    type: "spring",
+                    stiffness: 45,
+                    damping: 12,
+                    delay: 0.2
+                  }}
+                >
                   <div className="node-info-stack">
                     <div className="node-step-label">
                       <span className="step-index">{String(idx + 1).padStart(2, '0')}</span>
@@ -920,7 +1066,7 @@ export default function Home() {
                   <div className="node-card">
                     <div className="node-card-glass"></div>
                     <div className="node-card-content">
-                      <h3 className="node-title" style={{fontFamily: 'Inter, system-ui, Arial, sans-serif', fontWeight: 700, fontSize: '1.25em'}}>
+                      <h3 className="node-title" style={{fontFamily: 'Inter, system-ui, Arial, sans-serif', fontWeight: 800, fontSize: '1.35em'}}>
                         {exp.role}
                       </h3>
                       <div className="node-appname" style={{fontWeight: 700, fontSize: '1.05em', marginBottom: '0.2em'}}>
@@ -974,7 +1120,7 @@ export default function Home() {
                       ) : null}
                     </div>
                   </div>
-                </div>
+                </motion.div>
             </motion.div>
           );
         })}
@@ -1084,7 +1230,7 @@ export default function Home() {
           <h2 className="title-refined">{trans.eduTitle}</h2>
         </motion.div>
 
-        <div className="premium-education-narrative">
+        <div className="premium-education-narrative" ref={eduScrollRef}>
           {resume.education.map((ed, idx) => (
             <React.Fragment key={idx}>
               <motion.div
