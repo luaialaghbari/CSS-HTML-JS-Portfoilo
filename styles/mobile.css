@@ -1,0 +1,104 @@
+/* ==================================================
+   styles/mobile.css — Mobile & small viewport overrides
+
+   Purpose: Keep all phone-specific media queries here so
+   mobile rules are isolated from the main stylesheet.
+   This file should be imported after `style.css` and
+   `mediaqueries.css` so it can override desktop rules.
+   ================================================== */
+
+/* Responsive scaling for intermediate widths */
+@media screen and (max-width: 1200px) {
+  .iphone-17-frame { transform: scale(0.9) translateZ(0); }
+}
+@media screen and (max-width: 992px) {
+  .iphone-17-frame { transform: scale(0.85) translateZ(0); }
+}
+
+/* Mobile: explicit sizing (no scale) so radii stay visually identical */
+@media screen and (max-width: 768px) {
+  .iphone-17-frame {
+    transform: none !important;
+    position: relative;
+    left: auto;
+    top: auto;
+    margin: 0 auto 20px;
+    width: 230px;
+    height: 497px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  }
+      /* Slight reduction so corners stay proportional on phones */
+      .iphone-17-frame { border-radius: 38px !important; }
+      .iphone-inner-border { border-radius: 36px !important; }
+      .iphone-screen { border-radius: 34px !important; }
+
+      /* Scale Dynamic Island and hardware buttons for phones */
+      .iphone-dynamic-island {
+        width: 60px !important;
+        height: 18px !important;
+        border-radius: 9px !important;
+        top: 12px !important;
+      }
+      .action-button, .volume-up, .volume-down, .power-button { width: 3px !important; }
+      .action-button { height: 18px !important; margin-bottom: 6px !important; }
+      .volume-up, .volume-down { height: 44px !important; }
+      .power-button { height: 50px !important; }
+
+  .candy-phone-left-container,
+  .yemeni-phone-right-container,
+  .graduation-phone-left-container,
+  .internship-phone-right-container,
+  .qr-phone-right-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    transform: none;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+  }
+  .experience-node {
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    gap: 1rem;
+    height: auto !important;
+    padding: 28px 16px !important;
+  }
+  .project-connector-line { display: none; }
+}
+
+@media screen and (max-width: 480px) {
+  .iphone-17-frame {
+    transform: none !important;
+    width: 200px;
+    height: 430px;
+    margin-bottom: 16px;
+  }
+  /* Gentle reduction for smaller phones */
+  .iphone-17-frame { border-radius: 36px !important; }
+  .iphone-inner-border { border-radius: 34px !important; }
+  .iphone-screen { border-radius: 32px !important; }
+
+  /* Slightly smaller Dynamic Island and buttons on narrower phones */
+  .iphone-dynamic-island { width: 56px !important; height: 16px !important; border-radius: 8px !important; top: 11px !important; }
+  .action-button { height: 16px !important; }
+  .volume-up, .volume-down { height: 40px !important; }
+  .power-button { height: 46px !important; }
+  .experience-node { padding: 20px 12px !important; }
+}
+
+@media screen and (max-width: 360px) {
+  .iphone-17-frame { width: 180px; height: 386px; }
+  /* Tiny devices: small reduction but staying rounded */
+  .iphone-17-frame { border-radius: 34px !important; }
+  .iphone-inner-border { border-radius: 32px !important; }
+  .iphone-screen { border-radius: 30px !important; }
+  .iphone-dynamic-island { width: 52px !important; height: 14px !important; border-radius: 7px !important; top: 10px !important; }
+  .action-button { height: 14px !important; }
+  .volume-up, .volume-down { height: 36px !important; }
+  .power-button { height: 42px !important; }
+  .experience-node { padding: 16px 10px !important; }
+}

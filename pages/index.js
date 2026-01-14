@@ -437,9 +437,10 @@ export default function Home() {
           {/* Large Background Name */}
           <div className="hero-name-bg">
             <h1 className="name-main">
-              <span className="hi-text">Hi</span>
-              <span className="first-name">, I’m Luai Alaghbari</span>
-              <div className="hero-subtitle-container">
+              <span className="hi-text">Hi,</span>
+              <span className="mid-name">I’m Luai</span>
+              <span className="last-name">Alaghbari</span>
+              <div className="hero-subtitle-container hide-mobile">
                 {lang === 'ar' ? (
                   <>
                     <span className="name-accent" style={{fontFamily: 'Inter, system-ui, Arial, sans-serif'}}>Frontend Developer &</span>
@@ -495,6 +496,19 @@ export default function Home() {
               >
                 <div className="portrait-bg-shape"></div>
                 <img src="/assets/newprofilelogo.png" alt="Luai Alaghbari" />
+                <div className="hero-subtitle-container show-mobile">
+                  {lang === 'ar' ? (
+                    <>
+                      <span className="name-accent" style={{fontFamily: 'Inter, system-ui, Arial, sans-serif'}}>Frontend Developer &</span>
+                      <span className="name-accent" style={{fontFamily: 'Inter, system-ui, Arial, sans-serif'}}>UI UX designer<span className="dot-accent">.</span></span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="name-accent">Frontend Developer &</span>
+                      <span className="name-accent">UI UX designer<span className="dot-accent">.</span></span>
+                    </>
+                  )}
+                </div>
                 <div className="hero-line-separator"></div>
               </motion.div>
             </div>

@@ -918,11 +918,13 @@
      color: transparent;
    }
 
-   .hero-name-bg .first-name {
+   .hero-name-bg .mid-name,
+   .hero-name-bg .last-name {
      display: inline-block;
      transform: scaleX(1.02) scaleY(1.6);
      transform-origin: left top;
      color: #fff;
+     margin-left: 0.25em;
    }
    
    .hero-modern-grid {
@@ -1047,13 +1049,14 @@
 
   @media (max-width: 900px) {
     .portrait-bg-shape {
-      width: 280px;
+      width: 320px;
       height: 240px;
-      right: 24%;
-      bottom: -12%;
-      top: auto;
+      right: 50%;
+      bottom: 2%; /* Moved down from 5% */
+      transform: translateX(52%) rotate(-4deg); /* Pushed more to the right from 44% */
       border-radius: 42px;
-      transform: rotate(-4deg);
+      -webkit-mask-image: linear-gradient(to bottom, black 15%, transparent 60%);
+      mask-image: linear-gradient(to bottom, black 15%, transparent 60%);
     }
   }
 
@@ -1101,7 +1104,14 @@
      display: none; /* Hide old hero if still in DOM elsewhere */
    }
 
-   /* Profile Section (landing) */
+   .show-mobile {
+    display: none !important;
+  }
+  .hide-mobile {
+    display: block !important;
+  }
+
+  /* Profile Section (landing) */
    .hero-centered-old {
      display: flex;
      flex-direction: row;
@@ -1116,6 +1126,123 @@
      overflow: hidden;
      background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
    }
+
+  /* Responsive HERO SECTION for phones */
+  @media (max-width: 768px) {
+    .hero-modern {
+      min-height: 80vh;
+      padding: 0 0.5rem !important;
+      border-radius: 0;
+    }
+    .hero-modern-container {
+      min-height: 70vh;
+      padding: 0;
+    }
+    .hero-modern-grid {
+      display: flex;
+      flex-direction: column;
+      padding-left: 0;
+      gap: 2.5rem;
+    }
+    .hero-col-content {
+      padding-top: 4vh;
+      align-items: center;
+      text-align: center;
+      gap: 1.2rem;
+    }
+    .hero-text-block {
+      max-width: 98vw;
+      align-items: center;
+      text-align: center;
+    }
+    .hero-description {
+      font-size: 1.05rem;
+      text-align: center;
+    }
+    .hero-name-bg {
+      position: static;
+      width: 100%;
+      justify-content: center;
+      left: 0;
+      top: 0;
+      margin-bottom: 1.2rem;
+      padding: 0;
+    }
+    .hero-name-bg h1 {
+      font-size: clamp(1.5rem, 8vw, 2.8rem);
+      text-align: center;
+      white-space: normal;
+    }
+    .hero-col-portrait {
+      height: auto;
+      padding-right: 0;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-portrait {
+      position: static;
+      width: 95vw;
+      height: auto;
+      right: 0;
+      bottom: 0;
+      margin: 0 auto;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-portrait img {
+      width: 100%;
+      height: auto;
+      max-width: 1000px;
+      min-width: 120px;
+      margin: 0 auto;
+    }
+    .portrait-bg-shape {
+      width: 320px;
+      height: 240px;
+      right: 50%;
+      bottom: 2%; /* Moved down from 5% */
+      transform: translateX(48%) rotate(-4deg); /* Slightly back to the right from 46% */
+      border-radius: 42px;
+      opacity: 0.35;
+      -webkit-mask-image: linear-gradient(to bottom, black 15%, transparent 60%);
+      mask-image: linear-gradient(to bottom, black 15%, transparent 60%);
+    }
+    .hero-action-btn {
+      margin-top: 2.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-modern {
+      min-height: 60vh;
+      padding: 0 0.2rem !important;
+    }
+    .hero-modern-container {
+      min-height: 50vh;
+    }
+    .hero-name-bg h1 {
+      font-size: clamp(1.1rem, 9vw, 2rem);
+      padding: 0 0.2em;
+    }
+    .hero-description {
+      font-size: 0.98rem;
+      padding: 0 0.2em;
+    }
+    .hero-portrait {
+      width: 100vw;
+      max-width: 800px;
+    }
+    .portrait-bg-shape {
+      width: 260px;
+      height: 190px;
+      right: 50%;
+      bottom: 0%; /* Moved down from 2% */
+      transform: translateX(47%) rotate(-4deg); /* Slightly back to the right from 44% */
+      border-radius: 28px;
+      -webkit-mask-image: linear-gradient(to bottom, black 15%, transparent 55%);
+      mask-image: linear-gradient(to bottom, black 15%, transparent 55%);
+    }
+  }
    
    .aesthetic-grid {
      position: absolute;
@@ -1705,24 +1832,8 @@
 
 
 
-  /* Responsive Scaling (Restored) */
-  @media screen and (max-width: 1200px) {
-    .iphone-17-frame { transform: scale(0.9) translateZ(0); }
-  }
-  @media screen and (max-width: 992px) {
-    .iphone-17-frame { transform: scale(0.85) translateZ(0); }
-  }
-  @media screen and (max-width: 768px) {
-    .iphone-17-frame { transform: scale(1) translateZ(0); position: relative; left: auto; top: auto; margin-bottom: 20px; }
-    .candy-phone-left-container, .yemeni-phone-right-container, .graduation-phone-left-container, .internship-phone-right-container, .qr-phone-right-container { 
-      position: relative; width: 100%; height: auto; transform: none; padding: 20px 0;
-    }
-    .experience-node { flex-direction: column !important; height: auto !important; padding: 40px 20px !important; }
-    .project-connector-line { display: none; }
-  }
-  @media screen and (max-width: 480px) {
-    .iphone-17-frame { transform: scale(0.8) translateZ(0); }
-  }
+  /* Mobile-specific media queries moved to `styles/mobile.css` to keep
+     phone overrides isolated. Import `mobile.css` after `mediaqueries.css`. */
   
   /* Specific layout for Candy project node */
   .candy-node {
@@ -5863,22 +5974,31 @@
   .hero-modern-grid {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center; /* Changed from stretch to center */
     width: 100%;
-    gap: 1.5rem;
-    padding-top: 10vh;
+    gap: 0;
+    padding-top: 2vh;
     padding-bottom: 5vh;
     z-index: 10;
+    padding-left: 0;
   }
   .hero-name-bg {
-    position: absolute;
-    top: 18vh;
+    position: relative;
+    top: 0;
     left: 0;
     width: 100%;
-    z-index: 1;
+    margin-top: 5vh; /* Moved further up */
+    z-index: 5;
     display: flex;
     justify-content: center;
     pointer-events: none;
+    overflow: visible; /* Allow tall text to overflow without being cut */
+  }
+  .show-mobile {
+    display: block !important;
+  }
+  .hide-mobile {
+    display: none !important;
   }
   .hero-name-bg h1 {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -5887,24 +6007,38 @@
     align-items: center;
     font-weight: 700;
     margin: 0;
-    text-transform: uppercase;
+    text-transform: none;
     line-height: 1.15;
     text-align: center;
   }
   .hi-text {
-    font-size: 12.5vw;
-    color: transparent;
-    -webkit-text-stroke: 1px #fff;
-    display: inline-block;
-    transform: scaleX(1.03) scaleY(1.75);
-    transform-origin: center top;
+    display: none !important;
   }
-  .first-name {
-    font-size: 12.5vw;
-    color: #fff;
-    display: inline-block;
-    transform: scaleX(1.03) scaleY(1.75);
+  .hero-name-bg .mid-name {
+    font-size: 20vw;
+    background: var(--title-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: block;
+    transform: scaleY(2.2); /* Same tall effect as hi */
     transform-origin: center top;
+    line-height: 1;
+    z-index: 1;
+    position: relative;
+    margin-bottom: 5vh; /* Pushed Alaghbari further down */
+    margin-left: 0;
+  }
+  .hero-name-bg .last-name {
+    font-size: 20vw;
+    color: #fff;
+    display: block;
+    transform: scaleY(1.6);
+    transform-origin: center top;
+    z-index: 2;
+    position: relative;
+    line-height: 1.1;
+    margin-left: 0;
   }
   .hero-subtitle-container {
     margin-top: 0.6em;
@@ -5925,37 +6059,56 @@
     -webkit-text-fill-color: transparent;
     color: transparent;
   }
-  .hero-modern-grid {
-    display: flex;
-    flex-direction: column;
-    padding-left: 0;
-    gap: 0;
-  }
   .hero-col-portrait {
     order: 1;
     height: auto;
-    margin-top: 18vh;
+    margin-top: -15vh; /* Moved pic further down from -19vh */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     width: 100%;
+    position: relative;
+    z-index: 10;
+    text-align: center;
   }
   .hero-portrait {
     position: relative;
-    right: 0;
+    left: 0;
     width: 100%;
-    height: 60vh;
+    height: auto;
+    min-height: 50vh;
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    margin: 0 auto;
+  }
+  .hero-portrait .hero-subtitle-container {
+    margin-top: 3.5rem; /* Increased from 2.2rem */
+    display: block;
+    text-align: center;
+    width: 100%;
+    pointer-events: auto;
+    position: relative;
+    z-index: 5; /* Ensure role text is above the masked gradient */
   }
   .hero-portrait img {
-    height: 100%;
-    width: auto;
-    max-width: 100%;
+    height: auto;
+    width: 100%;
+    max-width: 1100px;
     object-fit: contain;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5)); /* Added shadow for better overlap visibility */
+    position: relative;
+    z-index: 2;
+    transform: translateX(4%) scale(1.15); /* Pushed slightly to the right for visual balance */
+    transform-origin: center center;
+    margin: 0 auto;
+    display: block;
   }
   .hero-col-content {
     order: 2;
-    padding-top: 12vh; /* Moved up */
+    padding-top: 2vh;
     align-items: center;
     text-align: center;
     padding-bottom: 5vh;
