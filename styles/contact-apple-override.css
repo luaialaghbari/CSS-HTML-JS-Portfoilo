@@ -1,9 +1,0 @@
-.contact-apple-title {
-  background: var(--title-accent) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  text-fill-color: transparent !important;
-  opacity: 1 !important;
-  box-shadow: none !important;
-}

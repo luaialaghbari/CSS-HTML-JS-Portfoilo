@@ -1,13 +1,5 @@
 
-@media (max-width: 520px) {
-  .massive-contact-title {
-    animation: none !important;
-    background-size: 100% !important;
-  }
-  .massive-contact-title::after {
-    display: none !important;
-  }
-}
+
 /* ==================================================
    styles/mobile.css — Mobile & small viewport overrides
 
@@ -316,3 +308,17 @@
   will-change: auto !important;
 }
 
+/* --------------------------------------------------------------------------
+   Contact Title Mobile Styling
+   Ensure contact title has colored gradient with no opacity and no shadow
+---------------------------------------------------------------------------- */
+@media screen and (max-width: 900px) {
+  #contact.contact-apple .title-refined {
+    opacity: 1 !important;
+    text-shadow: none !important;
+    background: var(--title-accent) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+}
