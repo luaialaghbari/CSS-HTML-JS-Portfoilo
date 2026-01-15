@@ -27,6 +27,84 @@
 			.hero-grid { grid-template-columns: 1fr 1fr; }
             .skills-grid-categories { grid-template-columns: repeat(2, 1fr); }
  }
+
+/* Tablet/iPad specific adjustments (769px to 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    section {
+        padding-left: 4vw;
+        padding-right: 4vw;
+    }
+
+    .hero-name-bg {
+        top: 12vh;
+        left: 3vw;
+    }
+    .hero-name-bg h1 {
+        font-size: clamp(2rem, 8vw, 6.5rem);
+    }
+    
+    .hero-modern-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        padding-left: 0;
+        gap: 0;
+        align-items: center;
+    }
+    .hero-col-content {
+        align-items: flex-start;
+        text-align: left;
+        padding-top: 20vh;
+    }
+    .hero-visual {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .experience-node .node-content-wrapper {
+        width: 48%;
+    }
+    .candy-phone-left-container, 
+    .yemeni-phone-right-container, 
+    .graduation-phone-left-container, 
+    .internship-phone-right-container, 
+    .qr-phone-right-container {
+        width: 48%;
+    }
+
+    /* About section tablet */
+    .about-grid-bold {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .about-wrapper-bold {
+        padding: 4rem 2rem;
+    }
+
+    /* iPad portrait specific hero adjustments */
+    .hero-col-portrait {
+        height: auto;
+        min-height: 50vh;
+        justify-content: center;
+        align-items: center;
+        padding-right: 0;
+    }
+    .hero-portrait {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        height: auto;
+        max-height: 60vh;
+        align-items: center;
+        width: 100%;
+    }
+    .hero-portrait img {
+        height: auto;
+        width: 70%;
+        max-width: 450px;
+    }
+    .portrait-bg-shape {
+        display: none;
+    }
+}
  
  /* ≤768px: stack into one column */
  @media screen and (max-width: 768px) {
