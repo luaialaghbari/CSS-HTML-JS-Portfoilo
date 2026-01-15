@@ -4,6 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
         <meta name="theme-color" content="#0b0b0f" />
         <link rel="icon" href="/assets/logopic.png" />
         <link rel="manifest" href="/manifest.json" />
