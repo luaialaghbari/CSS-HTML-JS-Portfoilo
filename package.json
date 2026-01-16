@@ -5,12 +5,17 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
+    "framer-motion": "^11.2.10",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest",
-    "framer-motion": "^11.2.10"
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
