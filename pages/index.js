@@ -1,3 +1,4 @@
+
 import Head from 'next/head';
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';

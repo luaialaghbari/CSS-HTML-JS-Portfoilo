@@ -80,6 +80,12 @@
 	   margin: 0;
 	   padding: 0;
 	   box-sizing: border-box;
+	   scrollbar-width: none;
+	   -ms-overflow-style: none;
+   }
+   
+   *::-webkit-scrollbar {
+     display: none;
    }
    body {
 	   font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
@@ -90,7 +96,13 @@
 	   text-rendering: optimizeLegibility;
 	   line-height: 1.6;
 	   scroll-behavior: smooth;
-	   overflow-x: hidden;
+	   overflow-x: hidden !important;
+	   scrollbar-width: none;
+	   -ms-overflow-style: none;
+   }
+   
+   body::-webkit-scrollbar {
+     display: none;
    }
 
   /* Arabic / RTL typography + alignment */
@@ -168,9 +180,10 @@
   }
 
   /* ==================================================
-     Contact (Apple-ish)
-     - Scoped to `.contact-apple` to avoid regressions
-      - No cards/tiles: one clean sheet with dividers
+     CONTACT SECTION
+     - Apple-inspired Clean Design
+     - Responsive Grid and Social Link Pills
+     - Integrated Gradient Borders
      ================================================== */
 
   .contact-apple {
@@ -579,7 +592,12 @@
    /* Transition */
    a, .btn { transition: all 0.25s ease; }
    
-   /* Desktop nav */
+   /* ==================================================
+      NAVIGATION SECTION
+      - Desktop and Mobile Navigation
+      - Language Toggle
+      - Logo and Hamburger Menu
+      ================================================== */
    nav, .nav-links { display: flex; }
    nav {
 	   justify-content: flex-start;
@@ -746,7 +764,6 @@
     padding: 5px;
     box-sizing: border-box;
     aspect-ratio: 1 / 1;
-    overflow: hidden;
 }
 
 /* --------------------------------------------------------------------------
@@ -783,7 +800,7 @@
     display: block;
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow: visible;
     position: relative;
 }
    .avatar-ring img { 
@@ -812,7 +829,12 @@
 	   font-size: clamp(2rem, 4vw, 3rem);
    }
    
-   /* Profile Section (Modern Redesign - Nolan Blake Style) */
+   /* ==================================================
+      HERO SECTION
+      - Modern Redesign
+      - Portrait and Gradient Blending
+      - Responsive Grid and Typography
+      ================================================== */
    .hero-modern {
      min-height: 100vh;
      display: flex;
@@ -824,7 +846,7 @@
      margin: 0 auto !important;
      max-width: none !important;
      width: 100% !important;
-     overflow: hidden;
+    overflow: visible;
      border-radius: 0;
      direction: ltr !important;
    }
@@ -882,6 +904,7 @@
      flex-direction: column;
      justify-content: center;
      min-height: 90vh;
+     overflow: hidden;
    }
    
    .hero-name-bg {
@@ -1040,8 +1063,17 @@
      left: 0;
      width: 100%;
      height: 20vh;
-     background: linear-gradient(to top, #000 10%, transparent 100%);
+     opacity: 1;
+     background: linear-gradient(to top, #000 40%, transparent 100%);
      z-index: 3;
+     transition: height 0.6s ease, opacity 0.6s ease, background 0.6s ease;
+   }
+
+   /* Keep it fixed and consistent */
+   .hero-modern.scrolled .hero-portrait::after {
+     height: 35vh;
+     opacity: 1;
+     background: linear-gradient(to top, #000 40%, transparent 100%);
    }
    
    .hero-portrait img {
@@ -1049,9 +1081,6 @@
      height: 82%;
      max-width: 900px;
      object-fit: contain;
-     filter: drop-shadow(-20px 0 50px rgba(0,0,0,0.8));
-     -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-     mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
      position: relative;
      z-index: 2;
    }
@@ -1063,13 +1092,15 @@
     width: 580px;
     height: 380px;
     background: var(--title-accent);
-    opacity: 0.26;
+    opacity: 0.7;
     border: 1px solid rgba(124, 58, 237, 0.35);
-    border-radius: 80px;
+    border-radius: 80px 80px 0 0;
+    -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 80%);
+    mask-image: linear-gradient(to bottom, black 20%, transparent 80%);
     transform: rotate(-8deg);
     z-index: 1;
     backdrop-filter: blur(6px);
-    box-shadow: 0 22px 42px rgba(0, 0, 0, 0.32);
+    box-shadow: 0 22px 60px rgba(124, 58, 237, 0.4);
    }
 
    .hero-line-separator {
@@ -1083,9 +1114,9 @@
       right: 50%;
       bottom: 2%; /* Moved down from 5% */
       transform: translateX(52%) rotate(-4deg); /* Pushed more to the right from 44% */
-      border-radius: 42px;
-      -webkit-mask-image: linear-gradient(to bottom, black 15%, transparent 60%);
-      mask-image: linear-gradient(to bottom, black 15%, transparent 60%);
+      border-radius: 42px 42px 0 0;
+      -webkit-mask-image: linear-gradient(to bottom, black 10%, transparent 70%);
+      mask-image: linear-gradient(to bottom, black 10%, transparent 70%);
     }
   }
 
@@ -1142,18 +1173,18 @@
 
   /* Profile Section (landing) */
    .hero-centered-old {
-     display: flex;
-     flex-direction: row;
-     align-items: center;
-     justify-content: center;
-     min-height: 85vh;
-     padding-top: var(--section-spacing);
-     padding-bottom: var(--section-spacing);
-     gap: clamp(2rem, 5vw, 6rem);
-     width: 100%;
-     position: relative;
-     overflow: hidden;
-     background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      min-height: 85vh;
+      padding-top: var(--section-spacing);
+      padding-bottom: var(--section-spacing);
+      gap: clamp(2rem, 5vw, 6rem);
+      width: 100%;
+      position: relative;
+      overflow: visible;
+      background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
    }
 
   /* Responsive HERO SECTION for phones */
@@ -1231,10 +1262,10 @@
       right: 50%;
       bottom: 2%; /* Moved down from 5% */
       transform: translateX(48%) rotate(-4deg); /* Slightly back to the right from 46% */
-      border-radius: 42px;
-      opacity: 0.35;
-      -webkit-mask-image: linear-gradient(to bottom, black 15%, transparent 60%);
-      mask-image: linear-gradient(to bottom, black 15%, transparent 60%);
+      border-radius: 42px 42px 0 0;
+      opacity: 0.8;
+      -webkit-mask-image: linear-gradient(to bottom, black 10%, transparent 70%);
+      mask-image: linear-gradient(to bottom, black 10%, transparent 70%);
     }
     .hero-action-btn {
       margin-top: 0.5rem;
@@ -1267,9 +1298,9 @@
       right: 50%;
       bottom: 0%; /* Moved down from 2% */
       transform: translateX(47%) rotate(-4deg); /* Slightly back to the right from 44% */
-      border-radius: 28px;
-      -webkit-mask-image: linear-gradient(to bottom, black 15%, transparent 55%);
-      mask-image: linear-gradient(to bottom, black 15%, transparent 55%);
+      border-radius: 28px 28px 0 0;
+      -webkit-mask-image: linear-gradient(to bottom, black 10%, transparent 65%);
+      mask-image: linear-gradient(to bottom, black 10%, transparent 65%);
     }
   }
    
@@ -2362,29 +2393,7 @@
 	   box-shadow: var(--shadow-md);
    }
    
-   /* Center the small overline and title for the Education section */
-   #education .section_text_p1 {
-	   text-align: center;
-	   display: block;
-	   margin-left: auto;
-	   margin-right: auto;
-	   margin-bottom: 0.6rem;
-	   font-weight: 600;
-   }
-   #education .title {
-	   text-align: center;
-   }
-   
    /* — Center the section headings — */
-   #about .section_text_p1,
-   #about .title {
-	   text-align: center;
-	   width: 100%;
-	   margin-left: auto;
-	   margin-right: auto;
-	   margin-bottom: var(--space-4);
-   }
-   
    /* Modern section header */
    .section-header {
 	   text-align: center;
@@ -2461,6 +2470,8 @@
        -webkit-text-fill-color: transparent;
    }
 
+
+
    .section-header-left {
        display: flex;
        flex-direction: column;
@@ -2480,6 +2491,8 @@
        max-width: 1180px;
          padding: 0 2rem;
          margin-bottom: -30px;
+         margin-left: auto;
+         margin-right: auto;
          align-items: center;
          text-align: center;
          z-index: 0;
@@ -2593,13 +2606,78 @@
 
    .section-container { display: none; }
    
+   /* 
+      ==================================================
+      SKILLS SECTION (MODERN BENTO GRID)
+      ================================================== 
+   */
    #skills {
      position: relative;
      overflow: hidden;
-     padding-top: 2rem !important;
-     padding-bottom: 2rem !important;
-     margin-top: 0 !important;
-     margin-bottom: 0 !important;
+     padding: 0 !important;
+     margin: 0 !important;
+   }
+
+   /* Header alignment for Skills Section */
+   #skills .title { text-align: left; margin-bottom: var(--space-2); }
+   #skills .subtitle { text-align: left; margin-bottom: var(--space-2); }
+   #skills .section-header { margin-bottom: var(--space-2); }
+   #skills .section-header-left {
+       margin-bottom: 1rem;
+       margin-left: 2%;
+       margin-right: auto;
+       padding: 0 2rem;
+   }
+
+   /* Skills Filters */
+   .skills-filters { display:flex; justify-content:center; flex-wrap:wrap; gap:.5rem; margin-bottom: var(--space-4); }
+   .filter-btn { padding:.5rem .85rem; border-radius:999px; border:1px solid rgba(37,48,68,0.6); background:transparent; color:var(--color-text); font-size:.9rem; cursor:pointer; transition: border-color var(--dur-1) var(--ease-out-2), background-color var(--dur-1) var(--ease-out-2), transform var(--dur-2) var(--ease-out-3); }
+   .filter-btn:hover, .filter-btn:focus-visible { border-color:#334155; background: rgba(15,17,23,0.5); }
+   .filter-btn.active { border-color:#6366f1; background: color-mix(in srgb, #6366f1 12%, var(--color-surface)); }
+
+   /* Skills Tiles and Grid View */
+   .skills-tiles { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: clamp(.75rem, 2.5vw, 1rem); }
+   .tile {
+     display: grid;
+     place-items: center;
+     text-align: center;
+     padding: .85rem 1rem;
+     min-height: 64px;
+     border-radius: var(--radius-card);
+     background: linear-gradient(135deg, rgba(59,130,246,0.10), rgba(124,58,237,0.10));
+     border: 1px solid rgba(99,102,241,0.06);
+     color: #e6eefc;
+     letter-spacing: .1px;
+     transition: transform var(--dur-2) var(--ease-out-3), box-shadow var(--dur-2) var(--ease-out-3), border-color var(--dur-1) var(--ease-out-2);
+   }
+   .tile:hover {
+     transform: translateY(-2px);
+     box-shadow: 0 10px 24px rgba(67,56,202,0.08);
+   }
+   .tile.highlight {
+     background: linear-gradient(135deg, rgba(59,130,246,0.14), rgba(124,58,237,0.14));
+     border-color: rgba(99,102,241,0.10);
+   }
+
+   /* Individual Skill Card Styles */
+   .skill-card {
+     position: relative;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     gap: 0.6rem;
+     padding: 1.2rem 0.8rem;
+     min-height: 100px;
+     border-radius: 24px;
+     background: linear-gradient(#000, #000) padding-box, var(--gradient-accent) border-box;
+     border: 1.5px solid transparent;
+     backdrop-filter: blur(8px);
+     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+   }
+   @media (max-width: 640px) {
+     .skill-row { grid-template-columns: 1fr; align-items: flex-start; }
    }
 
    #skills::before {
@@ -2945,7 +3023,7 @@
    .modern-experience {
      position: relative;
      overflow: visible;
-     padding: 6rem var(--gutter) 4rem;
+     padding: 6rem var(--gutter) 1rem;
    }
 
    .experience-ambient {
@@ -3658,11 +3736,34 @@
    
    
    /* Education Section — 3D Interactive Carousel */
-   /* Education Section — Premium Editorial Narrative Horizontal Scroll */
+   /* Education Section Header Alignment */
+   #education .section_text_p1 {
+	   text-align: center;
+	   display: block;
+	   margin-left: auto;
+	   margin-right: auto;
+	   margin-bottom: 0.6rem;
+	   font-weight: 600;
+   }
+   #education .title {
+	   text-align: left;
+   }
+
+   /* 
+      ==================================================
+      EDUCATION SECTION
+      ================================================== 
+   */
    #education {
      padding: 0 !important;
      margin: 10rem 0 0 !important; /* Increased space between Skills and Education */
      max-width: 100vw !important;
+   }
+
+   #education .title-refined {
+       background: var(--title-accent);
+       -webkit-background-clip: text;
+       -webkit-text-fill-color: transparent;
    }
 
    #education .section-header-left {
@@ -4033,79 +4134,11 @@
    .project-card .actions .btn { background: transparent; border-color: #334155; }
    .project-card .actions .btn:hover { border-color: #6366f1; }
    
-	/* ===== Skills Section =====
-		Unified, restored styles for Skills: title, filters, tiles, and board
-	*/
-	#skills .title { text-align: center; margin-bottom: var(--space-2); }
-	#skills .subtitle { text-align: center; margin-bottom: var(--space-2); }
-	#skills .section-header { margin-bottom: var(--space-2); }
-
-	/* Filters (optional) */
-	.skills-filters { display:flex; justify-content:center; flex-wrap:wrap; gap:.5rem; margin-bottom: var(--space-4); }
-	.filter-btn { padding:.5rem .85rem; border-radius:999px; border:1px solid rgba(37,48,68,0.6); background:transparent; color:var(--color-text); font-size:.9rem; cursor:pointer; transition: border-color var(--dur-1) var(--ease-out-2), background-color var(--dur-1) var(--ease-out-2), transform var(--dur-2) var(--ease-out-3); }
-	.filter-btn:hover, .filter-btn:focus-visible { border-color:#334155; background: rgba(15,17,23,0.5); }
-	.filter-btn.active { border-color:#6366f1; background: color-mix(in srgb, #6366f1 12%, var(--color-surface)); }
-
-	/* Tile view */
-	.skills-tiles { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: clamp(.75rem, 2.5vw, 1rem); }
-	.tile {
-	  display: grid;
-	  place-items: center;
-	  text-align: center;
-	  padding: .85rem 1rem;
-	  min-height: 64px;
-	  border-radius: var(--radius-card);
-	  /* Subtle blue → purple gradient, low opacity so it's not too bright */
-	  background: linear-gradient(135deg, rgba(59,130,246,0.10), rgba(124,58,237,0.10));
-	  border: 1px solid rgba(99,102,241,0.06);
-	  color: #e6eefc;
-	  letter-spacing: .1px;
-	  transition: transform var(--dur-2) var(--ease-out-3), box-shadow var(--dur-2) var(--ease-out-3), border-color var(--dur-1) var(--ease-out-2);
-	}
-	.tile:hover {
-	  transform: translateY(-2px);
-	  box-shadow: 0 10px 24px rgba(67,56,202,0.08);
-	  filter: none;
-	}
-	.tile.highlight {
-	  background: linear-gradient(135deg, rgba(59,130,246,0.14), rgba(124,58,237,0.14));
-	  border-color: rgba(99,102,241,0.10);
-	}
-
-/* Ensure skill-card (JS-rendered div) follows same visual style */
-.skill-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-
-  padding: 1.2rem 0.8rem;
-  min-height: 100px;
-
-  border-radius: 24px;
-
-  /* Gradient border (RESPECTS radius) */
-  background:
-    linear-gradient(#000, #000) padding-box,
-    var(--gradient-accent) border-box;
-
-  border: 1.5px solid transparent;
-
-  backdrop-filter: blur(8px);
-  box-shadow:
-    0 8px 25px rgba(0, 0, 0, 0.15),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
-
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-   @media (max-width: 640px) {
-	   .skill-row { grid-template-columns: 1fr; align-items: flex-start; }
-   }
-   
-   /* ===== Contact Section ===== */
+   /* 
+      ==================================================
+      CONTACT SECTION
+      ================================================== 
+   */
    #contact .title { text-align: center; margin-bottom: var(--space-6); }
    .contact-container {
 	   background: var(--color-surface);
@@ -4129,9 +4162,24 @@
     max-width: none;
   }
 
-   /* ===== Refined Bold Typographic About Section ===== */
+   /* Legacy About Section Header Styles */
+   #about .section_text_p1,
+   #about .title {
+	   text-align: center;
+	   width: 100%;
+	   margin-left: auto;
+	   margin-right: auto;
+	   margin-bottom: var(--space-4);
+   }
+
+   /* ==================================================
+      ABOUT SECTION
+      - Bold Typographic Design
+      - Bento Grid Layout
+      - Responsive Text and Highlights
+      ================================================== */
    .about-section-bold {
-	   padding: 10rem var(--gutter);
+	   padding: 12rem var(--gutter);
 	   background: transparent;
 	   position: relative;
 	   overflow: hidden;
@@ -4147,7 +4195,7 @@
        background: rgba(33, 33, 33, 0.4);
        border: none;
 	   border-radius: 80px;
-	   padding: 5rem 4rem;
+	   padding: 6rem 5rem;
        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
    }
 
@@ -4544,9 +4592,7 @@
    .contact-form button { align-self: flex-start; }
    
    /* ===== Scroll reveal ===== */
-   .reveal { opacity: 0; transform: translateY(10px); transition-property: opacity, transform, filter; transition-duration: var(--dur-3); transition-timing-function: var(--ease-out-3); transition-delay: var(--reveal-delay, 0s); will-change: opacity, transform; }
-   .reveal.is-visible { opacity: 1; transform: translateY(0); }
-   /* Reveal variants */
+  
    .reveal.fade-up { transform: translateY(14px); }
    .reveal.fade-down { transform: translateY(-14px); }
    .reveal.fade-left { transform: translateX(-14px); }
