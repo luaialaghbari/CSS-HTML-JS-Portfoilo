@@ -198,10 +198,20 @@ section, .container, .wrapper {
         top: 10vh;
         left: clamp(2rem, 5vw, 4rem);
         padding: 0;
+        width: 90%;
     }
     
     .hero-name-bg h1 {
-        font-size: clamp(3rem, 10vw, 7rem);
+        font-size: clamp(2.5rem, 8vw, 5.5rem) !important;
+        white-space: normal !important;
+        line-height: 1.1;
+    }
+
+    .hero-name-bg .hi-text,
+    .hero-name-bg .mid-name,
+    .hero-name-bg .last-name {
+        transform: none !important;
+        margin-left: 0.1em !important;
     }
     
     /* Profile Section (Hero Centered) */
@@ -222,33 +232,47 @@ section, .container, .wrapper {
 
     /* iPad portrait specific hero adjustments */
     .hero-col-portrait {
-        height: auto;
-        min-height: 50vh;
-        justify-content: center;
-        align-items: center;
+        height: 100vh;
+        min-height: 700px;
+        position: relative;
         padding-right: 0;
         padding-left: 0;
+        display: flex;
+        align-items: flex-end;
     }
     
     .hero-portrait {
-        position: relative;
-        right: auto;
-        bottom: auto;
-        height: auto;
-        max-height: 60vh;
-        align-items: center;
-        width: 100%;
-        padding: 0;
+        position: absolute !important;
+        right: -12vw !important;
+        bottom: 0 !important;
+        height: 100vh !important;
+        width: 75vw !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-end !important;
+        justify-content: flex-end !important;
+        z-index: 20 !important;
+        pointer-events: none;
     }
     
     .hero-portrait img {
-        height: auto;
-        width: 70%;
-        max-width: 450px;
+        height: 85% !important;
+        width: auto !important;
+        max-width: 700px !important;
+        object-fit: contain;
+        filter: drop-shadow(-30px 15px 50px rgba(0,0,0,0.8));
     }
     
     .portrait-bg-shape {
-        display: none;
+        display: block;
+        width: 450px;
+        height: 280px;
+        right: 20%;
+        bottom: -5%;
+        transform: rotate(-6deg);
+        border-radius: 60px 60px 0 0;
+        z-index: 1;
+        opacity: 0.65;
     }
 
     /* Experience section */
@@ -330,20 +354,63 @@ section, .container, .wrapper {
     }
     
     .hero-visual {
-        justify-content: center;
+        justify-content: flex-end;
         width: 100%;
-        padding-left: clamp(2rem, 4vw, 3rem);
-        padding-right: clamp(3rem, 6vw, 5rem);
+        padding: 0;
     }
     
+    .hero-col-portrait {
+        height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+    }
+
     .hero-name-bg {
         top: 12vh;
         left: clamp(3rem, 6vw, 5rem);
         padding: 0;
+        width: 90%;
     }
     
     .hero-name-bg h1 {
-        font-size: clamp(4rem, 12vw, 8rem);
+        font-size: clamp(3.5rem, 10vw, 7.5rem) !important;
+        white-space: normal !important;
+        line-height: 1.1;
+    }
+
+    .hero-portrait {
+        position: absolute !important;
+        right: -10vw !important;
+        bottom: 0 !important;
+        height: 110vh !important;
+        width: 65vw !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-end !important;
+        justify-content: flex-end !important;
+        z-index: 20 !important;
+        pointer-events: none;
+    }
+
+    .hero-portrait img {
+        height: 82% !important;
+        width: auto !important;
+        max-width: 850px !important;
+        object-fit: contain;
+        filter: drop-shadow(-40px 20px 60px rgba(0,0,0,0.85));
+    }
+
+    .portrait-bg-shape {
+        display: block;
+        width: 520px;
+        height: 340px;
+        right: 22%;
+        bottom: -10%;
+        transform: rotate(-7deg);
+        border-radius: 70px 70px 0 0;
+        z-index: 1;
+        opacity: 0.7;
     }
     
     /* Profile Section (Hero Centered) */

@@ -1244,14 +1244,23 @@
       align-items: center;
     }
     .hero-portrait {
-      position: static;
+      position: relative;
       width: 95vw;
       height: auto;
-      right: 0;
-      bottom: 0;
       margin: 0 auto;
+      display: flex;
       align-items: center;
       justify-content: center;
+    }
+    .portrait-bg-shape {
+      display: block !important;
+      width: clamp(340px, 85vw, 440px);
+      height: clamp(200px, 55vw, 280px);
+      right: 50%;
+      bottom: 2%;
+      transform: translateX(50%) rotate(-4deg);
+      border-radius: 42px 42px 0 0;
+      z-index: 1;
     }
     .hero-portrait img {
       width: 100%;
@@ -1264,12 +1273,12 @@
       width: 320px;
       height: 240px;
       right: 50%;
-      bottom: 2%; /* Moved down from 5% */
-      transform: translateX(48%) rotate(-4deg); /* Slightly back to the right from 46% */
-      border-radius: 42px 42px 0 0;
+      bottom: 5%; 
+      transform: translateX(50%) rotate(-4deg);
+      border-radius: 60px 60px 0 0;
       opacity: 0.8;
-      -webkit-mask-image: linear-gradient(to bottom, black 10%, transparent 70%);
-      mask-image: linear-gradient(to bottom, black 10%, transparent 70%);
+      -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 90%);
+      mask-image: linear-gradient(to bottom, black 30%, transparent 90%);
     }
     .hero-action-btn {
       margin-top: 0.5rem;
@@ -1297,14 +1306,14 @@
       max-width: 800px;
     }
     .portrait-bg-shape {
-      width: 260px;
-      height: 190px;
+      width: 280px;
+      height: 210px;
       right: 50%;
-      bottom: 0%; /* Moved down from 2% */
-      transform: translateX(47%) rotate(-4deg); /* Slightly back to the right from 44% */
-      border-radius: 28px 28px 0 0;
-      -webkit-mask-image: linear-gradient(to bottom, black 10%, transparent 65%);
-      mask-image: linear-gradient(to bottom, black 10%, transparent 65%);
+      bottom: 4%; 
+      transform: translateX(50%) rotate(-4deg);
+      border-radius: 45px 45px 0 0;
+      -webkit-mask-image: linear-gradient(to bottom, black 35%, transparent 95%);
+      mask-image: linear-gradient(to bottom, black 35%, transparent 95%);
     }
   }
    
@@ -4197,7 +4206,7 @@
       - Responsive Text and Highlights
       ================================================== */
    .about-section-bold {
-	   padding: 18rem var(--gutter);
+	   padding: clamp(6rem, 12vh, 10rem) var(--gutter);
 	   background: transparent;
 	   position: relative;
 	   overflow: hidden;
@@ -6232,24 +6241,53 @@
     justify-content: center;
     margin: 0 auto;
   }
+  .portrait-bg-shape {
+    display: block !important;
+    width: 60vw;
+    max-width: 380px;
+    height: 240px;
+    right: 55%;
+    bottom: 1%;
+    transform: translateX(50%) rotate(-6deg); /* Rotated to mimic desktop */
+    border-radius: 50px 50px 0 0;
+    -webkit-mask-image: linear-gradient(to bottom, black 10%, black 20%, transparent 95%);
+    mask-image: linear-gradient(to bottom, black 5%, black 40%, transparent 50%);
+    opacity: 0.85;
+    z-index: 1;
+    position: absolute;
+    background: var(--title-accent);
+    box-shadow: 0 15px 50px rgba(124, 58, 237, 0.4);
+  }
+  .hero-portrait::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 180px; /* Reduced height to avoid covering the center */
+    background: linear-gradient(to top, #000 20%, transparent 100%);
+    opacity: 1;
+    z-index: 3;
+    pointer-events: none;
+  }
   .hero-portrait .hero-subtitle-container {
-    margin-top: 3.5rem; /* Increased from 2.2rem */
+    margin-top: 3.5rem; 
     display: block;
     text-align: center;
     width: 100%;
     pointer-events: auto;
     position: relative;
-    z-index: 5; /* Ensure role text is above the masked gradient */
+    z-index: 5; 
   }
   .hero-portrait img {
     height: auto;
     width: 100%;
     max-width: 1100px;
     object-fit: contain;
-    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5)); /* Added shadow for better overlap visibility */
+    filter: drop-shadow(0 15px 40px rgba(0,0,0,0.6));
     position: relative;
     z-index: 2;
-    transform: translateX(4%) scale(1.15); /* Pushed slightly to the right for visual balance */
+    transform: scale(1.1); /* perfectly centered scale */
     transform-origin: center center;
     margin: 0 auto;
     display: block;
