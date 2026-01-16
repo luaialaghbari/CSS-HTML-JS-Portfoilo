@@ -6097,12 +6097,12 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    margin-bottom: -0.2em;
+    margin-bottom: -0.4em;
     overflow: visible;
   }
   .footer-massive-logo h2 {
-    font-size: 35vw;
-    line-height: 0.7;
+    font-size: 28vw;
+    line-height: 0.9;
     padding-right: 0.1em;
     white-space: nowrap;
     overflow: visible;
