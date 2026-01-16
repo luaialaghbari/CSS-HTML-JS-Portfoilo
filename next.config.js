@@ -1,7 +1,7 @@
 
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === 'production';
-const repoName = 'CSS-HTML-JS-Portfoilo'; // Change if your repo name is different
+const repoName = 'my-portfolio'; // Updated repo name
 
 const nextConfig = {
   reactStrictMode: true,

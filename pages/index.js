@@ -1,5 +1,6 @@
 
 import Head from 'next/head';
+const assetPrefix = process.env.NODE_ENV === 'production' ? '/my-portfolio' : '';
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import resume from '../data/resume';
@@ -537,7 +538,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                <button className="btn-modern-pill" onClick={() => window.open('/assets/My Resume.pdf', '_blank')}>
+                <button className="btn-modern-pill" onClick={() => window.open(`${assetPrefix}/assets/My Resume.pdf`, '_blank')}>
                   <span>{lang === 'ar' ? 'تحميل السيرة الذاتية' : 'Download Resume'}</span>
                   <div className="btn-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
@@ -555,7 +556,7 @@ export default function Home() {
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               >
                 <div className="portrait-bg-shape"></div>
-                <img src="/assets/newprofilelogo.png" alt="Luai Alaghbari" />
+                <img src={`${assetPrefix}/assets/newprofilelogo.png`} alt="Luai Alaghbari" />
                 <div className="hero-subtitle-container show-mobile">
                   {lang === 'ar' ? (
                     <>
@@ -691,7 +692,7 @@ export default function Home() {
           {/* Down Arrow - Moved Inside Wrapper */}
           <div className="arrow-container">
             <motion.img
-              src="/assets/arrow.png"
+              src={`${assetPrefix}/assets/arrow.png`}
               className="icon arrow"
               alt="Scroll down"
               onClick={() => { const el = document.getElementById('experience'); el && el.scrollIntoView({ behavior: 'smooth'}); }}
@@ -765,7 +766,7 @@ export default function Home() {
                           <div className="power-button"></div>
                         </div>
                         <div className="iphone-screen">
-                          <img src="/assets/Screenshot_20250703_173702.jpg" alt="QR Events App" />
+                          <img src={`${assetPrefix}/assets/Screenshot_20250703_173702.jpg`} alt="QR Events App" />
                         </div>
                         <div className="iphone-bottom-details">
                           <div className="speaker-grill">
@@ -809,7 +810,7 @@ export default function Home() {
                           <div className="power-button"></div>
                         </div>
                         <div className="iphone-screen">
-                          <img src="/assets/Screenshot 2026-01-09 233757.png" alt="Internship Project" />
+                          <img src={`${assetPrefix}/assets/Screenshot 2026-01-09 233757.png`} alt="Internship Project" />
                         </div>
                         <div className="iphone-bottom-details">
                           <div className="speaker-grill">
@@ -855,7 +856,7 @@ export default function Home() {
                         </div>
                         <div className="iphone-screen">
                           <video 
-                            src="/assets/Screen_Recording_20260106_005631_Crystal Drop.mp4" 
+                            src={`${assetPrefix}/assets/Screen_Recording_20260106_005631_Crystal Drop.mp4`} 
                             autoPlay 
                             loop 
                             muted 
@@ -916,7 +917,7 @@ export default function Home() {
                         </div>
                         <div className="iphone-screen">
                           <video 
-                            src="/assets/Screen_Recording_20250725_203231.mp4" 
+                            src={`${assetPrefix}/assets/Screen_Recording_20250725_203231.mp4`} 
                             autoPlay 
                             loop 
                             muted 
@@ -977,7 +978,7 @@ export default function Home() {
                           <div className="power-button"></div>
                         </div>
                         <div className="iphone-screen">
-                          <img src="/assets/Screenshot_20250225_002302.jpg" alt="Graduation Project" />
+                          <img src={`${assetPrefix}/assets/Screenshot_20250225_002302.jpg`} alt="Graduation Project" />
                         </div>
                         <div className="iphone-bottom-details">
                           <div className="speaker-grill">
@@ -1081,7 +1082,7 @@ export default function Home() {
         </div>
         <div className="arrow-container">
           <motion.img
-            src="/assets/arrow.png"
+            src={`${assetPrefix}/assets/arrow.png`}
             className="icon arrow"
             alt="Scroll down"
             onClick={() => { const el = document.getElementById('skills'); el && el.scrollIntoView({ behavior: 'smooth'}); }}
@@ -1161,7 +1162,7 @@ export default function Home() {
         </div>
         <div className="arrow-container">
           <motion.img
-            src="/assets/arrow.png"
+            src={`${assetPrefix}/assets/arrow.png`}
             className="icon arrow"
             alt="Scroll down"
             onClick={() => { const el = document.getElementById('education'); el && el.scrollIntoView({ behavior: 'smooth'}); }}
@@ -1234,7 +1235,7 @@ export default function Home() {
               {idx < resume.education.length - 1 && (
                 <div className="edu-connector">
                   <motion.img 
-                    src="/assets/arrow.png"
+                    src={`${assetPrefix}/assets/arrow.png`}
                     className="connector-arrow-img"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 0.3, x: 0 }}
@@ -1248,7 +1249,7 @@ export default function Home() {
         </div>
         <div className="arrow-container">
           <motion.img
-            src="/assets/arrow.png"
+            src={`${assetPrefix}/assets/arrow.png`}
             className="icon arrow"
             alt="Scroll down"
             onClick={() => { const el = document.getElementById('contact'); el && el.scrollIntoView({ behavior: 'smooth'}); }}
