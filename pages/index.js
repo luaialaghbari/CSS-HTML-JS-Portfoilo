@@ -20,7 +20,7 @@ export default function Home() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  
+
   // Direction-aware auto-sliding for Education cards
   useEffect(() => {
     const container = eduScrollRef.current;
@@ -32,22 +32,25 @@ export default function Home() {
         const { scrollLeft, scrollWidth, clientWidth } = container;
         const isRTL = lang === 'ar';
         
+        // Calculate step based on first card width + gap
+        const firstCard = container.querySelector('.edu-narrative-block');
+        const gap = parseFloat(getComputedStyle(container).gap) || 0;
+        const step = firstCard ? firstCard.offsetWidth + gap : 340;
+        
         if (isRTL) {
-          // In RTL, scrollLeft is 0 at start and decreases (negative)
-          if (Math.abs(scrollLeft) + clientWidth >= scrollWidth - 10) {
+          if (Math.abs(scrollLeft) + clientWidth >= scrollWidth - 50) {
             container.scrollTo({ left: 0, behavior: 'smooth' });
           } else {
-            container.scrollBy({ left: -340, behavior: 'smooth' });
+            container.scrollBy({ left: -step, behavior: 'smooth' });
           }
         } else {
-          // In LTR, scrollLeft is 0 at start and increases
-          if (scrollLeft + clientWidth >= scrollWidth - 10) {
+          if (scrollLeft + clientWidth >= scrollWidth - 50) {
             container.scrollTo({ left: 0, behavior: 'smooth' });
           } else {
-            container.scrollBy({ left: 340, behavior: 'smooth' });
+            container.scrollBy({ left: step, behavior: 'smooth' });
           }
         }
-      }, 3500); // 3.5 seconds interval
+      }, 4000);
     };
 
     startAutoScroll();
@@ -314,7 +317,7 @@ export default function Home() {
           setActive(entry.target.id);
         }
       });
-    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0.01 });
+    }, { rootMargin: '-30% 0px -30% 0px', threshold: 0.01 });
     elements.forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, []);
@@ -1189,7 +1192,7 @@ export default function Home() {
                 data-edu-index={idx + 1}
                 initial={{ opacity: 0, x: 50, y: 0 }}
                 whileInView={{ opacity: 1, x: 0, y: 0 }}
-                viewport={{ once: false, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
                 {/* Watermark Year */}
@@ -1197,6 +1200,7 @@ export default function Home() {
                   className="edu-watermark"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
                   transition={{ duration: 1, delay: 0.2 }}
                 >
                   {lang === 'ar' ? ed.periodAr.split('–')[0] || ed.periodAr.split('-')[0] : ed.period.split('–')[0] || ed.period.split('-')[0]}
@@ -1234,6 +1238,7 @@ export default function Home() {
                     className="connector-arrow-img"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 0.3, x: 0 }}
+                    viewport={{ once: true }}
                     transition={{ delay: 0.5 }}
                   />
                 </div>
