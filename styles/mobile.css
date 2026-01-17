@@ -482,7 +482,7 @@
     position: absolute !important;
     background: var(--title-accent) !important;
     box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3) !important; /* Only top shadow */
-    clip-path: inset(-100% -100% 0 -100%) !important; /* Clip the bottom shadow completely */
+    clip-path: inset(-100% -100% 12% -100%) !important; /* Cut deeper into the bottom to hide that slight line */
   }
 
   .hero-portrait {
@@ -496,9 +496,24 @@
   .hero-portrait img {
     max-width: 750px !important;
     width: 110% !important;
-    transform: scale(1.15) translateY(10%) !important;
+    transform: scale(1.15) translateY(16%) !important; /* Moved down further */
     z-index: 2 !important;
     margin-bottom: 0 !important;
+  }
+
+  /* Make Resume Button larger for Tablets */
+  .btn-modern-pill {
+    padding: 1.2rem 1.2rem 1.2rem 2.5rem !important; /* Increased padding */
+    font-size: 1.4rem !important; /* Bigger font */
+    border-radius: 32px !important;
+  }
+  .btn-modern-pill .btn-icon {
+    width: 48px !important; /* Bigger icon circle */
+    height: 48px !important;
+  }
+  .btn-modern-pill .btn-icon svg {
+    width: 22px !important;
+    height: 22px !important;
   }
 
   .hero-col-portrait {

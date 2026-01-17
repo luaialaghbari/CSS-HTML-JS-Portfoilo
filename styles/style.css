@@ -3804,12 +3804,20 @@
      gap: 5vw; 
      position: relative;
      overflow-x: auto;
-     overflow-y: auto !important;
-     overscroll-behavior-x: contain;
+     overflow-y: hidden !important;
+     overscroll-behavior: auto !important;
      scroll-snap-type: x mandatory;
      scrollbar-width: none; 
      -ms-overflow-style: none;
      -webkit-overflow-scrolling: touch;
+     touch-action: pan-y; /* Prioritize vertical page scroll */
+     pointer-events: none;
+   }
+
+   .edu-premium-card,
+   .edu-connector,
+   .arrow-container img {
+     pointer-events: auto;
      touch-action: pan-y;
    }
 

@@ -57,20 +57,33 @@ export default function Home() {
     startAutoScroll();
     
     const pauseScroll = () => clearInterval(autoScrollInterval);
-    const resumeScroll = () => startAutoScroll();
+    const resumeScroll = () => {
+      clearInterval(autoScrollInterval);
+      startAutoScroll();
+    };
     
-    container.addEventListener('mouseenter', pauseScroll);
-    container.addEventListener('mouseleave', resumeScroll);
-    container.addEventListener('touchstart', pauseScroll);
-    container.addEventListener('touchend', resumeScroll);
+    // Attach listeners to individual cards since container has pointer-events: none
+    const interactiveEls = container.querySelectorAll('.edu-premium-card, .edu-connector');
+    interactiveEls.forEach(el => {
+      el.addEventListener('mouseenter', pauseScroll);
+      el.addEventListener('mouseleave', resumeScroll);
+      el.addEventListener('touchstart', pauseScroll);
+      el.addEventListener('touchend', resumeScroll);
+    });
+    
+    // Scroll event still bubbles, but container might not receive it with pointer-events: none
+    // However, scroll events on the container itself might still fire if it's scrolled via JS
+    // We'll keep it on the container just in case it still works or for manual scrolling
     container.addEventListener('scroll', pauseScroll, { passive: true });
 
     return () => {
       clearInterval(autoScrollInterval);
-      container.removeEventListener('mouseenter', pauseScroll);
-      container.removeEventListener('mouseleave', resumeScroll);
-      container.removeEventListener('touchstart', pauseScroll);
-      container.removeEventListener('touchend', resumeScroll);
+      interactiveEls.forEach(el => {
+        el.removeEventListener('mouseenter', pauseScroll);
+        el.removeEventListener('mouseleave', resumeScroll);
+        el.removeEventListener('touchstart', pauseScroll);
+        el.removeEventListener('touchend', resumeScroll);
+      });
       container.removeEventListener('scroll', pauseScroll);
     };
   }, [lang]); // Re-run if language changes
