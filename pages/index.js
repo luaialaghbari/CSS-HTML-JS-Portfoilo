@@ -1205,10 +1205,10 @@ export default function Home() {
               <motion.div
                 className={"edu-narrative-block"}
                 data-edu-index={idx + 1}
-                initial={{ opacity: 0, x: 50, y: 0 }}
-                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                initial={{ opacity: 0, y: 100, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
               >
                 {/* Watermark Year */}
                 <motion.div 
