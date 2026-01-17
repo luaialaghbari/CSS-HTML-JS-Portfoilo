@@ -410,11 +410,32 @@
   }
 
   /* Education Section Mobile Refinements */
+  .premium-education-narrative {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+    scroll-snap-type: x mandatory !important;
+    touch-action: pan-x pan-y !important;
+    padding-bottom: 4rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    gap: 20px !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: auto !important; /* Allow scroll chaining when limit reached */
+  }
+
+  .edu-connector {
+    display: none !important;
+  }
+
   .edu-narrative-block {
-    padding-top: 60px !important; /* Reduced to allow watermark overlap */
-    width: 100% !important;
+    scroll-snap-align: center !important;
+    flex: 0 0 85vw !important; /* Each card takes 85% of viewport width */
+    padding-top: 60px !important; 
+    width: 85vw !important;
     max-width: 560px !important;
-    margin: 0 auto 40px !important;
+    margin: 0 !important;
     position: relative !important;
     display: flex !important;
     flex-direction: column !important;
