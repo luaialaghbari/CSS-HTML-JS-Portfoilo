@@ -25,7 +25,7 @@ export default function Home() {
   // Direction-aware auto-sliding for Education cards
   useEffect(() => {
     const container = eduScrollRef.current;
-    if (!container) return;
+    if (!container || !isDesktop) return;
 
     let autoScrollInterval;
     const startAutoScroll = () => {
@@ -56,12 +56,10 @@ export default function Home() {
 
     startAutoScroll();
     
-    const pauseScroll = () => {
-      clearInterval(autoScrollInterval);
-      autoScrollInterval = null;
-    };
+    const pauseScroll = () => clearInterval(autoScrollInterval);
     const resumeScroll = () => {
-      if (!autoScrollInterval) startAutoScroll();
+      clearInterval(autoScrollInterval);
+      startAutoScroll();
     };
     
     // Attach listeners to container
@@ -69,7 +67,6 @@ export default function Home() {
     container.addEventListener('mouseleave', resumeScroll);
     container.addEventListener('touchstart', pauseScroll, { passive: true });
     container.addEventListener('touchend', resumeScroll, { passive: true });
-    container.addEventListener('wheel', pauseScroll, { passive: true });
     
     // Also pause on window scroll to avoid fighting with vertical page scroll
     window.addEventListener('scroll', pauseScroll, { passive: true });
@@ -80,11 +77,10 @@ export default function Home() {
       container.removeEventListener('mouseleave', resumeScroll);
       container.removeEventListener('touchstart', pauseScroll);
       container.removeEventListener('touchend', resumeScroll);
-      container.removeEventListener('wheel', pauseScroll);
       window.removeEventListener('scroll', pauseScroll);
       container.removeEventListener('scroll', pauseScroll);
     };
-  }, [lang]); // Re-run if language changes
+  }, [lang, isDesktop]); // Re-run if language or desktop mode changes
   
   // Scroll listener for hero shadow
   useEffect(() => {
