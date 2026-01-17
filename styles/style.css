@@ -3804,6 +3804,9 @@
      gap: 5vw; 
      position: relative;
      overflow-x: auto;
+     overflow-y: visible !important;
+     overscroll-behavior-x: contain;
+     overscroll-behavior-y: auto !important;
      scroll-snap-type: x mandatory;
      scrollbar-width: none; 
      -ms-overflow-style: none;
@@ -3825,6 +3828,7 @@
      justify-content: flex-start !important; 
      align-self: flex-start !important; /* Force block to start at container top */
      scroll-snap-align: center;
+     scroll-snap-stop: always;
      margin: 0 !important; 
      padding-top: 132px !important; /* Fixed top gutter for watermark */
      height: auto !important;
@@ -4406,6 +4410,11 @@
 	   justify-content: center;
 	   width: 100%;
 	   margin-top: 2rem;
+       pointer-events: none;
+   }
+
+   .arrow-container img {
+       pointer-events: auto;
    }
 
    @media (max-width: 1024px) {

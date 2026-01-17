@@ -63,6 +63,7 @@ export default function Home() {
     container.addEventListener('mouseleave', resumeScroll);
     container.addEventListener('touchstart', pauseScroll);
     container.addEventListener('touchend', resumeScroll);
+    container.addEventListener('scroll', pauseScroll, { passive: true });
 
     return () => {
       clearInterval(autoScrollInterval);
@@ -70,6 +71,7 @@ export default function Home() {
       container.removeEventListener('mouseleave', resumeScroll);
       container.removeEventListener('touchstart', pauseScroll);
       container.removeEventListener('touchend', resumeScroll);
+      container.removeEventListener('scroll', pauseScroll);
     };
   }, [lang]); // Re-run if language changes
   
