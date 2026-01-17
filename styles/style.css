@@ -1192,7 +1192,7 @@
    }
 
   /* Responsive HERO SECTION for phones */
-  @media (max-width: 768px) {
+  @media (max-width: 1366px) {
     .hero-modern {
       min-height: 80vh;
       padding: 0 0.5rem !important;
@@ -1424,7 +1424,7 @@
   .hero-centered .hero-visual { z-index: 2; }
 
   /* Clip any floating icons to the visual column on large screens */
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 1367px) {
     .hero-centered .hero-copy { z-index: 3; }
     /* Make the visual column a clipping context for any decorative overlays */
     .hero-visual { overflow: visible; }
@@ -1998,7 +1998,7 @@
    - Make card surfaces static on wider viewports while preserving phone/frame
      animations (do NOT target `.iphone-17-frame` selectors here).
 ---------------------------------------------------------------------------- */
-@media screen and (min-width: 993px) {
+@media screen and (min-width: 1367px) {
   /* Stop particle/background drift for the experience container only */
   .experience-node::before {
     animation: none !important;
@@ -2038,7 +2038,7 @@
 }
   
   /* Desktop: Volumetric Projection Beam (Bridging Phone and Card - horizontally centered) */
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 1367px) {
     .project-connector-line {
       position: absolute;
       top: 45%;
@@ -2116,7 +2116,7 @@
 
 
   /* Desktop: Phone containers positioned on sides */
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 1367px) {
     .yemeni-phone-right-container, .internship-phone-right-container, .qr-phone-right-container {
       position: absolute;
       right: 0;
@@ -2187,7 +2187,7 @@
     justify-content: flex-start;
   }
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1366px) {
     .iphone-17-frame {
       width: 200px;
       height: 415px;
@@ -2196,7 +2196,7 @@
     }
   }
 
-  @media screen and (max-width: 992px) {
+  @media screen and (max-width: 1366px) {
     .experience-node {
       min-height: auto;
       flex-direction: column !important;
@@ -2315,7 +2315,7 @@
      object-fit: contain;
    }
 
-   @media (max-width: 1024px) {
+   @media (max-width: 1366px) {
      .floating-icon {
        width: 35px;
        height: 35px;
@@ -2598,7 +2598,7 @@
    .right-aligned { text-align: right; }
    .centered { text-align: center; }
 
-   @media (max-width: 768px) {
+   @media (max-width: 1366px) {
        .section-header-split {
            flex-direction: column;
          margin-bottom: -18px;
@@ -3094,7 +3094,7 @@
 
    .experience-container {
      position: relative;
-     max-width: 1200px;
+     max-width: 1366px;
      margin: 2rem auto 0;
      padding: 6rem 0 2rem 0;
      overflow: visible;
@@ -3261,7 +3261,7 @@
   }
 
   /* Double Chevron Arrow - DESKTOP ONLY */
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 1367px) {
     .project-beam-arrow {
       display: block !important;
       position: absolute !important;
@@ -3619,13 +3619,13 @@
    [dir="rtl"] .graduation-phone-left-container {
      left: auto;
      right: 0;
-     justify-content: flex-start;
+     justify-content: center;
    }
 
    [dir="rtl"] .yemeni-phone-right-container, [dir="rtl"] .internship-phone-right-container, [dir="rtl"] .qr-phone-right-container {
      right: auto;
      left: 0;
-     justify-content: flex-end;
+     justify-content: center;
    }
 
    [dir="rtl"] .yemeni-node .node-content-wrapper, [dir="rtl"] .internship-node .node-content-wrapper, [dir="rtl"] .qr-node .node-content-wrapper {
@@ -3804,14 +3804,14 @@
      gap: 5vw; 
      position: relative;
      overflow-x: auto;
-     overflow-y: visible !important;
-     overscroll-behavior-x: contain;
+     overflow-y: hidden !important;
+     overscroll-behavior-x: auto;
      overscroll-behavior-y: auto !important;
      scroll-snap-type: x mandatory;
      scrollbar-width: none; 
      -ms-overflow-style: none;
      -webkit-overflow-scrolling: touch;
-     touch-action: pan-y;
+     touch-action: auto;
    }
 
    .premium-education-narrative::-webkit-scrollbar {
@@ -3876,7 +3876,7 @@
      border: none !important; 
      border-radius: 32px;
      padding: 1.5rem;
-     transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
      overflow: hidden;
      display: flex;
@@ -4062,7 +4062,7 @@
      pointer-events: none;
      user-select: none;
      line-height: 1;
-     transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
      z-index: 0;
    }
 
@@ -4216,7 +4216,7 @@
 	   overflow: hidden;
    }
    .about-wrapper-bold {
-	   max-width: 1200px;
+	   max-width: 1366px;
 	   margin: 0 auto;
 	   display: flex;
 	   flex-direction: column;
@@ -4245,7 +4245,7 @@
 	   -webkit-text-fill-color: transparent !important;
    }
 
-   @media (max-width: 768px) {
+   @media (max-width: 1366px) {
 	   .title-massive {
 		   font-size: clamp(2.2rem, 10vw, 3.5rem);
 	   }
@@ -4417,7 +4417,7 @@
        pointer-events: auto;
    }
 
-   @media (max-width: 1024px) {
+   @media (max-width: 1366px) {
 	   .about-grid-bold {
 		   grid-template-columns: 1fr;
 		   gap: 1.5rem;
@@ -4431,13 +4431,10 @@
 	   .about-wrapper-bold {
 		   gap: 2rem;
 	   }
-   }
 
-   @media (max-width: 768px) {
 	   .about-section-bold {
 		   padding: 2rem var(--gutter);
 	   }
-
    }
 
 
@@ -4455,7 +4452,7 @@
 	   margin: 0 auto;
    }
    
-   @media (min-width: 1000px) {
+   @media (min-width: 1367px) {
 	   #education .edu-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
    }
    
@@ -4762,7 +4759,7 @@
    
    /* New About Section Design - Clean Timeline Layout */
    .about-new-design {
-	 max-width: 1200px;
+	 max-width: 1366px;
 	 margin: 2rem auto 0;
 	 opacity: 1 !important;
 	 visibility: visible !important;
@@ -4955,7 +4952,7 @@
    }
    
    /* Responsive adjustments for modern about section */
-   @media (max-width: 768px) {
+   @media (max-width: 1366px) {
 	 .about-hero {
 	   padding: var(--space-6) var(--space-4);
 	   margin-bottom: var(--space-8);
@@ -5194,7 +5191,7 @@
    }
 
    /* Responsive Bento */
-   @media (max-width: 992px) {
+   @media (max-width: 1366px) {
      .about-bento-grid {
        grid-template-columns: repeat(2, 1fr);
      }
@@ -5357,7 +5354,7 @@
    }
    
    /* Responsive adjustments for modern about section */
-   @media (max-width: 768px) {
+   @media (max-width: 1366px) {
 	 .about-hero {
 	   padding: var(--space-6) var(--space-4);
 	   margin-bottom: var(--space-8);
@@ -5402,7 +5399,7 @@
 }
 
 .contact-bento-container {
-  max-width: 1200px;
+  max-width: 1366px;
   margin: 0 auto;
 }
 
@@ -5639,7 +5636,7 @@
   color: #fff;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1366px) {
   .contact-bento-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -5834,7 +5831,7 @@
 }
 
 /* Responsive */
-@media (max-width: 992px) {
+@media (max-width: 1366px) {
   .contact-glass-wrapper {
     grid-template-columns: 1fr;
     padding: 2rem;
@@ -5951,7 +5948,7 @@
   font-size: 1.2rem;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1367px) {
   .footer-nav-links {
     flex-direction: row;
     gap: 4rem;
@@ -6028,7 +6025,7 @@
   color: #64748b;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1367px) {
   .footer-bottom-info {
     flex-direction: row;
     gap: 2rem;
@@ -6089,7 +6086,7 @@
   overflow: visible;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1366px) {
   .footer-logo-container {
     padding-top: 5rem;
   }

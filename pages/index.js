@@ -16,7 +16,7 @@ export default function Home() {
   const eduScrollRef = useRef(null);
 
   useEffect(() => {
-    const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
+    const handleResize = () => setIsDesktop(window.innerWidth >= 1367);
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
