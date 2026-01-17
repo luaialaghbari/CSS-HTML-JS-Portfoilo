@@ -75,6 +75,11 @@
     .project-connector-line { 
       max-width: 520px !important; 
     }
+
+    .about-wrapper-bold {
+      padding: 3rem 1.5rem !important;
+      border-radius: 40px !important;
+    }
   }
 
   .node-card, .node-card-glass { 
@@ -110,8 +115,8 @@
     position: absolute !important;
     top: 50% !important;
     left: 50% !important;
-    width: 44px !important; /* Bigger */
-    height: 44px !important;
+    width: 24px !important; /* Reduced from 44px */
+    height: 24px !important;
     background: #fff !important;
     /* Sharp single chevron head */
     clip-path: polygon(50% 100%, 0% 40%, 15% 40%, 50% 75%, 85% 40%, 100% 40%) !important;
@@ -465,16 +470,44 @@
   /* Centered Hero Portrait for Tablets */
   .portrait-bg-shape {
     display: block !important;
-    width: 480px;
-    height: 320px;
-    left: 50%;
-    bottom: 5%;
-    transform: translateX(-50%) rotate(-6deg);
-    border-radius: 55px 55px 0 0;
-    opacity: 0.95;
-    z-index: 1;
-    position: absolute;
-    background: var(--title-accent);
+    width: 65vw !important;
+    max-width: 600px !important;
+    height: 360px !important; /* Shorter height */
+    left: 45% !important;
+    bottom: -20% !important; /* Push significantly further down to hide bottom edge */
+    transform: translateX(-50%) rotate(-5deg) !important;
+    border-radius: 60px 60px 0 0 !important;
+    opacity: 1 !important;
+    z-index: 1 !important;
+    position: absolute !important;
+    background: var(--title-accent) !important;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3) !important; /* Only top shadow */
+    clip-path: inset(-100% -100% 0 -100%) !important; /* Clip the bottom shadow completely */
+  }
+
+  .hero-portrait {
+    overflow: hidden !important;
+    height: 480px !important; /* Fixed height to control the cut point */
+    clip-path: inset(0 0 0 0); /* Force GPU clip */
+    padding-bottom: 0 !important;
+    margin-bottom: 20px !important; /* Move the whole cut-off section down */
+  }
+
+  .hero-portrait img {
+    max-width: 750px !important;
+    width: 110% !important;
+    transform: scale(1.15) translateY(10%) !important;
+    z-index: 2 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .hero-col-portrait {
+    margin-top: -24vh !important; /* Pull up more for better background overlap */
+  }
+
+  .hero-name-bg .mid-name, .hero-name-bg .last-name {
+    font-size: 18vw !important; 
+    line-height: 0.9 !important;
   }
 
   /* Keep Skills Multi-column on Tablets as requested */

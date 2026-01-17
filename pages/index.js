@@ -578,7 +578,6 @@ export default function Home() {
                     </>
                   )}
                 </div>
-                <div className="hero-line-separator"></div>
               </motion.div>
             </div>
           </div>
