@@ -1207,7 +1207,7 @@ export default function Home() {
                 data-edu-index={idx + 1}
                 initial={{ opacity: 0, y: 100, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: false, amount: 0.1, margin: "0px 0px -100px 0px" }}
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
               >
                 {/* Watermark Year */}
