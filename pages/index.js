@@ -540,7 +540,13 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                <button className="btn-modern-pill" onClick={() => window.open(`${assetPrefix}/assets/My Resume.pdf`, '_blank')}>
+                <button 
+                  className="btn-modern-pill" 
+                  onClick={() => {
+                    const resumeUrl = lang === 'ar' ? resume.resumeUrlAr : resume.resumeUrl;
+                    window.open(`${assetPrefix}${resumeUrl}`, '_blank');
+                  }}
+                >
                   <span>{lang === 'ar' ? 'تحميل السيرة الذاتية' : 'Download Resume'}</span>
                   <div className="btn-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>

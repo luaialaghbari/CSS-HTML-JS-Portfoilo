@@ -7,7 +7,8 @@ const resume = {
   location: "Sana'a, Yemen",
   email: 'louiyaseralag@gmail.com',
   phone: '772642380',
-  resumeUrl: '/assets/Ruesme.pdf', // placed under public/assets
+  resumeUrl: '/assets/Software Engineering Resume.pdf',
+  resumeUrlAr: '/assets/Resume Software Engineering Ar.pdf',
   socials: {
     linkedin: 'https://www.linkedin.com/in/luai-alaghbari-5181691a1',
     github: 'https://github.com/luaialaghbari',
@@ -166,8 +167,7 @@ const resume = {
 		periodAr: '2024',
     details: [
       'Received an internship certificate for completing a practical software engineering internship.',
-      'Practical training covering the full software development lifecycle from system analysis to UI/UX design.',
-      'Contributed to the development of an English institutes management application.',
+     
       
     ],
 		detailsAr: [
